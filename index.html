@@ -1,30 +1,84 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>Ahmad Shams</title>
+    <meta charset="UTF-8">
+    <title>Ahxxad Shams</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@700&display=swap" rel="stylesheet">
+    <!-- فونت زیبا -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Poppins:wght@600&display=swap" rel="stylesheet">
 
-  <style>
-    body{
-      margin:0;
-      background:#020617;
-      color:white;
-      font-family:'Scheherazade New', serif;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      height:100vh;
-      text-align:center;
-      font-size:70px;
-    }
-  </style>
+    <style>
+        body {
+            margin: 0;
+            background: #111;
+            color: white;
+            font-family: 'Amiri', serif;
+        }
+
+        /* نوار بالا */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            background: black;
+        }
+
+        /* بخش بسم الله و نام */
+        .title {
+            text-align: center;
+            flex: 1;
+        }
+
+        .bismillah {
+            font-size: 40px;
+            margin-bottom: 5px;
+        }
+
+        .name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 28px;
+            letter-spacing: 2px;
+            color: #00ffcc;
+        }
+
+        /* منوی سه خط */
+        .menu {
+            width: 35px;
+            cursor: pointer;
+        }
+
+        .line {
+            height: 4px;
+            background: white;
+            margin: 6px 0;
+            border-radius: 2px;
+        }
+    </style>
 </head>
 
 <body>
 
-بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
+    <!-- نوار بالا -->
+    <div class="navbar">
+
+        <!-- جای خالی چپ -->
+        <div style="width:35px;"></div>
+
+        <!-- وسط -->
+        <div class="title">
+            <div class="bismillah">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</div>
+            <div class="name">Ahxxad Shams</div>
+        </div>
+
+        <!-- منوی سه خط -->
+        <div class="menu">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+
+    </div>
 
 </body>
 </html>
