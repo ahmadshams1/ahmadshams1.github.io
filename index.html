@@ -1,99 +1,167 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ahxxad Shams</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GreenScape Landscaping</title>
 
-  <!-- Beautiful Arabic Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@700&display=swap" rel="stylesheet">
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#0f1f14;
+    color:white;
+}
 
-  <style>
-    body{
-      margin:0;
-      font-family: Arial, sans-serif;
-      background:#0f172a;
-      color:white;
-    }
+/* Navbar */
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 30px;
+    background:#07130b;
+}
 
-    /* Navbar */
-    .navbar{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:15px 25px;
-      background:#020617;
-      border-bottom:1px solid #1e293b;
-      direction:ltr;
-    }
+.logo{
+    font-size:22px;
+    font-weight:bold;
+    color:#4ade80;
+}
 
-    .logo{
-      font-size:22px;
-      font-weight:bold;
-      letter-spacing:1px;
-    }
+.menu a{
+    margin-left:20px;
+    text-decoration:none;
+    color:white;
+    font-size:15px;
+}
 
-    .menu{
-      display:flex;
-      gap:20px;
-    }
+.menu a:hover{
+    color:#4ade80;
+}
 
-    .menu a{
-      text-decoration:none;
-      color:#cbd5f5;
-      font-size:15px;
-      transition:0.2s;
-    }
+/* Hero Section */
+.hero{
+    height:90vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6') center/cover no-repeat;
+}
 
-    .menu a:hover{
-      color:white;
-    }
+.hero h1{
+    font-size:50px;
+}
 
-    /* Center Text */
-    .center-text{
-      height:85vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
-    }
+.hero p{
+    margin-top:10px;
+    font-size:18px;
+    color:#d1fae5;
+}
 
-    .bismillah{
-      font-size:80px;
-      font-family:'Scheherazade New', serif;
-      font-weight:bold;
-      color:white;
-    }
+.button{
+    margin-top:20px;
+    padding:12px 25px;
+    background:#4ade80;
+    color:black;
+    text-decoration:none;
+    font-weight:bold;
+    border-radius:5px;
+}
 
-    @media(max-width:768px){
-      .bismillah{
-        font-size:42px;
-      }
-    }
+.button:hover{
+    background:#22c55e;
+}
 
-  </style>
+/* Services */
+.services{
+    padding:60px 20px;
+    text-align:center;
+}
+
+.services h2{
+    color:#4ade80;
+}
+
+.service-box{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    margin-top:30px;
+    flex-wrap:wrap;
+}
+
+.box{
+    background:#12281a;
+    padding:20px;
+    width:250px;
+    border-radius:8px;
+}
+
+.box h3{
+    color:#4ade80;
+}
+
+/* Contact */
+.contact{
+    background:#07130b;
+    padding:40px 20px;
+    text-align:center;
+}
+</style>
+
 </head>
-
 <body>
 
-  <div class="navbar">
-    <div class="logo">Ahxxad Shams</div>
-
+<!-- Navbar -->
+<div class="navbar">
+    <div class="logo">GreenScape</div>
     <div class="menu">
-      <a href="#">Home</a>
-      <a href="#">About</a>
-      <a href="#">Projects</a>
-      <a href="#">Contact</a>
-      <a href="#">⋮</a>
+        <a href="#">Home</a>
+        <a href="#">Services</a>
+        <a href="#">Gallery</a>
+        <a href="#">Contact</a>
     </div>
-  </div>
+</div>
 
-  <!-- Center Text -->
-  <div class="center-text">
-    <div class="bismillah">
-      بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
+<!-- Hero Section -->
+<div class="hero">
+    <div>
+        <h1>Professional Landscaping Services</h1>
+        <p>Transform Your Outdoor Space Into Something Beautiful</p>
+        <a href="#" class="button">Get Free Quote</a>
     </div>
-  </div>
+</div>
+
+<!-- Services -->
+<div class="services">
+    <h2>Our Services</h2>
+
+    <div class="service-box">
+        <div class="box">
+            <h3>Lawn Care</h3>
+            <p>Professional grass cutting and maintenance.</p>
+        </div>
+
+        <div class="box">
+            <h3>Garden Design</h3>
+            <p>Modern and creative outdoor designs.</p>
+        </div>
+
+        <div class="box">
+            <h3>Tree Removal</h3>
+            <p>Safe and professional tree services.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Contact -->
+<div class="contact">
+    <h2>Contact Us</h2>
+    <p>Call: (000) 000-0000</p>
+    <p>Email: info@greenscape.com</p>
+</div>
 
 </body>
 </html>
