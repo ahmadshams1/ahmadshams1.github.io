@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GreenScape Landscaping</title>
+
+<title>Ahxxad Shams | Landscaping</title>
 
 <style>
+
 body{
     margin:0;
     font-family:Arial, sans-serif;
@@ -20,6 +22,7 @@ body{
     align-items:center;
     padding:15px 30px;
     background:#07130b;
+    flex-wrap:wrap;
 }
 
 .logo{
@@ -39,15 +42,17 @@ body{
     color:#4ade80;
 }
 
-/* Hero Section */
+/* Hero */
 .hero{
     height:90vh;
     display:flex;
     justify-content:center;
     align-items:center;
     text-align:center;
-    background:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-    url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6') center/cover no-repeat;
+    background:
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6')
+    center/cover no-repeat;
 }
 
 .hero h1{
@@ -72,6 +77,26 @@ body{
 
 .button:hover{
     background:#22c55e;
+}
+
+/* About */
+.about{
+    padding:60px 20px;
+    text-align:center;
+    background:#0a1a11;
+}
+
+.about img{
+    width:220px;
+    border-radius:15px;
+    border:3px solid #4ade80;
+    margin:20px 0;
+}
+
+.about p{
+    max-width:600px;
+    margin:auto;
+    line-height:1.7;
 }
 
 /* Services */
@@ -109,59 +134,105 @@ body{
     padding:40px 20px;
     text-align:center;
 }
-</style>
 
+footer{
+    background:black;
+    padding:15px;
+    text-align:center;
+    font-size:14px;
+}
+
+</style>
 </head>
+
 <body>
 
 <!-- Navbar -->
 <div class="navbar">
     <div class="logo">GreenScape</div>
+
     <div class="menu">
-        <a href="#">Home</a>
-        <a href="#">Services</a>
-        <a href="#">Gallery</a>
-        <a href="#">Contact</a>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
     </div>
 </div>
 
-<!-- Hero Section -->
-<div class="hero">
+<!-- Hero -->
+<div class="hero" id="home">
     <div>
-        <h1>Professional Landscaping Services</h1>
-        <p>Transform Your Outdoor Space Into Something Beautiful</p>
-        <a href="#" class="button">Get Free Quote</a>
+        <h1>Professional Landscaping</h1>
+        <p>Making Your Yard Beautiful & Healthy</p>
+        <a href="#contact" class="button">Get Free Quote</a>
     </div>
+</div>
+
+<!-- About -->
+<div class="about" id="about">
+
+    <h2>About Me</h2>
+
+    <!-- نام عکس خودت -->
+    <img src="IMG_1252.jpeg" alt="My Photo">
+
+    <p>
+        My name is Ahxxad Shams.  
+        I am from Afghanistan and living in the United States.
+    </p>
+
+    <p>
+        I am passionate about landscaping and creating beautiful
+        outdoor spaces for homes and businesses.
+    </p>
+
+    <p>
+        My goal is to provide honest, affordable, and high-quality service
+        to every customer.
+    </p>
+
 </div>
 
 <!-- Services -->
-<div class="services">
+<div class="services" id="services">
+
     <h2>Our Services</h2>
 
     <div class="service-box">
+
         <div class="box">
             <h3>Lawn Care</h3>
-            <p>Professional grass cutting and maintenance.</p>
+            <p>Grass cutting, edging, and maintenance.</p>
         </div>
 
         <div class="box">
             <h3>Garden Design</h3>
-            <p>Modern and creative outdoor designs.</p>
+            <p>Modern outdoor planning and planting.</p>
         </div>
 
         <div class="box">
-            <h3>Tree Removal</h3>
-            <p>Safe and professional tree services.</p>
+            <h3>Tree Service</h3>
+            <p>Safe trimming and removal.</p>
         </div>
+
     </div>
+
 </div>
 
 <!-- Contact -->
-<div class="contact">
-    <h2>Contact Us</h2>
-    <p>Call: (000) 000-0000</p>
-    <p>Email: info@greenscape.com</p>
+<div class="contact" id="contact">
+
+    <h2>Contact Me</h2>
+
+    <p>📞 Phone: (404) 000-0000</p>
+    <p>📧 Email: ahxxadshams@gmail.com</p>
+    <p>📍 Location: Georgia, USA</p>
+
 </div>
+
+<footer>
+    © 2026 | Ahxxad Shams Landscaping
+</footer>
 
 </body>
 </html>
