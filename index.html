@@ -1,84 +1,116 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <title>Ahxxad Shams</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ahxxad Shams</title>
 
-    <!-- فونت زیبا -->
-    <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <!-- Beautiful Arabic Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@700&display=swap" rel="stylesheet">
 
-    <style>
-        body {
-            margin: 0;
-            background: #111;
-            color: white;
-            font-family: 'Amiri', serif;
-        }
+  <style>
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background:#0f172a;
+      color:white;
+    }
 
-        /* نوار بالا */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 30px;
-            background: black;
-        }
+    /* Navbar */
+    .navbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:15px 25px;
+      background:#020617;
+      border-bottom:1px solid #1e293b;
+      direction:ltr;
+    }
 
-        /* بخش بسم الله و نام */
-        .title {
-            text-align: center;
-            flex: 1;
-        }
+    .logo{
+      font-size:22px;
+      font-weight:bold;
+      letter-spacing:1px;
+    }
 
-        .bismillah {
-            font-size: 40px;
-            margin-bottom: 5px;
-        }
+    .menu{
+      display:flex;
+      gap:20px;
+    }
 
-        .name {
-            font-family: 'Poppins', sans-serif;
-            font-size: 28px;
-            letter-spacing: 2px;
-            color: #00ffcc;
-        }
+    .menu a{
+      text-decoration:none;
+      color:#cbd5f5;
+      font-size:15px;
+      transition:0.2s;
+    }
 
-        /* منوی سه خط */
-        .menu {
-            width: 35px;
-            cursor: pointer;
-        }
+    .menu a:hover{
+      color:white;
+    }
 
-        .line {
-            height: 4px;
-            background: white;
-            margin: 6px 0;
-            border-radius: 2px;
-        }
-    </style>
+    /* Center Text */
+    .center-text{
+      height:85vh;
+      display:flex;
+      flex-direction:column; /* مهم: دو خط زیر هم */
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+    }
+
+    .bismillah{
+      font-size:80px;
+      font-family:'Scheherazade New', serif;
+      font-weight:bold;
+      color:white;
+    }
+
+    .name{
+      margin-top:10px;
+      font-size:26px;
+      font-family: Arial, sans-serif;
+      color:white; /* سفید */
+      letter-spacing:2px;
+    }
+
+    @media(max-width:768px){
+      .bismillah{
+        font-size:42px;
+      }
+      .name{
+        font-size:20px;
+      }
+    }
+
+  </style>
 </head>
 
 <body>
 
-    <!-- نوار بالا -->
-    <div class="navbar">
+  <div class="navbar">
+    <div class="logo">Ahxxad Shams</div>
 
-        <!-- جای خالی چپ -->
-        <div style="width:35px;"></div>
-
-        <!-- وسط -->
-        <div class="title">
-            <div class="bismillah">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</div>
-            <div class="name">Ahxxad Shams</div>
-        </div>
-
-        <!-- منوی سه خط -->
-        <div class="menu">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-        </div>
-
+    <div class="menu">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Projects</a>
+      <a href="#">Contact</a>
+      <a href="#">⋮</a>
     </div>
+  </div>
+
+  <!-- Center Text -->
+  <div class="center-text">
+    <div class="bismillah">
+      بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
+    </div>
+
+    <!-- Your Name -->
+    <div class="name">
+      Ahxxad Shams
+    </div>
+  </div>
 
 </body>
 </html>
