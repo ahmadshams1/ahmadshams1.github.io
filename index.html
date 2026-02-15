@@ -14,8 +14,8 @@
       --muted:#A9B5D6;
       --line:rgba(255,255,255,.10);
       --glow: 0 0 30px rgba(122,162,247,.25);
-      --accent:#7AA2F7;       /* آبی نئون */
-      --accent2:#22D3EE;      /* فیروزه‌ای */
+      --accent:#7AA2F7;
+      --accent2:#22D3EE;
       --good:#34D399;
       --warn:#FBBF24;
       --danger:#FB7185;
@@ -40,7 +40,7 @@
     a{color:inherit; text-decoration:none}
     .container{width:min(1200px, 92vw); margin:0 auto}
 
-    /* ====== NAV ====== */
+    /* NAV */
     .nav{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(14px);
@@ -126,11 +126,8 @@
       opacity:.95;
     }
 
-    /* ====== HERO ====== */
-    .hero{
-      position:relative;
-      padding: 72px 0 36px;
-    }
+    /* HERO */
+    .hero{position:relative; padding: 72px 0 36px;}
     .hero-grid{
       display:grid;
       grid-template-columns: 1.25fr .75fr;
@@ -216,10 +213,7 @@
     .stat b{display:block; font-size:18px}
     .stat small{color:var(--muted); font-weight:700}
 
-    .hero-right{
-      display:grid;
-      gap:14px;
-    }
+    .hero-right{display:grid; gap:14px;}
     .card{
       border:1px solid var(--line);
       background: rgba(255,255,255,.03);
@@ -245,11 +239,7 @@
       white-space:nowrap;
     }
     .card-body{padding:16px 18px}
-    .quick{
-      display:grid;
-      gap:10px;
-      margin-top:6px;
-    }
+    .quick{display:grid; gap:10px; margin-top:6px;}
     .quick .row{
       display:flex; gap:10px; align-items:flex-start;
       padding:10px 12px;
@@ -268,7 +258,6 @@
       flex:0 0 auto;
     }
 
-    /* ====== SECTIONS ====== */
     section{padding: 44px 0}
     .section-head{
       display:flex; align-items:flex-end; justify-content:space-between;
@@ -318,7 +307,7 @@
     .tile h4{margin:0; font-size:15px}
     .tile p{margin:10px 0 0; color:var(--muted); line-height:1.85; font-weight:650; position:relative; z-index:1}
 
-    /* ====== PRICING ====== */
+    /* PRICING */
     .pricing{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
@@ -355,7 +344,7 @@
     ul.features li{margin:6px 0; font-weight:650}
     .plan .btn{width:100%; margin-top:14px; justify-content:center}
 
-    /* ====== GALLERY ====== */
+    /* GALLERY */
     .gallery{
       display:grid;
       grid-template-columns: repeat(6, 1fr);
@@ -397,7 +386,7 @@
     .shot.wide{grid-column: span 2; aspect-ratio: 2 / 1}
     .shot.tall{grid-row: span 2; aspect-ratio: 1 / 2}
 
-    /* ====== TESTIMONIALS ====== */
+    /* TESTIMONIALS */
     .testimonials{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
     .quote{
       padding:18px;
@@ -410,10 +399,8 @@
     .quote .who{margin-top:12px; color:var(--muted); font-weight:850; display:flex; align-items:center; justify-content:space-between}
     .stars{letter-spacing:2px; color: rgba(251,191,36,.95); font-weight:1000}
 
-    /* ====== FAQ ====== */
-    .faq{
-      display:grid; grid-template-columns: 1.1fr .9fr; gap:14px; align-items:start;
-    }
+    /* FAQ */
+    .faq{display:grid; grid-template-columns: 1.1fr .9fr; gap:14px; align-items:start;}
     details{
       border:1px solid var(--line);
       background: rgba(255,255,255,.03);
@@ -442,7 +429,7 @@
     }
     details[open] .chev{transform: rotate(180deg)}
 
-    /* ====== CONTACT ====== */
+    /* CONTACT */
     .contact{
       display:grid;
       grid-template-columns: 1.05fr .95fr;
@@ -503,6 +490,7 @@
     }
     .kpi b{display:block; font-size:13px}
     .kpi small{color:var(--muted); font-weight:750}
+
     footer{
       padding: 24px 0 46px;
       border-top:1px solid var(--line);
@@ -511,7 +499,7 @@
       font-weight:750;
     }
 
-    /* ====== FLOATING WHATSAPP ====== */
+    /* FLOATING WHATSAPP */
     .wa-float{
       position:fixed;
       left:18px; bottom:18px;
@@ -542,7 +530,7 @@
       cursor:pointer;
     }
 
-    /* ====== RESPONSIVE ====== */
+    /* RESPONSIVE */
     @media (max-width: 980px){
       .hero-grid{grid-template-columns: 1fr}
       .nav-cta{min-width:auto}
@@ -587,7 +575,8 @@
       </div>
 
       <div class="nav-cta">
-        <a class="btn" href="tel:+1XXXXXXXXXX" title="تماس">
+        <!-- ✅ شماره تماس اینجا ست -->
+        <a class="btn" href="tel:+14704201001" title="تماس">
           <svg class="icon" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.07 21 3 13.93 3 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.59a1 1 0 01-.25 1.01l-2.2 2.19z"/></svg>
           تماس
         </a>
@@ -774,7 +763,7 @@
       <div class="section-head">
         <div>
           <h3>قیمت‌ها (قابل تنظیم)</h3>
-          <p>این قیمت‌ها نمونه است. من می‌تونم دقیقاً مطابق شهر/رقیب‌های اطرافت تنظیمش کنم.</p>
+          <p>این قیمت‌ها نمونه است. هر وقت خواستی قیمت واقعی‌ات را بده، همینجا دقیق می‌زنم.</p>
         </div>
       </div>
 
@@ -827,7 +816,7 @@
       <div class="section-head">
         <div>
           <h3>گالری (نمونه)</h3>
-          <p>اینجا را بعداً با عکس‌های واقعی کارت پر می‌کنیم تا اعتماد مشتری‌ها چند برابر شود.</p>
+          <p>اینجا را با عکس‌های واقعی کارت پر می‌کنیم تا اعتماد مشتری‌ها چند برابر شود.</p>
         </div>
       </div>
 
@@ -895,7 +884,7 @@
           </details>
           <details>
             <summary>برای ناوگان و شرکت‌ها تخفیف دارید؟ <span class="chev">⌄</span></summary>
-            <p>بله، قرارداد ماهانه/هفتگی با قیمت بهتر. (همینجا می‌تونی جدول مخصوص شرکت‌ها اضافه کنی.)</p>
+            <p>بله، قرارداد ماهانه/هفتگی با قیمت بهتر.</p>
           </details>
         </div>
 
@@ -948,7 +937,7 @@
             <div class="grid-2">
               <div>
                 <label>شماره تماس</label>
-                <input id="phone" placeholder="+1 ..." />
+                <input id="phone" placeholder="470-420-1001" />
               </div>
               <div>
                 <label>نوع موتر</label>
@@ -996,12 +985,13 @@
         <div class="info reveal">
           <h4>تماس و شبکه‌ها</h4>
           <p>
-            شماره و لینک‌ها را همینجا عوض کن. اگر خواستی Google Map هم اضافه می‌کنم.
+            شماره و لینک‌ها آماده است. هر وقت خواستی اسم برند یا شهر را بگو تا دقیق تنظیم کنم.
           </p>
           <div class="kpis">
             <div class="kpi">
               <b>📞 تلفن</b>
-              <small>+1 (470)420-1001</small>
+              <!-- ✅ شماره نمایش -->
+              <small>470-420-1001</small>
             </div>
             <div class="kpi">
               <b>💬 واتساپ</b>
@@ -1043,11 +1033,10 @@
   </div>
 
   <script>
-    // ====== SETTINGS (فقط این‌ها را عوض کن) ======
-    const WHATSAPP_NUMBER = "1XXXXXXXXXX"; // بدون + و بدون فاصله. مثال: 14045551234
+    // ✅ شماره واتساپ (بدون - و بدون +)
+    const WHATSAPP_NUMBER = "14704201001";
     const BUSINESS_NAME = "VIP Mobile Car Wash";
 
-    // ====== HELPERS ======
     const $ = (id) => document.getElementById(id);
     const enc = encodeURIComponent;
 
@@ -1064,7 +1053,7 @@
 پکیج: ${data.package}
 وقت دلخواه: ${data.time || "-"}
 آدرس: ${data.address}
-یادداشت: ${data.notes || "-"}`
+یادداشت: ${data.notes || "-"}`;
     }
 
     function waLink(message){
@@ -1113,7 +1102,6 @@
       }
     }
 
-    // ====== FORM SUBMIT => WhatsApp ======
     $("bookingForm").addEventListener("submit", (e)=>{
       e.preventDefault();
       const data = {
@@ -1129,7 +1117,6 @@
       window.open(waLink(msg), "_blank");
     });
 
-    // ====== Reveal on scroll ======
     const revealEls = document.querySelectorAll(".reveal");
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(en=>{
@@ -1138,7 +1125,6 @@
     }, {threshold:.12});
     revealEls.forEach(el=>io.observe(el));
 
-    // ====== toTop button ======
     const toTop = $("toTop");
     window.addEventListener("scroll", ()=>{
       if(window.scrollY > 600){
@@ -1148,10 +1134,7 @@
       }
     });
 
-    // footer year
     $("year").textContent = new Date().getFullYear();
-
-    // init
     setAllWaLinks();
   </script>
 </body>
