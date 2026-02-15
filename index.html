@@ -1,803 +1,1158 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mr Landscaping — Premium Outdoor Care</title>
-  <meta name="description" content="Mr Landscaping — premium lawn care, mulch, trimming, cleanups, and outdoor upgrades. Fast quotes, clean finish."/>
+  <title>VIP Mobile Car Wash | کارواش سیار VIP</title>
+  <meta name="description" content="کارواش سیار VIP — شستشوی حرفه‌ای در محل، دیتیلینگ، واکس، صفرشویی. رزرو سریع با واتساپ." />
   <style>
     :root{
-      --bg:#f6fbf7;
-      --card:#ffffff;
-      --ink:#0c1410;
-      --muted:#3b5846;
-      --line:rgba(10,20,16,.10);
-      --shadow: 0 18px 60px rgba(0,0,0,.10);
+      --bg:#070A10;
+      --panel:#0B1020;
+      --panel2:#0D1530;
+      --text:#EAF0FF;
+      --muted:#A9B5D6;
+      --line:rgba(255,255,255,.10);
+      --glow: 0 0 30px rgba(122,162,247,.25);
+      --accent:#7AA2F7;       /* آبی نئون */
+      --accent2:#22D3EE;      /* فیروزه‌ای */
+      --good:#34D399;
+      --warn:#FBBF24;
+      --danger:#FB7185;
+      --shadow: 0 25px 60px rgba(0,0,0,.55);
       --radius:22px;
-
-      --g1:#16a34a;
-      --g2:#22c55e;
-      --g3:#0ea5e9;
     }
+
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+    html,body{height:100%}
     body{
       margin:0;
-      font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      color:var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans Arabic", "Noto Naskh Arabic", sans-serif;
       background:
-        radial-gradient(900px 460px at 10% -10%, rgba(34,197,94,.14), transparent 60%),
-        radial-gradient(820px 420px at 95% 0%, rgba(14,165,233,.10), transparent 55%),
+        radial-gradient(1200px 600px at 80% -10%, rgba(122,162,247,.25), transparent 55%),
+        radial-gradient(900px 500px at 10% 10%, rgba(34,211,238,.16), transparent 60%),
+        radial-gradient(900px 500px at 50% 120%, rgba(52,211,153,.12), transparent 60%),
         var(--bg);
-      line-height:1.55;
+      color:var(--text);
+      overflow-x:hidden;
     }
-    a{color:inherit; text-decoration:none}
-    .container{max-width:1200px; margin:0 auto; padding:0 20px}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:12px 16px; border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.7);
-      box-shadow: 0 10px 30px rgba(0,0,0,.06);
-      cursor:pointer; user-select:none;
-      font-weight:750;
-      transition:.2s;
-    }
-    .btn:hover{transform: translateY(-1px)}
-    .btn-primary{
-      background: linear-gradient(135deg, var(--g1), var(--g2));
-      color:white;
-      border-color: transparent;
-      box-shadow: 0 18px 45px rgba(34,197,94,.22);
-    }
-    .btn-dark{
-      background:#0c1410;
-      color:white;
-      border-color:transparent;
-      box-shadow: 0 18px 45px rgba(0,0,0,.14);
-    }
-    .chip{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:10px 12px; border-radius:999px;
-      background: rgba(34,197,94,.10);
-      border:1px solid rgba(34,197,94,.20);
-      font-weight:800;
-      color:#0c3b22;
-    }
-    .dot{width:9px; height:9px; border-radius:50%; background:var(--g2); box-shadow:0 0 0 6px rgba(34,197,94,.18)}
 
-    /* NAV */
+    a{color:inherit; text-decoration:none}
+    .container{width:min(1200px, 92vw); margin:0 auto}
+
+    /* ====== NAV ====== */
     .nav{
       position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(12px);
-      background: rgba(246,251,247,.75);
-      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+      background: rgba(7,10,16,.55);
+      border-bottom:1px solid var(--line);
     }
     .nav-inner{
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      display:flex; align-items:center; justify-content:space-between;
       padding:14px 0;
+      gap:14px;
     }
-    .brand{display:flex; align-items:center; gap:12px; min-width: 260px;}
-    .mark{
-      width:44px; height:44px; border-radius:16px;
-      background: linear-gradient(135deg, var(--g1), var(--g2));
-      color:white;
-      display:grid; place-items:center;
-      font-weight:950;
-      letter-spacing:.5px;
-      box-shadow: 0 16px 40px rgba(34,197,94,.22);
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      min-width: 240px;
     }
-    .brand b{display:block}
-    .brand small{color:var(--muted)}
-    .tabs{
-      display:flex; gap:8px; align-items:center; flex-wrap:wrap; justify-content:flex-end;
+    .logo{
+      width:44px; height:44px; border-radius:14px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,.35), transparent 45%),
+        linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: var(--glow);
+      position:relative;
+      overflow:hidden;
     }
-    .tab{
+    .logo:after{
+      content:"";
+      position:absolute; inset:-40%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,.35), transparent);
+      transform: rotate(25deg);
+      animation: shine 4.5s infinite;
+    }
+    @keyframes shine{
+      0%{transform: translateX(-60%) rotate(25deg)}
+      35%{transform: translateX(60%) rotate(25deg)}
+      100%{transform: translateX(60%) rotate(25deg)}
+    }
+    .brand h1{
+      margin:0; font-size:14px; letter-spacing:.2px; line-height:1.1;
+    }
+    .brand small{display:block; color:var(--muted); font-weight:500; margin-top:4px}
+    .nav-links{display:flex; gap:16px; flex-wrap:wrap; justify-content:center}
+    .nav-links a{
       padding:10px 12px;
       border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.65);
-      color: var(--muted);
-      font-weight:800;
-      cursor:pointer;
+      color:var(--muted);
+      border:1px solid transparent;
       transition:.2s;
+      font-weight:600;
+      font-size:13px;
     }
-    .tab:hover{transform: translateY(-1px)}
-    .tab.active{
-      color: var(--ink);
-      border-color: rgba(34,197,94,.30);
-      background: rgba(34,197,94,.12);
+    .nav-links a:hover{
+      color:var(--text);
+      border-color: var(--line);
+      background: rgba(255,255,255,.04);
     }
-    .nav-cta{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+    .nav-cta{display:flex; gap:10px; min-width:240px; justify-content:flex-end}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:11px 14px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color:var(--text);
+      font-weight:800;
+      font-size:13px;
+      transition:.2s;
+      cursor:pointer;
+      box-shadow: 0 12px 30px rgba(0,0,0,.25);
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.06)}
+    .btn.primary{
+      border-color: rgba(122,162,247,.35);
+      background: linear-gradient(135deg, rgba(122,162,247,.20), rgba(34,211,238,.12));
+      box-shadow: var(--glow), 0 18px 40px rgba(0,0,0,.35);
+    }
+    .btn.primary:hover{transform: translateY(-1px) scale(1.01)}
+    .icon{
+      width:16px; height:16px; display:inline-block;
+      vertical-align:middle;
+      fill:currentColor;
+      opacity:.95;
+    }
 
-    /* HERO */
-    .hero{padding:26px 0 10px}
+    /* ====== HERO ====== */
+    .hero{
+      position:relative;
+      padding: 72px 0 36px;
+    }
     .hero-grid{
       display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap:18px;
+      grid-template-columns: 1.25fr .75fr;
+      gap:24px;
       align-items:stretch;
     }
-    .glass{
+    .hero-left{
+      padding:34px;
       border-radius: var(--radius);
-      background: rgba(255,255,255,.70);
-      border: 1px solid rgba(255,255,255,.55);
+      border:1px solid var(--line);
+      background:
+        radial-gradient(900px 420px at 10% 0%, rgba(122,162,247,.18), transparent 60%),
+        radial-gradient(700px 380px at 80% 20%, rgba(34,211,238,.12), transparent 60%),
+        rgba(255,255,255,.03);
       box-shadow: var(--shadow);
       overflow:hidden;
       position:relative;
+      min-height: 420px;
     }
-    .hero-left{padding:26px}
-    h1{
-      margin:14px 0 10px;
-      font-size:54px;
-      letter-spacing:-1.2px;
-      line-height:1.02;
-    }
-    .sub{color:var(--muted); max-width: 65ch; margin:0 0 16px; font-size:16px}
-    .hero-actions{display:flex; gap:10px; flex-wrap:wrap}
-    .stats{
-      margin-top:18px;
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:10px;
-    }
-    .stat{
-      border-radius:18px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.65);
-      padding:12px;
-    }
-    .stat .n{font-weight:950; font-size:18px; color:#0c3b22}
-    .stat .t{color:var(--muted); font-size:12px; margin-top:2px}
-
-    .hero-right{
-      min-height: 430px;
-      display:grid;
-      place-items:stretch;
-    }
-    .video{
-      position:relative;
-      width:100%;
-      height:100%;
-      min-height: 430px;
-      background:
-        linear-gradient(180deg, rgba(12,20,16,.05), rgba(12,20,16,.55)),
-        url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1800&q=75");
-      background-size: cover;
-      background-position:center;
-    }
-    .video::after{
+    .hero-left:before{
       content:"";
-      position:absolute; inset:-100px;
-      background: radial-gradient(circle at 20% 15%, rgba(34,197,94,.22), transparent 55%);
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(280px 180px at 15% 20%, rgba(34,211,238,.25), transparent 60%),
+        radial-gradient(280px 180px at 75% 10%, rgba(122,162,247,.25), transparent 60%),
+        radial-gradient(300px 200px at 40% 120%, rgba(52,211,153,.18), transparent 55%);
+      filter: blur(18px);
+      opacity:.7;
       pointer-events:none;
     }
-    .hero-card{
-      position:absolute;
-      left:16px; right:16px; bottom:16px;
-      border-radius:18px;
-      border:1px solid rgba(255,255,255,.55);
-      background: rgba(255,255,255,.72);
-      backdrop-filter: blur(12px);
-      padding:14px;
-      display:flex; justify-content:space-between; gap:10px; align-items:center;
-    }
-    .hero-card b{display:block}
-    .hero-card small{color:var(--muted)}
-    .callpill{
-      padding:10px 12px;
+    .hero-content{position:relative; z-index:1}
+    .badge{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:8px 12px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
       border-radius:999px;
-      border:1px solid rgba(34,197,94,.25);
-      background: rgba(34,197,94,.12);
-      font-weight:900;
+      color:var(--muted);
+      font-weight:800;
+      font-size:12px;
+      letter-spacing:.2px;
+    }
+    .badge .dot{
+      width:8px; height:8px; border-radius:999px;
+      background: var(--good);
+      box-shadow: 0 0 18px rgba(52,211,153,.55);
+    }
+    .hero h2{
+      margin:18px 0 10px;
+      font-size: clamp(30px, 4.2vw, 54px);
+      line-height:1.05;
+      letter-spacing:-.6px;
+    }
+    .hero h2 span{
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      background-clip:text;
+      color:transparent;
+    }
+    .hero p{
+      margin:0;
+      color:var(--muted);
+      font-size: clamp(14px, 1.35vw, 18px);
+      line-height:1.9;
+      max-width: 56ch;
+    }
+    .hero-actions{
+      display:flex; gap:12px; flex-wrap:wrap;
+      margin-top:18px;
+    }
+    .stats{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+      margin-top:18px;
+    }
+    .stat{
+      padding:12px 14px;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    .stat b{display:block; font-size:18px}
+    .stat small{color:var(--muted); font-weight:700}
+
+    .hero-right{
+      display:grid;
+      gap:14px;
+    }
+    .card{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .card-top{
+      padding:18px 18px 12px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px;
+      border-bottom:1px solid var(--line);
+      background:
+        radial-gradient(520px 220px at 50% -20%, rgba(122,162,247,.16), transparent 60%),
+        rgba(255,255,255,.02);
+    }
+    .card-top h3{margin:0; font-size:14px; letter-spacing:.2px}
+    .pill{
+      font-size:12px; font-weight:900; color:rgba(255,255,255,.9);
+      padding:8px 10px; border-radius:999px;
+      border:1px solid rgba(34,211,238,.28);
+      background: rgba(34,211,238,.10);
       white-space:nowrap;
     }
-
-    /* SECTIONS */
-    section{padding:44px 0}
-    .title-row{
-      display:flex; justify-content:space-between; align-items:flex-end; gap:16px; flex-wrap:wrap;
-      margin-bottom:14px;
-    }
-    .title-row h2{margin:0; font-size:28px; letter-spacing:-.3px}
-    .title-row p{margin:0; color:var(--muted); max-width: 70ch}
-
-    .grid3{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
-    .grid2{display:grid; grid-template-columns: 1fr 1fr; gap:14px}
-    .card{
-      padding:18px;
-      border-radius:22px;
-      background: rgba(255,255,255,.78);
-      border:1px solid var(--line);
-      box-shadow: 0 14px 45px rgba(0,0,0,.06);
-      transition:.2s;
-    }
-    .card:hover{transform: translateY(-2px)}
-    .icon{
-      width:46px; height:46px; border-radius:18px;
-      display:grid; place-items:center;
-      background: linear-gradient(135deg, rgba(22,163,74,.14), rgba(34,197,94,.14));
-      border:1px solid rgba(34,197,94,.22);
-      font-weight:950;
-      color:#0c3b22;
-      margin-bottom:10px;
-      user-select:none;
-    }
-    .card h3{margin:0 0 6px; font-size:16px}
-    .card p{margin:0; color:var(--muted); font-size:14px}
-
-    /* Projects */
-    .projects{
+    .card-body{padding:16px 18px}
+    .quick{
       display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap:12px;
+      gap:10px;
+      margin-top:6px;
     }
-    .proj{
-      grid-column: span 4;
-      border-radius:22px;
-      overflow:hidden;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.78);
-      box-shadow: 0 14px 45px rgba(0,0,0,.06);
-      cursor:pointer;
-      transition:.2s;
-      min-height: 260px;
-      position:relative;
-    }
-    .proj:hover{transform: translateY(-2px)}
-    .proj.big{grid-column: span 8}
-    .proj img{width:100%; height:100%; object-fit:cover; display:block; transform:scale(1.03); transition:.35s}
-    .proj:hover img{transform:scale(1.08)}
-    .label{
-      position:absolute; left:12px; bottom:12px;
+    .quick .row{
+      display:flex; gap:10px; align-items:flex-start;
       padding:10px 12px;
-      border-radius:999px;
-      background: rgba(255,255,255,.78);
-      border:1px solid rgba(255,255,255,.65);
-      backdrop-filter: blur(10px);
-      font-weight:900;
-      color:#0c1410;
-      display:inline-flex; gap:10px; align-items:center;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background: rgba(255,255,255,.02);
+    }
+    .quick .row b{display:block; font-size:13px}
+    .quick .row small{color:var(--muted); font-weight:700; line-height:1.6}
+    .mini-ico{
+      width:34px; height:34px; border-radius:14px;
+      background: linear-gradient(135deg, rgba(122,162,247,.28), rgba(34,211,238,.18));
+      border:1px solid rgba(255,255,255,.10);
+      display:grid; place-items:center;
+      box-shadow: var(--glow);
+      flex:0 0 auto;
     }
 
-    /* Pricing */
-    .price{
-      border-radius:22px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.78);
-      box-shadow: 0 14px 45px rgba(0,0,0,.06);
+    /* ====== SECTIONS ====== */
+    section{padding: 44px 0}
+    .section-head{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:14px; flex-wrap:wrap;
+      margin-bottom:16px;
+    }
+    .section-head h3{
+      margin:0;
+      font-size: clamp(20px, 2.2vw, 30px);
+      letter-spacing:-.3px;
+    }
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      max-width: 70ch;
+      line-height:1.8;
+      font-weight:650;
+    }
+
+    .grid-3{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
+    .grid-2{display:grid; grid-template-columns: repeat(2, 1fr); gap:14px}
+
+    .tile{
       padding:18px;
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background:
+        radial-gradient(520px 220px at 20% 0%, rgba(34,211,238,.12), transparent 60%),
+        rgba(255,255,255,.03);
+      box-shadow: var(--shadow);
+      min-height: 160px;
       position:relative;
       overflow:hidden;
     }
-    .price.featured{
-      border-color: rgba(34,197,94,.35);
-      background: linear-gradient(180deg, rgba(34,197,94,.10), rgba(255,255,255,.82));
+    .tile:after{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(240px 140px at 90% 10%, rgba(122,162,247,.16), transparent 60%);
+      filter: blur(18px);
+      opacity:.7;
+      pointer-events:none;
     }
-    .tag{
-      position:absolute; top:14px; right:14px;
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid rgba(34,197,94,.25);
-      background: rgba(34,197,94,.12);
-      font-weight:950;
-      color:#0c3b22;
-      font-size:12px;
+    .tile .top{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      position:relative; z-index:1;
     }
-    .money{font-size:34px; font-weight:950; letter-spacing:-.8px; margin:10px 0 6px; color:#0c3b22}
-    .muted{color:var(--muted); font-size:13px}
-    ul.clean{margin:12px 0 0; padding:0; list-style:none}
-    ul.clean li{padding:10px 0; border-top:1px dashed var(--line); color:var(--muted); display:flex; gap:10px; align-items:flex-start}
-    ul.clean li:first-child{border-top:none; padding-top:0}
-    .check{
-      width:22px; height:22px; border-radius:10px;
-      background: rgba(34,197,94,.12);
-      border:1px solid rgba(34,197,94,.22);
-      display:grid; place-items:center;
-      font-weight:950;
-      color:#0c3b22;
-      flex:0 0 auto;
-      margin-top:1px;
-      user-select:none;
-    }
+    .tile h4{margin:0; font-size:15px}
+    .tile p{margin:10px 0 0; color:var(--muted); line-height:1.85; font-weight:650; position:relative; z-index:1}
 
-    /* Contact */
-    .form{
-      display:grid; gap:10px; margin-top:10px;
+    /* ====== PRICING ====== */
+    .pricing{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+      align-items:stretch;
     }
-    input, textarea, select{
+    .plan{
+      padding:20px;
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .plan.featured{
+      border-color: rgba(122,162,247,.35);
+      background:
+        radial-gradient(720px 320px at 20% 0%, rgba(122,162,247,.18), transparent 60%),
+        radial-gradient(520px 260px at 90% 30%, rgba(34,211,238,.12), transparent 60%),
+        rgba(255,255,255,.03);
+      box-shadow: var(--glow), var(--shadow);
+      transform: translateY(-6px);
+    }
+    .plan h4{margin:0; font-size:16px}
+    .price{
+      margin:10px 0 8px;
+      font-size: 36px;
+      font-weight: 1000;
+      letter-spacing:-.8px;
+    }
+    .price span{font-size:12px; color:var(--muted); font-weight:800}
+    ul.features{margin:12px 0 0; padding:0 16px 0 0; color:var(--muted); line-height:2}
+    ul.features li{margin:6px 0; font-weight:650}
+    .plan .btn{width:100%; margin-top:14px; justify-content:center}
+
+    /* ====== GALLERY ====== */
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap:10px;
+    }
+    .shot{
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:
+        radial-gradient(220px 180px at 30% 30%, rgba(255,255,255,.10), transparent 55%),
+        linear-gradient(135deg, rgba(122,162,247,.16), rgba(34,211,238,.10));
+      aspect-ratio: 1 / 1;
+      position:relative;
+      overflow:hidden;
+      box-shadow: 0 18px 40px rgba(0,0,0,.45);
+    }
+    .shot:before{
+      content:"";
+      position:absolute; inset:-40%;
+      background: linear-gradient(115deg, transparent, rgba(255,255,255,.24), transparent);
+      transform: rotate(20deg) translateX(-60%);
+      animation: sweep 6s infinite;
+    }
+    @keyframes sweep{
+      0%{transform: rotate(20deg) translateX(-80%)}
+      35%{transform: rotate(20deg) translateX(80%)}
+      100%{transform: rotate(20deg) translateX(80%)}
+    }
+    .shot .tag{
+      position:absolute; bottom:10px; right:10px;
+      font-size:12px;
+      font-weight:950;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(0,0,0,.25);
+      backdrop-filter: blur(10px);
+    }
+    .shot.wide{grid-column: span 2; aspect-ratio: 2 / 1}
+    .shot.tall{grid-row: span 2; aspect-ratio: 1 / 2}
+
+    /* ====== TESTIMONIALS ====== */
+    .testimonials{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
+    .quote{
+      padding:18px;
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      box-shadow: var(--shadow);
+    }
+    .quote p{margin:0; color:var(--text); line-height:1.9; font-weight:700}
+    .quote .who{margin-top:12px; color:var(--muted); font-weight:850; display:flex; align-items:center; justify-content:space-between}
+    .stars{letter-spacing:2px; color: rgba(251,191,36,.95); font-weight:1000}
+
+    /* ====== FAQ ====== */
+    .faq{
+      display:grid; grid-template-columns: 1.1fr .9fr; gap:14px; align-items:start;
+    }
+    details{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius: 18px;
+      padding: 14px 14px;
+      box-shadow: 0 16px 36px rgba(0,0,0,.35);
+    }
+    details + details{margin-top:10px}
+    summary{
+      cursor:pointer;
+      font-weight:900;
+      color: var(--text);
+      list-style:none;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px;
+    }
+    summary::-webkit-details-marker{display:none}
+    .faq p{margin:10px 0 0; color:var(--muted); line-height:1.9; font-weight:650}
+    .chev{
+      width:34px; height:34px; border-radius:12px;
+      display:grid; place-items:center;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      transition:.2s;
+      flex:0 0 auto;
+    }
+    details[open] .chev{transform: rotate(180deg)}
+
+    /* ====== CONTACT ====== */
+    .contact{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    .form{
+      padding:18px;
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      box-shadow: var(--shadow);
+    }
+    label{display:block; font-weight:900; font-size:12px; color:var(--muted); margin:12px 0 8px}
+    input,select,textarea{
       width:100%;
       padding:12px 12px;
-      border-radius:16px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.85);
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(7,10,16,.45);
+      color:var(--text);
       outline:none;
-      font-size:14px;
+      font-weight:750;
+    }
+    input:focus,select:focus,textarea:focus{
+      border-color: rgba(122,162,247,.45);
+      box-shadow: 0 0 0 4px rgba(122,162,247,.12);
     }
     textarea{min-height:110px; resize:vertical}
-    input:focus, textarea:focus, select:focus{border-color: rgba(34,197,94,.40)}
-    .two{display:grid; grid-template-columns: 1fr 1fr; gap:10px}
-
-    /* PAGES */
-    .page{display:none}
-    .page.active{display:block}
-
-    /* Modal */
-    .modal{
-      position:fixed; inset:0;
-      background: rgba(0,0,0,.65);
-      display:none;
-      align-items:center; justify-content:center;
-      padding:16px;
-      z-index:200;
+    .form .actions{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top:14px;
     }
-    .modal.open{display:flex}
-    .modal-card{
-      max-width: 980px; width: 100%;
-      border-radius: 22px;
-      overflow:hidden;
-      background: white;
-      box-shadow: 0 25px 90px rgba(0,0,0,.35);
+    .info{
+      padding:18px;
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background:
+        radial-gradient(520px 220px at 20% 0%, rgba(52,211,153,.12), transparent 60%),
+        rgba(255,255,255,.03);
+      box-shadow: var(--shadow);
       position:relative;
+      overflow:hidden;
     }
-    .modal-card img{width:100%; height: 560px; object-fit:cover; display:block}
-    .x{
-      position:absolute; top:12px; right:12px;
-      width:46px; height:46px; border-radius:18px;
-      background: rgba(255,255,255,.82);
-      border:1px solid rgba(0,0,0,.10);
-      display:grid; place-items:center;
-      font-weight:950;
-      cursor:pointer;
-      user-select:none;
+    .info h4{margin:0 0 10px; font-size:16px}
+    .info p{margin:0; color:var(--muted); line-height:1.9; font-weight:650}
+    .info .kpis{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:10px;
+      margin-top:14px;
     }
-    .modal-foot{
-      padding:14px;
-      border-top:1px solid rgba(0,0,0,.08);
-      display:flex; justify-content:space-between; gap:10px; align-items:center; flex-wrap:wrap;
-      color:var(--muted);
+    .kpi{
+      padding:12px;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.02);
     }
-
-    /* Footer */
+    .kpi b{display:block; font-size:13px}
+    .kpi small{color:var(--muted); font-weight:750}
     footer{
-      padding:28px 0 44px;
+      padding: 24px 0 46px;
       border-top:1px solid var(--line);
       color:var(--muted);
-      font-size:13px;
+      text-align:center;
+      font-weight:750;
     }
 
-    /* Responsive */
+    /* ====== FLOATING WHATSAPP ====== */
+    .wa-float{
+      position:fixed;
+      left:18px; bottom:18px;
+      z-index:80;
+      display:flex; flex-direction:column; gap:10px;
+      align-items:flex-start;
+    }
+    .wa{
+      display:flex; align-items:center; gap:10px;
+      padding:12px 14px;
+      border-radius:999px;
+      border:1px solid rgba(52,211,153,.35);
+      background: rgba(52,211,153,.10);
+      box-shadow: 0 18px 40px rgba(0,0,0,.35);
+      font-weight:950;
+      color: var(--text);
+      backdrop-filter: blur(10px);
+    }
+    .wa small{display:block; font-weight:800; color: rgba(234,240,255,.85)}
+    .wa:hover{transform: translateY(-1px)}
+    .toTop{
+      display:none;
+      padding:11px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      font-weight:950;
+      cursor:pointer;
+    }
+
+    /* ====== RESPONSIVE ====== */
     @media (max-width: 980px){
-      .hero-grid{grid-template-columns:1fr}
-      h1{font-size:44px}
-      .grid3{grid-template-columns:1fr}
-      .grid2{grid-template-columns:1fr}
-      .projects{grid-template-columns: repeat(6, 1fr)}
-      .proj, .proj.big{grid-column: span 6}
-      .stats{grid-template-columns:1fr 1fr 1fr}
+      .hero-grid{grid-template-columns: 1fr}
+      .nav-cta{min-width:auto}
+      .brand{min-width:auto}
+      .grid-3{grid-template-columns: 1fr}
+      .grid-2{grid-template-columns: 1fr}
+      .pricing{grid-template-columns: 1fr}
+      .testimonials{grid-template-columns: 1fr}
+      .faq{grid-template-columns: 1fr}
+      .contact{grid-template-columns: 1fr}
+      .gallery{grid-template-columns: repeat(2, 1fr)}
+      .shot.wide{grid-column: span 2}
+      .shot.tall{grid-row: span 1; aspect-ratio: 1 / 1}
+      .plan.featured{transform:none}
     }
-    @media (max-width: 560px){
-      h1{font-size:36px}
-      .two{grid-template-columns:1fr}
-      .stats{grid-template-columns:1fr}
-      .modal-card img{height: 420px}
-    }
+
+    /* reveal animation */
+    .reveal{opacity:0; transform: translateY(12px); transition: .6s ease}
+    .reveal.show{opacity:1; transform:none}
   </style>
 </head>
 
 <body>
   <!-- NAV -->
   <div class="nav">
-    <div class="container">
-      <div class="nav-inner">
-        <div class="brand">
-          <div class="mark">MR</div>
-          <div>
-            <b>Mr Landscaping</b>
-            <small>Premium Outdoor Care • Georgia</small>
-          </div>
+    <div class="container nav-inner">
+      <a class="brand" href="#top">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>VIP Mobile Car Wash</h1>
+          <small>کارواش سیار • دیتیلینگ • صفرشویی</small>
         </div>
+      </a>
 
-        <div class="tabs" id="tabs">
-          <button class="tab active" data-page="home" type="button">Home</button>
-          <button class="tab" data-page="services" type="button">Services</button>
-          <button class="tab" data-page="projects" type="button">Projects</button>
-          <button class="tab" data-page="contact" type="button">Contact</button>
-        </div>
+      <div class="nav-links">
+        <a href="#services">خدمات</a>
+        <a href="#pricing">قیمت‌ها</a>
+        <a href="#gallery">گالری</a>
+        <a href="#reviews">نظرات</a>
+        <a href="#faq">سوالات</a>
+        <a href="#contact">رزرو</a>
+      </div>
 
-        <div class="nav-cta">
-          <a class="btn" href="tel:+10000000000">📞 Call</a>
-          <a class="btn btn-primary" href="#contactJump" onclick="go('contact')">Get Quote</a>
-        </div>
+      <div class="nav-cta">
+        <a class="btn" href="tel:+1XXXXXXXXXX" title="تماس">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.07 21 3 13.93 3 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.59a1 1 0 01-.25 1.01l-2.2 2.19z"/></svg>
+          تماس
+        </a>
+        <a class="btn primary" href="#contact">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 11H7a1 1 0 010-2h5V7a1 1 0 012 0v5a1 1 0 01-1 1z"/></svg>
+          رزرو سریع
+        </a>
       </div>
     </div>
   </div>
 
-  <!-- HOME PAGE -->
-  <main class="page active" id="home">
-    <header class="hero">
-      <div class="container">
-        <div class="hero-grid">
-          <div class="glass hero-left">
-            <span class="chip"><span class="dot"></span> Fast quotes • Luxury finish • Clean edges</span>
-            <h1>Premium landscaping that makes your home look expensive.</h1>
-            <p class="sub">
-              Mr Landscaping provides clean, professional lawn care, mulch, trimming, seasonal cleanup, and pressure washing.
-              We focus on details, communication, and a premium finish every time.
-            </p>
-            <div class="hero-actions">
-              <button class="btn btn-primary" type="button" onclick="go('contact')">Get a Free Quote</button>
-              <a class="btn btn-dark" href="tel:+10000000000">Call Now</a>
-              <button class="btn" type="button" onclick="document.getElementById('why').scrollIntoView({behavior:'smooth'})">Why Us</button>
-            </div>
+  <!-- HERO -->
+  <header id="top" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-left reveal">
+        <div class="hero-content">
+          <div class="badge"><span class="dot"></span> ۲۴/۷ رزرو آنلاین • سرویس در محل شما</div>
 
-            <div class="stats">
-              <div class="stat">
-                <div class="n">Same-Day</div>
-                <div class="t">availability (when open)</div>
-              </div>
-              <div class="stat">
-                <div class="n">5-Star</div>
-                <div class="t">service mindset</div>
-              </div>
-              <div class="stat">
-                <div class="n">Clean</div>
-                <div class="t">edges & finishing</div>
-              </div>
-            </div>
+          <h2>
+            کارواش سیار <span>VIP</span><br/>
+            شستشوی لاکچری دربِ خانه
+          </h2>
+
+          <p>
+            شستشوی بیرونی و داخلی، دیتیلینگ کامل، واکس و پولیش، صفرشویی و بوگیری —
+            همه‌اش با تجهیزات حرفه‌ای و نتیجه‌ای که موتر/ماشینت مثل روز اول می‌درخشد.
+          </p>
+
+          <div class="hero-actions">
+            <button class="btn primary" onclick="scrollToId('pricing')">
+              دیدن قیمت‌ها
+              <svg class="icon" viewBox="0 0 24 24"><path d="M12 16l-6-6h12z"/></svg>
+            </button>
+            <button class="btn" onclick="scrollToId('contact')">
+              رزرو همین حالا
+              <svg class="icon" viewBox="0 0 24 24"><path d="M21 7l-9 6L3 7V5l9 6 9-6z"/></svg>
+            </button>
           </div>
 
-          <div class="glass hero-right">
-            <div class="video">
-              <div class="hero-card">
-                <div>
-                  <b>Weekly Lawn Care</b>
-                  <small>Stripe mowing • edging • cleanup</small>
+          <div class="stats">
+            <div class="stat">
+              <b>⚡ 60–120 دقیقه</b>
+              <small>زمان متوسط سرویس</small>
+            </div>
+            <div class="stat">
+              <b>🧼 مواد Premium</b>
+              <small>بدون آسیب به رنگ</small>
+            </div>
+            <div class="stat">
+              <b>✨ نتیجه Showroom</b>
+              <small>درخشندگی واقعی</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="card reveal">
+          <div class="card-top">
+            <h3>پکیج ویژه امروز</h3>
+            <span class="pill">⭐ محبوب مشتری‌ها</span>
+          </div>
+          <div class="card-body">
+            <div class="quick">
+              <div class="row">
+                <div class="mini-ico" aria-hidden="true">
+                  <svg class="icon" viewBox="0 0 24 24"><path d="M7 14l-2 2v3h3l2-2-3-3zm10.7-9.3a1 1 0 00-1.4 0L9 12l3 3 7.3-7.3a1 1 0 000-1.4l-1.6-1.6z"/></svg>
                 </div>
-                <div class="callpill">Text: (000) 000-0000</div>
+                <div>
+                  <b>Exterior + Interior Quick Detail</b>
+                  <small>شستشوی بیرونی + جارو + داشبورد + شیشه‌ها</small>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="mini-ico" aria-hidden="true">
+                  <svg class="icon" viewBox="0 0 24 24"><path d="M12 2l2.2 6.8H21l-5.5 4 2.1 6.7L12 15.8 6.4 19.5 8.5 12.8 3 8.8h6.8z"/></svg>
+                </div>
+                <div>
+                  <b>Wax Shine Finish</b>
+                  <small>واکس سبک برای درخشندگی و محافظت</small>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="mini-ico" aria-hidden="true">
+                  <svg class="icon" viewBox="0 0 24 24"><path d="M12 3c4.4 0 8 3.6 8 8 0 6-8 10-8 10S4 17 4 11c0-4.4 3.6-8 8-8zm0 11a3 3 0 100-6 3 3 0 000 6z"/></svg>
+                </div>
+                <div>
+                  <b>Service Area</b>
+                  <small>سرویس در محدوده شهر شما (قابل تنظیم)</small>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </header>
 
-    <section id="why">
-      <div class="container">
-        <div class="title-row">
-          <div>
-            <h2>Why Mr Landscaping</h2>
-            <p>People don’t just buy mowing — they buy reliability, communication, and premium finish.</p>
+        <div class="card reveal">
+          <div class="card-top">
+            <h3>رزرو فوری با واتساپ</h3>
+            <span class="pill">⏱️ سریع</span>
           </div>
-          <button class="btn" type="button" onclick="go('projects')">View Projects</button>
-        </div>
-
-        <div class="grid3">
-          <div class="card">
-            <div class="icon">🛡️</div>
-            <h3>Reliable</h3>
-            <p>On-time arrival with clear communication. No surprises.</p>
-          </div>
-          <div class="card">
-            <div class="icon">✨</div>
-            <h3>Luxury Detail</h3>
-            <p>Clean edges, straight lines, tidy beds. We finish like pros.</p>
-          </div>
-          <div class="card">
-            <div class="icon">💬</div>
-            <h3>Fast Quotes</h3>
-            <p>Text or call and get a quick quote — we reply fast.</p>
-          </div>
-        </div>
-
-        <div style="margin-top:14px" class="grid2">
-          <div class="card">
-            <div class="icon">🧰</div>
-            <h3>Professional equipment</h3>
-            <p>Better tools = cleaner cut and better results.</p>
-          </div>
-          <div class="card">
-            <div class="icon">🏡</div>
-            <h3>Residential & commercial</h3>
-            <p>Homes, rentals, small businesses — we do it all.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="title-row">
-          <div>
-            <h2>Popular packages</h2>
-            <p>Simple pricing examples (change numbers for your real market).</p>
-          </div>
-          <button class="btn" type="button" onclick="go('contact')">Request exact price</button>
-        </div>
-
-        <div class="grid3">
-          <div class="price">
-            <h3>Basic</h3>
-            <div class="muted">Simple clean cut</div>
-            <div class="money">$45 <span class="muted">/ visit</span></div>
-            <ul class="clean">
-              <li><span class="check">✓</span> Mowing</li>
-              <li><span class="check">✓</span> Light edging</li>
-              <li><span class="check">✓</span> Blow cleanup</li>
-            </ul>
-            <div style="margin-top:12px">
-              <button class="btn btn-dark" type="button" onclick="go('contact')">Choose Basic</button>
-            </div>
-          </div>
-
-          <div class="price featured">
-            <div class="tag">Most Popular</div>
-            <h3>Premium</h3>
-            <div class="muted">Luxury finish & detail</div>
-            <div class="money">$75 <span class="muted">/ visit</span></div>
-            <ul class="clean">
-              <li><span class="check">✓</span> Stripe mowing</li>
-              <li><span class="check">✓</span> Full edging</li>
-              <li><span class="check">✓</span> Trim up to 2 bushes</li>
-            </ul>
-            <div style="margin-top:12px">
-              <button class="btn btn-primary" type="button" onclick="go('contact')">Choose Premium</button>
-            </div>
-          </div>
-
-          <div class="price">
-            <h3>Luxury</h3>
-            <div class="muted">Full makeover visit</div>
-            <div class="money">$140 <span class="muted">/ visit</span></div>
-            <ul class="clean">
-              <li><span class="check">✓</span> Premium + haul away</li>
-              <li><span class="check">✓</span> Mulch refresh (small beds)</li>
-              <li><span class="check">✓</span> Pressure wash add-on</li>
-            </ul>
-            <div style="margin-top:12px">
-              <button class="btn btn-dark" type="button" onclick="go('contact')">Choose Luxury</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- SERVICES PAGE -->
-  <main class="page" id="services">
-    <section>
-      <div class="container">
-        <div class="title-row">
-          <div>
-            <h2>Services</h2>
-            <p>Everything you need for curb appeal, maintenance, and premium outdoor finish.</p>
-          </div>
-          <button class="btn btn-primary" type="button" onclick="go('contact')">Get Quote</button>
-        </div>
-
-        <div class="grid3">
-          <div class="card"><div class="icon">⛳</div><h3>Lawn care</h3><p>Mowing, edging, trimming, cleanup — clean lines every visit.</p></div>
-          <div class="card"><div class="icon">🪵</div><h3>Mulch & pine straw</h3><p>Fresh mulch/pine straw, bed shaping, weed control plan.</p></div>
-          <div class="card"><div class="icon">🌲</div><h3>Trimming & pruning</h3><p>Bushes, hedges, small trees — neat and professional.</p></div>
-          <div class="card"><div class="icon">🍂</div><h3>Seasonal cleanup</h3><p>Leaf removal, storm debris, haul away, deep cleanup.</p></div>
-          <div class="card"><div class="icon">💦</div><h3>Pressure washing</h3><p>Driveways, patios, walkways — instant curb appeal.</p></div>
-          <div class="card"><div class="icon">🧱</div><h3>Bed borders</h3><p>Clean borders, stone/edge lines, refresh designs.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="title-row">
-          <div>
-            <h2>How it works</h2>
-            <p>Fast, simple, and professional — customers love this process.</p>
-          </div>
-        </div>
-
-        <div class="grid3">
-          <div class="card"><div class="icon">1</div><h3>Request</h3><p>Call, text, or send the form with your address and needs.</p></div>
-          <div class="card"><div class="icon">2</div><h3>Quote</h3><p>We send a fair quote fast. Clear pricing, no surprise.</p></div>
-          <div class="card"><div class="icon">3</div><h3>Deliver</h3><p>We show up and deliver premium finish. Photos after.</p></div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- PROJECTS PAGE -->
-  <main class="page" id="projects">
-    <section>
-      <div class="container">
-        <div class="title-row">
-          <div>
-            <h2>Projects</h2>
-            <p>Click any photo to open full screen. Replace these with your own photos later.</p>
-          </div>
-          <button class="btn btn-primary" type="button" onclick="go('contact')">Book now</button>
-        </div>
-
-        <div class="projects" id="projectsGrid">
-          <div class="proj big" data-label="Luxury backyard upgrade">
-            <img alt="Project 1" src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=1800&q=75"/>
-            <div class="label"><span class="dot"></span> Luxury backyard upgrade</div>
-          </div>
-          <div class="proj" data-label="Mulch refresh & bed cleanup">
-            <img alt="Project 2" src="https://images.unsplash.com/photo-1557429287-b2e26467fc2b?auto=format&fit=crop&w=1800&q=75"/>
-            <div class="label"><span class="dot"></span> Mulch refresh</div>
-          </div>
-          <div class="proj" data-label="Perfect lines & edging">
-            <img alt="Project 3" src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1800&q=75"/>
-            <div class="label"><span class="dot"></span> Perfect lines</div>
-          </div>
-          <div class="proj" data-label="Walkway pressure wash">
-            <img alt="Project 4" src="https://images.unsplash.com/photo-1605540436563-5bca919ae766?auto=format&fit=crop&w=1800&q=75"/>
-            <div class="label"><span class="dot"></span> Pressure wash</div>
-          </div>
-          <div class="proj" data-label="Trimming & shaping">
-            <img alt="Project 5" src="https://images.unsplash.com/photo-1597262975002-c5c3b14bbd62?auto=format&fit=crop&w=1800&q=75"/>
-            <div class="label"><span class="dot"></span> Trimming</div>
-          </div>
-          <div class="proj big" data-label="Curb appeal upgrade">
-            <img alt="Project 6" src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1800&q=75"/>
-            <div class="label"><span class="dot"></span> Curb appeal</div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- CONTACT PAGE -->
-  <main class="page" id="contact">
-    <section>
-      <div class="container">
-        <div class="title-row" id="contactJump">
-          <div>
-            <h2>Get a free quote</h2>
-            <p>Fill the form. For now it shows an alert (later we connect to email/WhatsApp).</p>
-          </div>
-          <span class="chip"><span class="dot"></span> Reply fast • Clear pricing</span>
-        </div>
-
-        <div class="grid2">
-          <div class="card">
-            <h3 style="margin:0 0 6px;">Request service</h3>
-            <p style="margin:0; color:var(--muted); font-size:14px;">Add your address and what you need.</p>
-
-            <form class="form" id="quoteForm">
-              <div class="two">
-                <input required name="name" placeholder="Full Name" />
-                <input required name="phone" placeholder="Phone Number" />
-              </div>
-              <div class="two">
-                <input name="email" placeholder="Email (optional)" />
-                <input name="city" placeholder="City / Zip" />
-              </div>
-
-              <div class="two">
-                <select name="service">
-                  <option>Lawn Care</option>
-                  <option>Mulch / Pine Straw</option>
-                  <option>Trimming</option>
-                  <option>Seasonal Cleanup</option>
-                  <option>Pressure Washing</option>
-                  <option>Full Makeover</option>
-                </select>
-                <select name="frequency">
-                  <option>One-time</option>
-                  <option>Weekly</option>
-                  <option>Bi-weekly</option>
-                  <option>Monthly</option>
-                </select>
-              </div>
-
-              <textarea name="details" placeholder="Describe what you need (mowing, mulch color, trimming, cleanup...)."></textarea>
-
-              <button class="btn btn-primary" type="submit">Send request</button>
-              <div class="muted">Or call/text: <b>+1 (000) 000-0000</b> • Email: <b>mrlandscaping@email.com</b></div>
-            </form>
-          </div>
-
-          <div class="card">
-            <h3 style="margin:0 0 6px;">Direct contact</h3>
-            <p style="margin:0; color:var(--muted); font-size:14px;">
-              Fastest way: text your zip code + service needed.
+          <div class="card-body">
+            <p style="margin:0; color:var(--muted); line-height:1.85; font-weight:650">
+              فقط دکمه واتساپ را بزن. پیام آماده می‌شود، تو فقط وقت و آدرس را می‌فرستی.
             </p>
-
-            <ul class="clean">
-              <li><span class="check">✓</span> Phone: +1 (000) 000-0000</li>
-              <li><span class="check">✓</span> Email: mrlandscaping@email.com</li>
-              <li><span class="check">✓</span> Hours: Mon–Sat • 8AM–6PM</li>
-              <li><span class="check">✓</span> Service: Residential & Commercial</li>
-            </ul>
-
-            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-              <a class="btn btn-dark" href="tel:+10000000000">Call</a>
-              <a class="btn" href="sms:+10000000000">Text</a>
-              <button class="btn" type="button" onclick="go('services')">See services</button>
+            <div style="margin-top:12px">
+              <a class="btn primary" id="waTop" href="#" target="_blank" rel="noopener">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M20.5 3.5A11.8 11.8 0 003.6 20.3L2 22l1.8-.5A11.8 11.8 0 0020.5 3.5zM12 20a9.7 9.7 0 01-4.9-1.3l-.3-.2-2.9.8.8-2.8-.2-.3A9.7 9.7 0 1112 20zm5.6-7.2c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.8.9-1 .9-.2.1-.4.1-.7-.1-.3-.2-1.2-.4-2.3-1.4-.8-.7-1.4-1.6-1.6-1.9-.2-.3 0-.5.2-.7.2-.2.3-.4.4-.5.1-.2.1-.3.2-.5.1-.2 0-.4 0-.5 0-.1-.7-1.8-1-2.5-.3-.7-.6-.6-.7-.6h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.7 1.2 2.9.2.2 2 3 4.9 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4 0-.1-.3-.2-.6-.4z"/></svg>
+                واتساپ — پیام آماده
+              </a>
             </div>
-
-            <div style="margin-top:14px" class="chip"><span class="dot"></span> Tip: Add 6 real before/after photos</div>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- MODAL -->
-  <div class="modal" id="modal" aria-hidden="true">
-    <div class="modal-card" role="dialog" aria-modal="true" aria-label="Project preview">
-      <div class="x" id="x">✕</div>
-      <img id="modalImg" alt="Preview" src=""/>
-      <div class="modal-foot">
-        <span id="modalLabel">Preview</span>
-        <span>© <span id="year"></span> Mr Landscaping</span>
       </div>
     </div>
-  </div>
+  </header>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h3>خدمات ما</h3>
+          <p>هر چیزی که برای تمیزی واقعی و حرفه‌ای لازم است — از شستشوی سریع تا دیتیلینگ کامل.</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="tile reveal">
+          <div class="top">
+            <h4>🧽 شستشوی بیرونی Premium</h4>
+            <span class="pill">بدون خط و خش</span>
+          </div>
+          <p>فوم، شستشوی دقیق، رینگ و تایر، خشک‌کردن میکروفایبر و براق‌کننده تایر.</p>
+        </div>
+
+        <div class="tile reveal">
+          <div class="top">
+            <h4>🧼 دیتیلینگ داخلی</h4>
+            <span class="pill">بوی تازه</span>
+          </div>
+          <p>جارو کامل، داشبورد و کنسول، شیشه‌ها، لکه‌گیری صندلی‌ها و کف‌پوش‌ها.</p>
+        </div>
+
+        <div class="tile reveal">
+          <div class="top">
+            <h4>✨ واکس / پولیش</h4>
+            <span class="pill">درخشش VIP</span>
+          </div>
+          <p>واکس محافظتی و پولیش سبک برای جلوه شو‌روم و محافظت از رنگ بدنه.</p>
+        </div>
+
+        <div class="tile reveal">
+          <div class="top">
+            <h4>🧊 صفرشویی & Steam</h4>
+            <span class="pill">Deep Clean</span>
+          </div>
+          <p>تمیزی عمیق قسمت‌های سخت، گوشه‌ها، دریچه‌ها و لکه‌های سرسخت.</p>
+        </div>
+
+        <div class="tile reveal">
+          <div class="top">
+            <h4>🛡️ پوشش محافظ</h4>
+            <span class="pill">Protection</span>
+          </div>
+          <p>محافظ داشبورد/چرم، آب‌گریز شیشه، و محافظت در برابر گرد و خاک.</p>
+        </div>
+
+        <div class="tile reveal">
+          <div class="top">
+            <h4>🚙 ناوگان و شرکت‌ها</h4>
+            <span class="pill">Fleet</span>
+          </div>
+          <p>قرارداد ماهانه/هفتگی برای شرکت‌ها، دلیوری، تاکسی و ناوگان.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h3>قیمت‌ها (قابل تنظیم)</h3>
+          <p>این قیمت‌ها نمونه است. من می‌تونم دقیقاً مطابق شهر/رقیب‌های اطرافت تنظیمش کنم.</p>
+        </div>
+      </div>
+
+      <div class="pricing">
+        <div class="plan reveal">
+          <h4>Basic Wash</h4>
+          <div class="price">$35 <span>/ سدان</span></div>
+          <div class="badge" style="margin-top:6px"><span class="dot" style="background:var(--warn)"></span> سریع و اقتصادی</div>
+          <ul class="features">
+            <li>شستشوی بیرونی + خشک‌کردن</li>
+            <li>رینگ و تایر</li>
+            <li>شیشه‌ها (بیرون)</li>
+            <li>۱۵–۳۰ دقیقه</li>
+          </ul>
+          <button class="btn" onclick="pickPlan('Basic Wash')">انتخاب این پکیج</button>
+        </div>
+
+        <div class="plan featured reveal">
+          <h4>VIP Detail</h4>
+          <div class="price">$79 <span>/ محبوب</span></div>
+          <div class="badge" style="margin-top:6px"><span class="dot"></span> بهترین ارزش</div>
+          <ul class="features">
+            <li>بیرون + داخل کامل</li>
+            <li>جارو + داشبورد + شیشه‌ها</li>
+            <li>براق‌کننده تایر</li>
+            <li>۶۰–۹۰ دقیقه</li>
+          </ul>
+          <button class="btn primary" onclick="pickPlan('VIP Detail')">رزرو VIP</button>
+        </div>
+
+        <div class="plan reveal">
+          <h4>Ultimate Showroom</h4>
+          <div class="price">$129 <span>/ دیتیلینگ عمیق</span></div>
+          <div class="badge" style="margin-top:6px"><span class="dot" style="background:var(--accent2)"></span> نتیجه شو‌روم</div>
+          <ul class="features">
+            <li>دیتیلینگ عمیق + لکه‌گیری</li>
+            <li>واکس/پولیش سبک</li>
+            <li>بوگیری و تمیزکاری جزئیات</li>
+            <li>۹۰–۱۲۰ دقیقه</li>
+          </ul>
+          <button class="btn" onclick="pickPlan('Ultimate Showroom')">انتخاب این پکیج</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h3>گالری (نمونه)</h3>
+          <p>اینجا را بعداً با عکس‌های واقعی کارت پر می‌کنیم تا اعتماد مشتری‌ها چند برابر شود.</p>
+        </div>
+      </div>
+
+      <div class="gallery">
+        <div class="shot wide reveal"><span class="tag">Before → After</span></div>
+        <div class="shot reveal"><span class="tag">Wheel</span></div>
+        <div class="shot reveal"><span class="tag">Foam</span></div>
+        <div class="shot tall reveal"><span class="tag">Interior</span></div>
+        <div class="shot reveal"><span class="tag">Wax</span></div>
+        <div class="shot wide reveal"><span class="tag">Shine</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h3>نظرات مشتری‌ها</h3>
+          <p>چند نمونه متن آماده — وقتی مشتری واقعی داشتی، همینجا اسم و نظرشان را می‌گذاریم.</p>
+        </div>
+      </div>
+
+      <div class="testimonials">
+        <div class="quote reveal">
+          <p>ماشینم واقعاً مثل روز اول شد. داخلش را خیلی تمیز کرد و بوی خوب هم داد. حتماً دوباره رزرو می‌کنم.</p>
+          <div class="who"><span>— Sarah M.</span><span class="stars">★★★★★</span></div>
+        </div>
+        <div class="quote reveal">
+          <p>وقت‌دار و دقیق. رینگ‌ها را عالی پاک کرد. قیمتش نسبت به کیفیتش واقعاً می‌ارزد.</p>
+          <div class="who"><span>— Daniel K.</span><span class="stars">★★★★★</span></div>
+        </div>
+        <div class="quote reveal">
+          <p>خیلی راحت بود که در محل آمد. من سرکار بودم و وقتی برگشتم ماشین برق می‌زد.</p>
+          <div class="who"><span>— Mary J.</span><span class="stars">★★★★★</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h3>سوالات زیاد تکرار شده</h3>
+          <p>این بخش باعث می‌شود مشتری سریع تصمیم بگیرد و کمتر سوال تکراری بپرسد.</p>
+        </div>
+      </div>
+
+      <div class="faq">
+        <div class="reveal">
+          <details open>
+            <summary>آیا آب و برق از مشتری می‌گیرید؟ <span class="chev">⌄</span></summary>
+            <p>می‌تونی دو حالت بسازی: (۱) با آب و برق مشتری (ارزان‌تر) یا (۲) با تجهیزات خودت (پرمیوم‌تر).</p>
+          </details>
+          <details>
+            <summary>چقدر وقت می‌گیرد؟ <span class="chev">⌄</span></summary>
+            <p>بسته به پکیج: Basic حدود ۱۵–۳۰ دقیقه، VIP حدود ۶۰–۹۰ دقیقه، Ultimate حدود ۹۰–۱۲۰ دقیقه.</p>
+          </details>
+          <details>
+            <summary>برای رزرو چی لازم است؟ <span class="chev">⌄</span></summary>
+            <p>فقط نوع موتر، آدرس، وقت دلخواه و این‌که داخل هم می‌خواهی یا نه.</p>
+          </details>
+          <details>
+            <summary>برای ناوگان و شرکت‌ها تخفیف دارید؟ <span class="chev">⌄</span></summary>
+            <p>بله، قرارداد ماهانه/هفتگی با قیمت بهتر. (همینجا می‌تونی جدول مخصوص شرکت‌ها اضافه کنی.)</p>
+          </details>
+        </div>
+
+        <div class="info reveal">
+          <h4>چرا VIP Mobile Car Wash؟</h4>
+          <p>
+            ما به جز “شستن”، روی “نتیجه” کار می‌کنیم: تمیزی دقیق، مواد درست، احترام به وقت مشتری،
+            و کیفیتی که وقتی ماشین را ببینی بگویی: «همین بود!»
+          </p>
+
+          <div class="kpis">
+            <div class="kpi">
+              <b>✅ ضمانت رضایت</b>
+              <small>اگر راضی نبودی اصلاح می‌کنیم</small>
+            </div>
+            <div class="kpi">
+              <b>📍 سرویس در محل</b>
+              <small>خانه، پارکینگ، دفتر</small>
+            </div>
+            <div class="kpi">
+              <b>🧴 مواد باکیفیت</b>
+              <small>دوست‌دار رنگ و چرم</small>
+            </div>
+            <div class="kpi">
+              <b>🕒 وقت دقیق</b>
+              <small>رزرو سریع و منظم</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / BOOKING -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h3>رزرو آنلاین</h3>
+          <p>فرم را پر کن — با یک کلیک پیام آماده به واتساپ می‌رود.</p>
+        </div>
+      </div>
+
+      <div class="contact">
+        <div class="form reveal">
+          <form id="bookingForm">
+            <label>نام</label>
+            <input id="name" placeholder="مثلاً Ahmad" required />
+
+            <div class="grid-2">
+              <div>
+                <label>شماره تماس</label>
+                <input id="phone" placeholder="+1 ..." />
+              </div>
+              <div>
+                <label>نوع موتر</label>
+                <select id="carType">
+                  <option>سدان (Sedan)</option>
+                  <option>SUV</option>
+                  <option>Truck</option>
+                  <option>Van</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid-2">
+              <div>
+                <label>پکیج</label>
+                <select id="package">
+                  <option>Basic Wash</option>
+                  <option selected>VIP Detail</option>
+                  <option>Ultimate Showroom</option>
+                </select>
+              </div>
+              <div>
+                <label>زمان دلخواه</label>
+                <input id="time" placeholder="مثلاً امروز 5 عصر / فردا صبح" />
+              </div>
+            </div>
+
+            <label>آدرس</label>
+            <input id="address" placeholder="Street, City" required />
+
+            <label>یادداشت (اختیاری)</label>
+            <textarea id="notes" placeholder="مثلاً داخل هم خیلی خاک است، یا صندلی لکه دارد..."></textarea>
+
+            <div class="actions">
+              <button type="submit" class="btn primary">ارسال به واتساپ</button>
+              <button type="button" class="btn" onclick="copySummary()">کاپی کردن خلاصه</button>
+            </div>
+
+            <p id="copied" style="display:none; margin:12px 0 0; color:rgba(234,240,255,.9); font-weight:850">
+              ✅ خلاصه کاپی شد!
+            </p>
+          </form>
+        </div>
+
+        <div class="info reveal">
+          <h4>تماس و شبکه‌ها</h4>
+          <p>
+            شماره و لینک‌ها را همینجا عوض کن. اگر خواستی Google Map هم اضافه می‌کنم.
+          </p>
+          <div class="kpis">
+            <div class="kpi">
+              <b>📞 تلفن</b>
+              <small>+1 (XXX) XXX-XXXX</small>
+            </div>
+            <div class="kpi">
+              <b>💬 واتساپ</b>
+              <small>پیام آماده + رزرو سریع</small>
+            </div>
+            <div class="kpi">
+              <b>📷 Instagram</b>
+              <small>@yourpage</small>
+            </div>
+            <div class="kpi">
+              <b>📍 محدوده سرویس</b>
+              <small>Atlanta / (یا شهر شما)</small>
+            </div>
+          </div>
+
+          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap">
+            <a class="btn" href="#pricing">قیمت‌ها</a>
+            <a class="btn primary" href="#" id="waBottom" target="_blank" rel="noopener">واتساپ</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <footer>
-    <div class="container">
-      © <span id="year2"></span> <b>Mr Landscaping</b> — Premium Outdoor Care • Georgia
-      <span style="float:right;">Built for bookings 🌿</span>
-    </div>
+    © <span id="year"></span> VIP Mobile Car Wash — ساخته شده برای برنده شدن در بازار 😄
   </footer>
 
+  <!-- Floating WhatsApp + Top -->
+  <div class="wa-float">
+    <a class="wa" id="waFloat" href="#" target="_blank" rel="noopener">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M20.5 3.5A11.8 11.8 0 003.6 20.3L2 22l1.8-.5A11.8 11.8 0 0020.5 3.5zM12 20a9.7 9.7 0 01-4.9-1.3l-.3-.2-2.9.8.8-2.8-.2-.3A9.7 9.7 0 1112 20zm5.6-7.2c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.8.9-1 .9-.2.1-.4.1-.7-.1-.3-.2-1.2-.4-2.3-1.4-.8-.7-1.4-1.6-1.6-1.9-.2-.3 0-.5.2-.7.2-.2.3-.4.4-.5.1-.2.1-.3.2-.5.1-.2 0-.4 0-.5 0-.1-.7-1.8-1-2.5-.3-.7-.6-.6-.7-.6h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.7 1.2 2.9.2.2 2 3 4.9 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4 0-.1-.3-.2-.6-.4z"/></svg>
+      <div>
+        واتساپ
+        <small>رزرو فوری</small>
+      </div>
+    </a>
+    <button class="toTop" id="toTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑ بالا</button>
+  </div>
+
   <script>
-    // Year
-    const y = new Date().getFullYear();
-    document.getElementById("year").textContent = y;
-    document.getElementById("year2").textContent = y;
+    // ====== SETTINGS (فقط این‌ها را عوض کن) ======
+    const WHATSAPP_NUMBER = "1XXXXXXXXXX"; // بدون + و بدون فاصله. مثال: 14045551234
+    const BUSINESS_NAME = "VIP Mobile Car Wash";
 
-    // Pages / tabs
-    const pages = ["home","services","projects","contact"];
-    const tabEls = document.querySelectorAll(".tab");
-    function go(id){
-      pages.forEach(p=>{
-        document.getElementById(p).classList.remove("active");
-      });
-      document.getElementById(id).classList.add("active");
-      tabEls.forEach(t=> t.classList.toggle("active", t.dataset.page === id));
-      window.scrollTo({top:0, behavior:"smooth"});
+    // ====== HELPERS ======
+    const $ = (id) => document.getElementById(id);
+    const enc = encodeURIComponent;
+
+    function scrollToId(id){
+      document.querySelector("#"+id).scrollIntoView({behavior:"smooth", block:"start"});
     }
-    tabEls.forEach(t=>{
-      t.addEventListener("click", ()=> go(t.dataset.page));
-    });
 
-    // Quote form demo
-    document.getElementById("quoteForm").addEventListener("submit", (e)=>{
+    function buildMessage(data){
+      return `سلام! من می‌خواهم رزرو کنم ✅
+بیزنس: ${BUSINESS_NAME}
+نام: ${data.name}
+شماره: ${data.phone || "-"}
+نوع موتر: ${data.carType}
+پکیج: ${data.package}
+وقت دلخواه: ${data.time || "-"}
+آدرس: ${data.address}
+یادداشت: ${data.notes || "-"}`
+    }
+
+    function waLink(message){
+      return `https://wa.me/${WHATSAPP_NUMBER}?text=${enc(message)}`;
+    }
+
+    function setAllWaLinks(){
+      const base = buildMessage({
+        name: "—",
+        phone: "—",
+        carType: "Sedan",
+        package: "VIP Detail",
+        time: "—",
+        address: "—",
+        notes: "—"
+      });
+      const link = waLink(base);
+      ["waFloat","waTop","waBottom"].forEach(id => {
+        const el = $(id);
+        if(el) el.href = link;
+      });
+    }
+
+    function pickPlan(plan){
+      $("package").value = plan;
+      scrollToId("contact");
+    }
+
+    async function copySummary(){
+      const data = {
+        name: $("name").value || "—",
+        phone: $("phone").value || "—",
+        carType: $("carType").value,
+        package: $("package").value,
+        time: $("time").value || "—",
+        address: $("address").value || "—",
+        notes: $("notes").value || "—"
+      };
+      const msg = buildMessage(data);
+      try{
+        await navigator.clipboard.writeText(msg);
+        $("copied").style.display = "block";
+        setTimeout(()=> $("copied").style.display="none", 1700);
+      }catch(e){
+        alert("کاپی نشد. لطفاً دستی انتخاب و کاپی کن.");
+      }
+    }
+
+    // ====== FORM SUBMIT => WhatsApp ======
+    $("bookingForm").addEventListener("submit", (e)=>{
       e.preventDefault();
-      const data = new FormData(e.target);
-      alert(`Thanks, ${data.get("name") || "Customer"}! ✅\nRequest received for: ${data.get("service")}\nWe will reply fast.\n\n(Next step: connect this form to email/WhatsApp.)`);
-      e.target.reset();
+      const data = {
+        name: $("name").value.trim(),
+        phone: $("phone").value.trim(),
+        carType: $("carType").value,
+        package: $("package").value,
+        time: $("time").value.trim(),
+        address: $("address").value.trim(),
+        notes: $("notes").value.trim(),
+      };
+      const msg = buildMessage(data);
+      window.open(waLink(msg), "_blank");
     });
 
-    // Modal for projects
-    const modal = document.getElementById("modal");
-    const modalImg = document.getElementById("modalImg");
-    const modalLabel = document.getElementById("modalLabel");
-    const x = document.getElementById("x");
-
-    function openModal(src, label){
-      modalImg.src = src;
-      modalLabel.textContent = label || "Preview";
-      modal.classList.add("open");
-      modal.setAttribute("aria-hidden","false");
-    }
-    function closeModal(){
-      modal.classList.remove("open");
-      modal.setAttribute("aria-hidden","true");
-      modalImg.src = "";
-    }
-    x.addEventListener("click", closeModal);
-    modal.addEventListener("click", (e)=>{ if(e.target === modal) closeModal(); });
-    document.addEventListener("keydown",(e)=>{ if(e.key==="Escape") closeModal(); });
-
-    document.querySelectorAll(".proj").forEach(p=>{
-      p.addEventListener("click", ()=>{
-        const img = p.querySelector("img");
-        openModal(img.src, p.dataset.label);
+    // ====== Reveal on scroll ======
+    const revealEls = document.querySelectorAll(".reveal");
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{
+        if(en.isIntersecting) en.target.classList.add("show");
       });
+    }, {threshold:.12});
+    revealEls.forEach(el=>io.observe(el));
+
+    // ====== toTop button ======
+    const toTop = $("toTop");
+    window.addEventListener("scroll", ()=>{
+      if(window.scrollY > 600){
+        toTop.style.display = "inline-flex";
+      } else {
+        toTop.style.display = "none";
+      }
     });
+
+    // footer year
+    $("year").textContent = new Date().getFullYear();
+
+    // init
+    setAllWaLinks();
   </script>
 </body>
 </html>
