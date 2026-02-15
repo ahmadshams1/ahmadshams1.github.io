@@ -4,7 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mr Landscaping | Luxury Outdoor Services</title>
-  <meta name="description" content="Mr Landscaping — Luxury outdoor design, lawn care, mulch, trimming, cleanups, and more. Free quote available." />
+  <meta name="description" content="Mr Landscaping — Luxury lawn care, mulch, trimming, cleanups, pressure washing. Fast quotes. Premium finish." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Mr Landscaping | Luxury Outdoor Services" />
+  <meta property="og:description" content="Premium lawn care & outdoor services. Free quote. Fast response." />
+  <meta property="og:type" content="website" />
 
   <style>
     :root{
@@ -15,58 +20,94 @@
       --muted:#b7c9be;
       --accent:#4ade80;
       --accent2:#22c55e;
+      --gold:#d7ffb6;
       --line:rgba(255,255,255,0.08);
       --shadow: 0 18px 55px rgba(0,0,0,.55);
       --radius:18px;
+
+      --danger:#ff6b6b;
+      --warn:#ffd36b;
     }
+    [data-theme="light"]{
+      --bg:#f6fbf7;
+      --panel:#ffffff;
+      --panel2:#eff6f1;
+      --text:#0b1410;
+      --muted:#3e5a48;
+      --accent:#16a34a;
+      --accent2:#22c55e;
+      --gold:#0b1410;
+      --line:rgba(0,0,0,0.08);
+      --shadow: 0 18px 55px rgba(0,0,0,.10);
+    }
+
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: radial-gradient(900px 450px at 20% -10%, rgba(74,222,128,.22), transparent 60%),
-                  radial-gradient(700px 380px at 85% 10%, rgba(34,197,94,.14), transparent 55%),
-                  var(--bg);
+      background:
+        radial-gradient(900px 450px at 20% -10%, rgba(74,222,128,.22), transparent 60%),
+        radial-gradient(700px 380px at 85% 10%, rgba(34,197,94,.14), transparent 55%),
+        var(--bg);
       color:var(--text);
       line-height:1.55;
     }
     a{color:inherit; text-decoration:none}
-    .container{max-width:1120px; margin:0 auto; padding:0 20px}
+    .container{max-width:1180px; margin:0 auto; padding:0 20px}
+    .sr{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden}
 
     /* NAV */
     .nav{
-      position:sticky; top:0; z-index:50;
-      background: rgba(7,19,11,.68);
-      backdrop-filter: blur(10px);
+      position:sticky; top:0; z-index:100;
+      background: rgba(7,19,11,.66);
+      backdrop-filter: blur(12px);
       border-bottom:1px solid var(--line);
+    }
+    [data-theme="light"] .nav{
+      background: rgba(255,255,255,.75);
     }
     .nav-inner{
       display:flex; align-items:center; justify-content:space-between;
       padding:14px 0;
+      gap:12px;
     }
     .brand{
       display:flex; align-items:center; gap:10px;
       font-weight:800; letter-spacing:.3px;
+      min-width: 230px;
     }
     .logo{
-      width:38px; height:38px; border-radius:12px;
+      width:40px; height:40px; border-radius:14px;
       background: linear-gradient(135deg, rgba(74,222,128,1), rgba(34,197,94,1));
       display:grid; place-items:center;
       box-shadow: 0 12px 35px rgba(34,197,94,.25);
       color:#06210f;
       font-weight:900;
+      flex:0 0 auto;
+      user-select:none;
     }
-    .menu{display:flex; gap:18px; align-items:center}
-    .menu a{
+    .brand .title{font-size:15px}
+    .brand .tagline{font-size:12px; color:var(--muted); margin-top:-2px}
+
+    .menu{
+      display:flex; gap:10px; align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .menu a.link{
       color:var(--muted);
       padding:10px 12px;
       border-radius:12px;
       transition:.2s;
       border:1px solid transparent;
+      font-weight:650;
+      font-size:14px;
     }
-    .menu a:hover{
+    .menu a.link:hover{
       color:var(--text);
       border-color: var(--line);
-      background: rgba(255,255,255,.04);
+      background: rgba(255,255,255,.05);
     }
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
@@ -77,9 +118,12 @@
       color:var(--text);
       transition:.2s;
       gap:10px;
-      font-weight:650;
+      font-weight:750;
+      cursor:pointer;
+      user-select:none;
     }
     .btn:hover{transform: translateY(-1px); border-color: rgba(74,222,128,.35)}
+    .btn:active{transform: translateY(0px)}
     .btn-primary{
       background: linear-gradient(135deg, rgba(74,222,128,1), rgba(34,197,94,1));
       color:#06210f;
@@ -87,26 +131,67 @@
       box-shadow: 0 14px 40px rgba(34,197,94,.22);
     }
     .btn-primary:hover{filter:brightness(1.03)}
+    .btn-ghost{
+      background: transparent;
+    }
+
+    .nav-tools{display:flex; gap:10px; align-items:center}
+    .pill{
+      padding:10px 12px;
+      border-radius:14px;
+      background: rgba(74,222,128,.12);
+      border:1px solid rgba(74,222,128,.26);
+      font-weight:800;
+      color: var(--text);
+      white-space:nowrap;
+    }
     .hamburger{display:none}
 
+    /* MOBILE MENU */
+    .mobile-drawer{
+      display:none;
+      border-top:1px solid var(--line);
+      padding:10px 0 16px;
+    }
+    .mobile-drawer .row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+      margin-top:10px;
+    }
+    .mobile-drawer a.link{
+      display:flex; align-items:center; justify-content:center;
+      padding:12px; border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color:var(--muted);
+      font-weight:750;
+    }
+    .mobile-drawer a.link:hover{color:var(--text); border-color: rgba(74,222,128,.25)}
+    .mobile-drawer .row .btn{width:100%}
+
     /* HERO */
-    .hero{padding:64px 0 28px}
+    .hero{padding:60px 0 22px}
     .hero-grid{
       display:grid;
       grid-template-columns: 1.05fr .95fr;
-      gap:26px;
+      gap:22px;
       align-items:stretch;
     }
     .hero-card{
-      background: linear-gradient(180deg, rgba(15,31,20,.88), rgba(7,19,11,.88));
+      background: linear-gradient(180deg, rgba(15,31,20,.90), rgba(7,19,11,.88));
       border:1px solid var(--line);
       border-radius: var(--radius);
       padding:28px;
       box-shadow: var(--shadow);
       position:relative;
       overflow:hidden;
-      min-height: 380px;
+      min-height: 420px;
     }
+    [data-theme="light"] .hero-card{
+      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(239,246,241,.92));
+    }
+
     .badge{
       display:inline-flex;
       gap:10px;
@@ -116,7 +201,7 @@
       border:1px solid rgba(74,222,128,.22);
       background: rgba(74,222,128,.08);
       color: var(--text);
-      font-weight:650;
+      font-weight:750;
       font-size:13px;
     }
     .badge span{
@@ -126,17 +211,18 @@
     }
     h1{
       margin:14px 0 10px;
-      font-size:46px;
-      line-height:1.05;
-      letter-spacing:-.8px;
+      font-size:50px;
+      line-height:1.02;
+      letter-spacing:-1px;
     }
     .sub{
       color:var(--muted);
       font-size:16px;
-      max-width: 52ch;
+      max-width: 60ch;
       margin:0 0 18px;
     }
     .hero-actions{display:flex; gap:12px; flex-wrap:wrap}
+
     .trust{
       margin-top:18px;
       display:flex; gap:16px; flex-wrap:wrap;
@@ -156,13 +242,13 @@
       border-radius:16px;
       padding:14px;
     }
-    .stat .n{font-size:20px; font-weight:800; color:var(--accent)}
+    .stat .n{font-size:20px; font-weight:900; color:var(--accent)}
     .stat .t{font-size:12px; color:var(--muted)}
 
     .visual{
       background:
-        linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.55)),
-        url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1400&q=70');
+        linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.62)),
+        url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1600&q=75');
       background-size: cover;
       background-position:center;
       border:1px solid var(--line);
@@ -170,7 +256,7 @@
       overflow:hidden;
       box-shadow: var(--shadow);
       position:relative;
-      min-height: 380px;
+      min-height: 420px;
     }
     .visual::after{
       content:"";
@@ -184,39 +270,45 @@
       border-radius:18px;
       border:1px solid rgba(255,255,255,.14);
       background: rgba(7,19,11,.68);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
       padding:16px;
       display:flex; justify-content:space-between; gap:12px; align-items:center;
     }
-    .visual-card .k{font-weight:800}
-    .visual-card .m{color:var(--muted); font-size:13px}
-    .pill{
-      padding:10px 12px;
-      border-radius:14px;
-      background: rgba(74,222,128,.12);
-      border:1px solid rgba(74,222,128,.26);
-      font-weight:750;
-      color: var(--text);
-      white-space:nowrap;
+    [data-theme="light"] .visual-card{
+      background: rgba(255,255,255,.72);
+      border-color: rgba(0,0,0,.08);
     }
+    .visual-card .k{font-weight:900}
+    .visual-card .m{color:var(--muted); font-size:13px}
 
-    /* SECTIONS */
-    section{padding:38px 0}
+    /* SECTION */
+    section{padding:46px 0}
     .section-title{
       display:flex; justify-content:space-between; align-items:flex-end;
       gap:18px; margin-bottom:16px;
     }
     .section-title h2{
       margin:0;
-      font-size:26px;
-      letter-spacing:-.2px;
+      font-size:28px;
+      letter-spacing:-.3px;
     }
-    .section-title p{margin:0; color:var(--muted); max-width:60ch}
+    .section-title p{margin:0; color:var(--muted); max-width:70ch}
 
     .grid-3{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
       gap:14px;
+    }
+    .grid-4{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:14px;
+    }
+    .grid-2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      align-items:stretch;
     }
     .card{
       border:1px solid var(--line);
@@ -224,31 +316,35 @@
       background: rgba(255,255,255,.03);
       padding:18px;
       transition:.2s;
+      position:relative;
+      overflow:hidden;
+    }
+    [data-theme="light"] .card{
+      background: rgba(255,255,255,.9);
     }
     .card:hover{transform: translateY(-2px); border-color: rgba(74,222,128,.28)}
     .icon{
-      width:42px; height:42px; border-radius:16px;
+      width:44px; height:44px; border-radius:16px;
       display:grid; place-items:center;
       background: rgba(74,222,128,.12);
       border:1px solid rgba(74,222,128,.22);
       margin-bottom:10px;
       color: var(--accent);
       font-weight:900;
+      user-select:none;
     }
     .card h3{margin:0 0 6px; font-size:16px}
     .card p{margin:0; color:var(--muted); font-size:14px}
 
-    .grid-2{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:14px;
-      align-items:stretch;
-    }
     .panel{
       border:1px solid var(--line);
       border-radius:18px;
       background: linear-gradient(180deg, rgba(15,31,20,.74), rgba(7,19,11,.74));
       padding:18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.20);
+    }
+    [data-theme="light"] .panel{
+      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(239,246,241,.92));
     }
     .list{margin:10px 0 0; padding:0; list-style:none}
     .list li{
@@ -257,6 +353,7 @@
       color:var(--muted);
       display:flex; gap:10px; align-items:flex-start;
     }
+    [data-theme="light"] .list li{border-top-color: rgba(0,0,0,.08)}
     .list li:first-child{border-top:none; padding-top:0}
     .check{
       width:20px; height:20px; border-radius:7px;
@@ -267,9 +364,116 @@
       font-weight:900;
       flex:0 0 auto;
       margin-top:1px;
+      user-select:none;
     }
 
-    /* GALLERY */
+    /* FEATURE STRIP */
+    .strip{
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background: rgba(255,255,255,.02);
+      padding:16px 0;
+    }
+    .strip .row{
+      display:flex; gap:22px; flex-wrap:wrap; align-items:center; justify-content:space-between;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .strip b{color:var(--text)}
+    .chip{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:10px 12px; border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    .dot{
+      width:8px; height:8px; border-radius:50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(74,222,128,.10);
+    }
+
+    /* BEFORE / AFTER SLIDER */
+    .ba-wrap{
+      border:1px solid var(--line);
+      border-radius:18px;
+      overflow:hidden;
+      background: rgba(255,255,255,.03);
+      position:relative;
+      min-height: 320px;
+    }
+    .ba{
+      position:relative;
+      height: 360px;
+      overflow:hidden;
+    }
+    .ba img{
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      object-fit:cover;
+      user-select:none;
+      pointer-events:none;
+    }
+    .ba .after{
+      clip-path: inset(0 0 0 50%);
+    }
+    .ba .handle{
+      position:absolute;
+      top:0; bottom:0;
+      left:50%;
+      width:2px;
+      background: rgba(255,255,255,.65);
+      box-shadow: 0 0 0 8px rgba(74,222,128,.12);
+      transform: translateX(-1px);
+      pointer-events:none;
+    }
+    .ba .knob{
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform: translate(-50%,-50%);
+      width:52px; height:52px;
+      border-radius:18px;
+      background: rgba(7,19,11,.65);
+      border:1px solid rgba(255,255,255,.2);
+      backdrop-filter: blur(10px);
+      display:grid; place-items:center;
+      font-weight:900;
+      user-select:none;
+      pointer-events:none;
+    }
+    [data-theme="light"] .ba .knob{
+      background: rgba(255,255,255,.72);
+      border-color: rgba(0,0,0,.12);
+    }
+    .ba-controls{
+      padding:14px;
+      display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between;
+      border-top:1px solid var(--line);
+    }
+    .range{
+      width: 280px;
+      max-width: 100%;
+    }
+
+    /* GALLERY FILTER */
+    .filters{display:flex; gap:10px; flex-wrap:wrap}
+    .filter{
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color:var(--muted);
+      font-weight:800;
+      cursor:pointer;
+      transition:.2s;
+      user-select:none;
+    }
+    .filter:hover{border-color: rgba(74,222,128,.26); color:var(--text)}
+    .filter.active{
+      border-color: rgba(74,222,128,.36);
+      background: rgba(74,222,128,.10);
+      color: var(--text);
+    }
     .gallery{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
@@ -280,8 +484,9 @@
       border:1px solid var(--line);
       overflow:hidden;
       background: rgba(255,255,255,.03);
-      min-height: 210px;
+      min-height: 220px;
       position:relative;
+      cursor:pointer;
     }
     .shot img{
       width:100%; height:100%;
@@ -289,7 +494,9 @@
       display:block;
       filter: contrast(1.02) saturate(1.05);
       transform: scale(1.02);
+      transition: .35s;
     }
+    .shot:hover img{transform: scale(1.07)}
     .shot span{
       position:absolute; left:12px; bottom:12px;
       padding:8px 10px;
@@ -299,6 +506,14 @@
       backdrop-filter: blur(8px);
       font-size:12px;
       color:var(--muted);
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+    }
+    .badge-mini{
+      width:8px; height:8px; border-radius:50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(74,222,128,.10);
     }
     .shot.big{grid-column: span 7}
     .shot.mid{grid-column: span 5}
@@ -318,9 +533,13 @@
       position:relative;
       overflow:hidden;
     }
+    [data-theme="light"] .price{background: rgba(255,255,255,.92)}
     .price.featured{
       border-color: rgba(74,222,128,.36);
       background: linear-gradient(180deg, rgba(74,222,128,.10), rgba(255,255,255,.03));
+    }
+    [data-theme="light"] .price.featured{
+      background: linear-gradient(180deg, rgba(22,163,74,.10), rgba(255,255,255,.92));
     }
     .tag{
       position:absolute; top:14px; right:14px;
@@ -330,29 +549,29 @@
       border:1px solid rgba(74,222,128,.26);
       background: rgba(74,222,128,.10);
       color:var(--text);
-      font-weight:700;
+      font-weight:900;
     }
-    .price h3{margin:0 0 6px}
-    .price .p{color:var(--muted); margin:0 0 14px; font-size:14px}
     .money{
-      font-size:34px; font-weight:900; letter-spacing:-.7px;
+      font-size:34px; font-weight:950; letter-spacing:-.8px;
       margin: 0 0 6px;
       color: var(--accent);
     }
     .per{color:var(--muted); font-size:12px}
     .price .btn{margin-top:14px; width:100%}
+    .price h3{margin:0 0 6px}
+    .price .p{color:var(--muted); margin:0 0 14px; font-size:14px}
 
-    /* CONTACT */
-    .contact{
+    /* BOOKING */
+    .booking-grid{
       display:grid;
-      grid-template-columns: 1.15fr .85fr;
+      grid-template-columns: 1.05fr .95fr;
       gap:14px;
     }
     form{
       display:grid; gap:10px;
       margin-top:10px;
     }
-    input, textarea{
+    input, textarea, select{
       width:100%;
       padding:12px 12px;
       border-radius:14px;
@@ -362,62 +581,271 @@
       outline:none;
       font-size:14px;
     }
+    [data-theme="light"] input,[data-theme="light"] textarea,[data-theme="light"] select{
+      background: rgba(255,255,255,.95);
+    }
     textarea{min-height:110px; resize:vertical}
-    input:focus, textarea:focus{border-color: rgba(74,222,128,.35)}
+    input:focus, textarea:focus, select:focus{border-color: rgba(74,222,128,.35)}
+    .two{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
     .fine{color:var(--muted); font-size:12px; margin-top:10px}
+    .mini{
+      font-size:12px; color:var(--muted);
+    }
 
+    /* REVIEWS */
+    .stars{color: var(--warn); letter-spacing:1px}
+    .review-top{
+      display:flex; gap:12px; justify-content:space-between; align-items:center; flex-wrap:wrap;
+      margin-bottom: 12px;
+    }
+    .review-badge{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(74,222,128,.22);
+      background: rgba(74,222,128,.08);
+      color: var(--text);
+      font-weight:900;
+    }
+
+    /* FAQ */
+    details{
+      border:1px solid var(--line);
+      border-radius:16px;
+      background: rgba(255,255,255,.03);
+      padding:14px;
+    }
+    details summary{
+      cursor:pointer;
+      font-weight:900;
+      outline:none;
+    }
+    details p{margin:10px 0 0; color:var(--muted)}
+    .faq{display:grid; gap:10px}
+
+    /* BLOG */
+    .blog .meta{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; color:var(--muted); font-size:12px}
+    .blog .meta span{
+      border:1px solid var(--line);
+      padding:8px 10px; border-radius:999px;
+      background: rgba(255,255,255,.03);
+    }
+
+    /* SERVICE AREA MAP */
+    .map{
+      border:1px solid var(--line);
+      border-radius:18px;
+      overflow:hidden;
+      background: rgba(255,255,255,.03);
+      min-height: 320px;
+    }
+    .map iframe{
+      width:100%; height: 360px; border:0;
+      filter: grayscale(.15) contrast(1.05);
+    }
+
+    /* MODAL LIGHTBOX */
+    .modal{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.72);
+      display:none;
+      align-items:center; justify-content:center;
+      padding:18px;
+      z-index:999;
+    }
+    .modal.open{display:flex}
+    .modal-card{
+      max-width: 980px;
+      width: 100%;
+      border-radius: 18px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(7,19,11,.88);
+      box-shadow: 0 25px 80px rgba(0,0,0,.60);
+      position:relative;
+    }
+    [data-theme="light"] .modal-card{background: rgba(255,255,255,.92); border-color: rgba(0,0,0,.10)}
+    .modal-card img{width:100%; height: 560px; object-fit:cover; display:block}
+    .modal-close{
+      position:absolute; top:12px; right:12px;
+      width:44px; height:44px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.35);
+      color:var(--text);
+      display:grid; place-items:center;
+      font-weight:900;
+      cursor:pointer;
+      user-select:none;
+      backdrop-filter: blur(10px);
+    }
+    [data-theme="light"] .modal-close{background: rgba(255,255,255,.72); border-color: rgba(0,0,0,.12); color: var(--text)}
+    .modal-footer{
+      padding:14px;
+      border-top:1px solid var(--line);
+      color: var(--muted);
+      display:flex; justify-content:space-between; gap:10px; align-items:center; flex-wrap:wrap;
+      background: rgba(255,255,255,.02);
+    }
+
+    /* STICKY CTA + BACK TO TOP */
+    .sticky-cta{
+      position:fixed;
+      left:16px; right:16px;
+      bottom:16px;
+      z-index:200;
+      display:none;
+    }
+    .sticky-cta .bar{
+      max-width: 1180px;
+      margin: 0 auto;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(7,19,11,.78);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 18px 55px rgba(0,0,0,.55);
+      padding:12px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px; flex-wrap:wrap;
+    }
+    [data-theme="light"] .sticky-cta .bar{
+      background: rgba(255,255,255,.78);
+      border-color: rgba(0,0,0,.10);
+    }
+    .sticky-cta .left{
+      display:flex; gap:10px; align-items:center;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .sticky-cta .left b{color:var(--text)}
+    .sticky-cta .right{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+
+    .top{
+      position:fixed;
+      right:16px; bottom:86px;
+      width:48px; height:48px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(7,19,11,.70);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 55px rgba(0,0,0,.45);
+      display:none;
+      place-items:center;
+      cursor:pointer;
+      user-select:none;
+      z-index:210;
+      font-weight:950;
+    }
+    [data-theme="light"] .top{
+      background: rgba(255,255,255,.75);
+      border-color: rgba(0,0,0,.10);
+    }
+    .top.show{display:grid}
+
+    /* FOOTER */
     footer{
-      padding:26px 0 38px;
+      padding:28px 0 46px;
       border-top:1px solid var(--line);
       color:var(--muted);
       font-size:13px;
     }
+    .footer-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr .8fr .8fr;
+      gap:14px;
+      margin-top:14px;
+    }
+    .footer-grid a{
+      color:var(--muted);
+      display:inline-block;
+      padding:6px 0;
+    }
+    .footer-grid a:hover{color:var(--text)}
+    .divider{height:1px; background: var(--line); margin:16px 0}
 
     /* RESPONSIVE */
-    @media (max-width: 920px){
+    @media (max-width: 980px){
       .hero-grid{grid-template-columns:1fr}
+      .grid-4{grid-template-columns:1fr 1fr}
       .grid-3{grid-template-columns:1fr}
       .grid-2{grid-template-columns:1fr}
       .pricing{grid-template-columns:1fr}
-      .contact{grid-template-columns:1fr}
-      h1{font-size:40px}
+      .booking-grid{grid-template-columns:1fr}
+      h1{font-size:42px}
       .gallery{grid-template-columns:repeat(6, 1fr)}
-      .shot.big{grid-column: span 6}
-      .shot.mid{grid-column: span 6}
-      .shot.small{grid-column: span 6}
-      .stats{grid-template-columns:1fr 1fr 1fr}
+      .shot.big,.shot.mid,.shot.small{grid-column: span 6}
+      .footer-grid{grid-template-columns:1fr 1fr}
     }
-    @media (max-width: 640px){
+    @media (max-width: 720px){
       .menu{display:none}
       .hamburger{display:inline-flex}
-      h1{font-size:34px}
+      .mobile-drawer.show{display:block}
+    }
+    @media (max-width: 520px){
+      h1{font-size:36px}
+      .two{grid-template-columns: 1fr}
       .stats{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+      .range{width: 220px}
+      .modal-card img{height: 420px}
     }
   </style>
 </head>
 
 <body>
   <!-- NAV -->
-  <div class="nav">
+  <div class="nav" id="top">
     <div class="container">
       <div class="nav-inner">
         <div class="brand">
           <div class="logo">MR</div>
           <div>
-            <div style="font-size:15px;">Mr Landscaping</div>
-            <div style="font-size:12px; color:var(--muted); margin-top:-2px;">Luxury Outdoor Services</div>
+            <div class="title">Mr Landscaping</div>
+            <div class="tagline">Luxury Outdoor Services</div>
           </div>
         </div>
 
-        <div class="menu">
-          <a href="#services">Services</a>
-          <a href="#gallery">Gallery</a>
-          <a href="#pricing">Packages</a>
-          <a href="#contact">Contact</a>
-          <a class="btn btn-primary" href="#contact">Get Free Quote</a>
+        <div class="menu" aria-label="Primary navigation">
+          <a class="link" href="#services">Services</a>
+          <a class="link" href="#about">About</a>
+          <a class="link" href="#beforeafter">Before/After</a>
+          <a class="link" href="#gallery">Gallery</a>
+          <a class="link" href="#pricing">Packages</a>
+          <a class="link" href="#reviews">Reviews</a>
+          <a class="link" href="#faq">FAQ</a>
+          <a class="link" href="#booking">Book</a>
+          <a class="link" href="#areas">Areas</a>
+          <a class="btn btn-ghost" id="themeBtn" type="button">🌗 Theme</a>
+          <a class="btn btn-primary" href="#booking">Get Free Quote</a>
         </div>
 
-        <a class="btn hamburger" href="#contact">Quote</a>
+        <div class="nav-tools">
+          <span class="pill">Georgia • Local</span>
+          <button class="btn hamburger" id="menuBtn" type="button">☰ Menu</button>
+        </div>
+      </div>
+
+      <!-- Mobile Drawer -->
+      <div class="mobile-drawer" id="drawer">
+        <div class="row">
+          <a class="link" href="#services">Services</a>
+          <a class="link" href="#about">About</a>
+          <a class="link" href="#beforeafter">Before/After</a>
+          <a class="link" href="#gallery">Gallery</a>
+          <a class="link" href="#pricing">Packages</a>
+          <a class="link" href="#reviews">Reviews</a>
+          <a class="link" href="#faq">FAQ</a>
+          <a class="link" href="#booking">Book</a>
+          <a class="link" href="#areas">Areas</a>
+          <button class="btn" id="themeBtn2" type="button">🌗 Theme</button>
+          <a class="btn btn-primary" href="#booking">Get Free Quote</a>
+          <a class="btn" href="tel:+10000000000">Call Now</a>
+          <a class="btn" href="sms:+10000000000">Text Now</a>
+        </div>
       </div>
     </div>
   </div>
@@ -430,50 +858,64 @@
           <div class="badge"><span></span> Trusted • Fast • Clean Work</div>
           <h1>Make Your Yard Look <br/>Expensive.</h1>
           <p class="sub">
-            Mr Landscaping delivers premium lawn care, mulch, trimming, and cleanups with a luxury finish.
-            Serving local homes & businesses — on time, every time.
+            Mr Landscaping delivers premium lawn care, mulch, trimming, cleanups, and pressure washing —
+            with a luxury finish. We show up on time, communicate clearly, and leave your property spotless.
           </p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#contact">Get a Free Quote</a>
+            <a class="btn btn-primary" href="#booking">Get a Free Quote</a>
             <a class="btn" href="tel:+10000000000">Call Now</a>
             <a class="btn" href="#pricing">See Packages</a>
+            <a class="btn" href="#gallery">View Work</a>
           </div>
 
           <div class="trust">
             <div>✅ <b>Same-Day</b> availability</div>
             <div>✅ <b>Professional</b> equipment</div>
             <div>✅ <b>Satisfaction</b> guarantee</div>
+            <div>✅ <b>Honest</b> pricing</div>
           </div>
 
           <div class="stats">
             <div class="stat">
               <div class="n">5★</div>
-              <div class="t">Service mindset</div>
+              <div class="t">Premium service mindset</div>
             </div>
             <div class="stat">
               <div class="n">24/7</div>
-              <div class="t">Text & call</div>
+              <div class="t">Text & call support</div>
             </div>
             <div class="stat">
               <div class="n">100%</div>
-              <div class="t">Clean finish</div>
+              <div class="t">Clean finish guarantee</div>
             </div>
           </div>
         </div>
 
-        <div class="visual">
+        <div class="visual" aria-label="Landscape visual">
           <div class="visual-card">
             <div>
               <div class="k">Premium Lawn Care</div>
               <div class="m">Stripe mowing • Edging • Cleanup</div>
             </div>
-            <div class="pill">Georgia • Local</div>
+            <div class="pill">Fast Quotes</div>
           </div>
         </div>
       </div>
     </div>
   </header>
+
+  <!-- STRIP -->
+  <div class="strip">
+    <div class="container">
+      <div class="row">
+        <span class="chip"><span class="dot"></span> <b>Free Quotes</b> within minutes</span>
+        <span class="chip"><span class="dot"></span> Weekly / Bi-weekly / One-time</span>
+        <span class="chip"><span class="dot"></span> Residential & Commercial</span>
+        <span class="chip"><span class="dot"></span> Clean edges & luxury detail</span>
+      </div>
+    </div>
+  </div>
 
   <!-- SERVICES -->
   <section id="services">
@@ -483,7 +925,7 @@
           <h2>Services</h2>
           <p>Everything you need for a clean, luxury outdoor look.</p>
         </div>
-        <a class="btn" href="#contact">Book a visit</a>
+        <a class="btn" href="#booking">Book a visit</a>
       </div>
 
       <div class="grid-3">
@@ -495,13 +937,14 @@
         <div class="card">
           <div class="icon">🌲</div>
           <h3>Trimming & Pruning</h3>
-          <p>Hedges, bushes, small tree trimming — neat and professional.</p>
+          <p>Hedges, bushes, and small tree trimming — neat and professional.</p>
         </div>
         <div class="card">
           <div class="icon">🍂</div>
           <h3>Seasonal Cleanup</h3>
-          <p>Leaf removal, debris haul, spring/fall cleanups.</p>
+          <p>Leaf removal, debris haul, spring/fall deep cleanups.</p>
         </div>
+
         <div class="card">
           <div class="icon">🪵</div>
           <h3>Mulch & Pine Straw</h3>
@@ -521,13 +964,13 @@
     </div>
   </section>
 
-  <!-- WHY US -->
-  <section>
+  <!-- ABOUT -->
+  <section id="about">
     <div class="container">
       <div class="section-title">
         <div>
-          <h2>Why Mr Landscaping?</h2>
-          <p>We focus on trust, speed, and a clean premium result — every visit.</p>
+          <h2>About Mr Landscaping</h2>
+          <p>We’re focused on trust, speed, and premium results — every single visit.</p>
         </div>
       </div>
 
@@ -535,25 +978,86 @@
         <div class="panel">
           <h3 style="margin:0 0 8px;">Luxury finish, not just “cut grass”.</h3>
           <p style="margin:0; color:var(--muted);">
-            Anyone can mow. We detail: edging, lines, cleanup, and consistent quality — so your yard looks expensive.
+            Anyone can mow. We detail: edging, straight lines, trimming, cleanup, and consistency —
+            so your yard looks expensive and stays that way.
           </p>
           <ul class="list">
             <li><span class="check">✓</span> On-time arrival & clear communication</li>
             <li><span class="check">✓</span> Fair pricing with premium quality</li>
             <li><span class="check">✓</span> We leave your yard cleaner than we found it</li>
+            <li><span class="check">✓</span> Respectful crew & professional equipment</li>
           </ul>
         </div>
 
         <div class="panel">
-          <h3 style="margin:0 0 8px;">Service Areas</h3>
+          <h3 style="margin:0 0 8px;">Our Process</h3>
           <p style="margin:0; color:var(--muted);">
-            Add your city list here (مثلاً: Atlanta, Decatur, Brookhaven, …).
+            Simple and fast — designed to save you time.
           </p>
           <ul class="list">
-            <li><span class="check">✓</span> Residential & commercial properties</li>
-            <li><span class="check">✓</span> Weekly / bi-weekly / one-time</li>
-            <li><span class="check">✓</span> Free quote — message or call</li>
+            <li><span class="check">1</span> You request a quote (text/call/form)</li>
+            <li><span class="check">2</span> We confirm details + give a fair price</li>
+            <li><span class="check">3</span> We schedule the service time</li>
+            <li><span class="check">4</span> We deliver a premium clean finish</li>
+            <li><span class="check">5</span> You approve — we keep it consistent</li>
           </ul>
+        </div>
+      </div>
+
+      <div style="margin-top:14px" class="grid-4">
+        <div class="card">
+          <div class="icon">🛡️</div>
+          <h3>Reliable</h3>
+          <p>We show up on time and keep our promise.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🧰</div>
+          <h3>Pro Equipment</h3>
+          <p>Clean cuts, strong edges, premium finish.</p>
+        </div>
+        <div class="card">
+          <div class="icon">💬</div>
+          <h3>Fast Response</h3>
+          <p>Quick quotes and clear communication.</p>
+        </div>
+        <div class="card">
+          <div class="icon">✨</div>
+          <h3>Luxury Detail</h3>
+          <p>We focus on the small details that matter.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEFORE/AFTER -->
+  <section id="beforeafter">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Before & After</h2>
+          <p>Drag the slider to see the transformation. Replace images later with your own work photos.</p>
+        </div>
+      </div>
+
+      <div class="ba-wrap">
+        <div class="ba" id="ba">
+          <!-- BEFORE -->
+          <img class="before" alt="Before" src="https://images.unsplash.com/photo-1520962917968-5d1f0d6f8ca0?auto=format&fit=crop&w=1600&q=75">
+          <!-- AFTER -->
+          <img class="after" alt="After" id="afterImg" src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=1600&q=75">
+          <div class="handle" id="baHandle"></div>
+          <div class="knob">⇆</div>
+        </div>
+
+        <div class="ba-controls">
+          <div style="color:var(--muted); font-size:13px;">
+            <b style="color:var(--text)">Tip:</b> Before/After photos = more customers. Add 6 real transformations.
+          </div>
+          <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+            <label class="mini" for="baRange">Before/After</label>
+            <input class="range" id="baRange" type="range" min="0" max="100" value="50" />
+            <button class="btn" type="button" id="swapBtn">Swap Images</button>
+          </div>
         </div>
       </div>
     </div>
@@ -565,114 +1069,268 @@
       <div class="section-title">
         <div>
           <h2>Gallery</h2>
-          <p>Replace these images with your own “before & after” photos for maximum customers.</p>
+          <p>Filter our work. Click any photo to open it big.</p>
+        </div>
+        <div class="filters" aria-label="Gallery filters">
+          <button class="filter active" data-filter="all" type="button">All</button>
+          <button class="filter" data-filter="lawn" type="button">Lawn</button>
+          <button class="filter" data-filter="mulch" type="button">Mulch</button>
+          <button class="filter" data-filter="trim" type="button">Trimming</button>
+          <button class="filter" data-filter="wash" type="button">Pressure Wash</button>
         </div>
       </div>
 
-      <div class="gallery">
-        <div class="shot big">
-          <img alt="Landscape 1" src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=1400&q=70">
-          <span>Luxury backyard</span>
+      <div class="gallery" id="galleryGrid">
+        <div class="shot big" data-cat="lawn">
+          <img alt="Luxury lawn" src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1600&q=75">
+          <span><span class="badge-mini"></span> Lawn</span>
         </div>
-        <div class="shot mid">
-          <img alt="Landscape 2" src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1400&q=70">
-          <span>Clean edging</span>
+        <div class="shot mid" data-cat="mulch">
+          <img alt="Mulch" src="https://images.unsplash.com/photo-1557429287-b2e26467fc2b?auto=format&fit=crop&w=1600&q=75">
+          <span><span class="badge-mini"></span> Mulch</span>
         </div>
-        <div class="shot small">
-          <img alt="Landscape 3" src="https://images.unsplash.com/photo-1557429287-b2e26467fc2b?auto=format&fit=crop&w=1400&q=70">
-          <span>Mulch refresh</span>
+
+        <div class="shot small" data-cat="trim">
+          <img alt="Trimming" src="https://images.unsplash.com/photo-1597262975002-c5c3b14bbd62?auto=format&fit=crop&w=1600&q=75">
+          <span><span class="badge-mini"></span> Trimming</span>
         </div>
-        <div class="shot small">
-          <img alt="Landscape 4" src="https://images.unsplash.com/photo-1520962917968-5d1f0d6f8ca0?auto=format&fit=crop&w=1400&q=70">
-          <span>Garden beds</span>
+        <div class="shot small" data-cat="wash">
+          <img alt="Pressure washing" src="https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=1600&q=75">
+          <span><span class="badge-mini"></span> Pressure Wash</span>
         </div>
-        <div class="shot small">
-          <img alt="Landscape 5" src="https://images.unsplash.com/photo-1597262975002-c5c3b14bbd62?auto=format&fit=crop&w=1400&q=70">
-          <span>Trim & shape</span>
+        <div class="shot small" data-cat="lawn">
+          <img alt="Lawn care" src="https://images.unsplash.com/photo-1564648351416-3eec9f3e85de?auto=format&fit=crop&w=1600&q=75">
+          <span><span class="badge-mini"></span> Lawn</span>
+        </div>
+
+        <div class="shot mid" data-cat="mulch">
+          <img alt="Garden beds" src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=1600&q=75">
+          <span><span class="badge-mini"></span> Mulch / Beds</span>
+        </div>
+        <div class="shot big" data-cat="wash">
+          <img alt="Walkway cleaning" src="https://images.unsplash.com/photo-1605540436563-5bca919ae766?auto=format&fit=crop&w=1600&q=75">
+          <span><span class="badge-mini"></span> Pressure Wash</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PRICING -->
+  <!-- PACKAGES -->
   <section id="pricing">
     <div class="container">
       <div class="section-title">
         <div>
           <h2>Packages</h2>
-          <p>Example pricing — you can change numbers to match your market.</p>
+          <p>Example pricing — change the numbers to match your area.</p>
         </div>
+        <a class="btn" href="#booking">Request exact pricing</a>
       </div>
 
       <div class="pricing">
         <div class="price">
           <h3>Basic</h3>
           <p class="p">Simple clean cut</p>
-          <div class="money">$45<span class="per"> / visit</span></div>
+          <div class="money">$45 <span class="per">/ visit</span></div>
           <ul class="list">
             <li><span class="check">✓</span> Mowing</li>
             <li><span class="check">✓</span> Light edging</li>
             <li><span class="check">✓</span> Blow cleanup</li>
           </ul>
-          <a class="btn" href="#contact">Choose Basic</a>
+          <a class="btn" href="#booking">Choose Basic</a>
         </div>
 
         <div class="price featured">
           <div class="tag">Most Popular</div>
           <h3>Premium</h3>
           <p class="p">Luxury detail finish</p>
-          <div class="money">$75<span class="per"> / visit</span></div>
+          <div class="money">$75 <span class="per">/ visit</span></div>
           <ul class="list">
             <li><span class="check">✓</span> Stripe mowing</li>
             <li><span class="check">✓</span> Full edging</li>
             <li><span class="check">✓</span> Trim up to 2 bushes</li>
           </ul>
-          <a class="btn btn-primary" href="#contact">Choose Premium</a>
+          <a class="btn btn-primary" href="#booking">Choose Premium</a>
         </div>
 
         <div class="price">
           <h3>Luxury</h3>
           <p class="p">Full makeover visit</p>
-          <div class="money">$140<span class="per"> / visit</span></div>
+          <div class="money">$140 <span class="per">/ visit</span></div>
           <ul class="list">
             <li><span class="check">✓</span> Premium + cleanup haul</li>
             <li><span class="check">✓</span> Mulch refresh (small beds)</li>
             <li><span class="check">✓</span> Pressure wash add-on</li>
           </ul>
-          <a class="btn" href="#contact">Choose Luxury</a>
+          <a class="btn" href="#booking">Choose Luxury</a>
+        </div>
+      </div>
+
+      <div style="margin-top:14px" class="panel">
+        <h3 style="margin:0 0 8px;">Add-Ons</h3>
+        <p style="margin:0; color:var(--muted);">Optional upgrades to make your property look even more premium.</p>
+        <div class="grid-4" style="margin-top:12px">
+          <div class="card"><div class="icon">🌱</div><h3>Seeding</h3><p>Fill thin spots & improve lawn density.</p></div>
+          <div class="card"><div class="icon">🧪</div><h3>Fertilizing</h3><p>Seasonal feed & weed control plan.</p></div>
+          <div class="card"><div class="icon">🪨</div><h3>Rock Beds</h3><p>Low maintenance decorative beds.</p></div>
+          <div class="card"><div class="icon">🧹</div><h3>Haul Away</h3><p>Remove branches, leaves, and debris.</p></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact">
+  <!-- REVIEWS -->
+  <section id="reviews">
     <div class="container">
-      <div class="section-title">
+      <div class="review-top">
         <div>
-          <h2>Get a Free Quote</h2>
-          <p>Send your info — we’ll reply fast. (Change phone & email below)</p>
+          <h2 style="margin:0; font-size:28px;">Customer Reviews</h2>
+          <p style="margin:6px 0 0; color:var(--muted); max-width:70ch;">
+            Add real customer reviews later — reviews = trust = more bookings.
+          </p>
+        </div>
+        <div class="review-badge">
+          <span class="stars">★★★★★</span> 5.0 Average
         </div>
       </div>
 
-      <div class="contact">
+      <div class="grid-3">
+        <div class="card">
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
+            <b>Sarah M.</b><span class="stars">★★★★★</span>
+          </div>
+          <p style="margin-top:10px; color:var(--muted);">
+            “My yard looks brand new. Clean edges, perfect lines, and they cleaned everything after.”
+          </p>
+        </div>
+        <div class="card">
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
+            <b>David K.</b><span class="stars">★★★★★</span>
+          </div>
+          <p style="margin-top:10px; color:var(--muted);">
+            “Fast response, fair price, and a premium finish. I’m booking weekly now.”
+          </p>
+        </div>
+        <div class="card">
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
+            <b>Emily R.</b><span class="stars">★★★★★</span>
+          </div>
+          <p style="margin-top:10px; color:var(--muted);">
+            “Professional and respectful. They made my garden beds look luxury.”
+          </p>
+        </div>
+      </div>
+
+      <div style="margin-top:14px" class="panel">
+        <h3 style="margin:0 0 6px;">Want us to earn your 5-star review?</h3>
+        <p style="margin:0; color:var(--muted);">
+          Send your address + what you need. We’ll reply fast with a fair quote.
+        </p>
+        <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn btn-primary" href="#booking">Request a Quote</a>
+          <a class="btn" href="tel:+10000000000">Call</a>
+          <a class="btn" href="sms:+10000000000">Text</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>FAQ</h2>
+          <p>Quick answers for customers. (You can edit any question later.)</p>
+        </div>
+      </div>
+
+      <div class="faq">
+        <details>
+          <summary>How fast can I get a quote?</summary>
+          <p>Usually within minutes. Text or call for the fastest response.</p>
+        </details>
+        <details>
+          <summary>Do you offer weekly or bi-weekly service?</summary>
+          <p>Yes. We can set a schedule so your yard always looks premium.</p>
+        </details>
+        <details>
+          <summary>Do I need to be home?</summary>
+          <p>No. If we can access the yard, we can complete the job and send photos after.</p>
+        </details>
+        <details>
+          <summary>What areas do you serve?</summary>
+          <p>Georgia local areas — edit the list below in the “Service Areas” section.</p>
+        </details>
+        <details>
+          <summary>How do you handle pricing?</summary>
+          <p>We price based on yard size, services needed, and how often you want service.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING / QUOTE -->
+  <section id="booking">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Book & Get a Free Quote</h2>
+          <p>Fill the form — we’ll reply fast. (Form currently shows an alert; you can connect it to email later.)</p>
+        </div>
+      </div>
+
+      <div class="booking-grid">
         <div class="panel">
-          <h3 style="margin:0 0 6px;">Message Mr Landscaping</h3>
+          <h3 style="margin:0 0 6px;">Request Service</h3>
           <p style="margin:0; color:var(--muted); font-size:14px;">
-            Tip: مشتری‌ها عاشق “before & after” هستند. حتماً 6 عکس واقعی خودت اضافه کن.
+            Tell us what you need. Add photos if you want (later we can connect file upload).
           </p>
 
-          <form onsubmit="event.preventDefault(); alert('Thanks! Your message is ready. (Connect this form to email later)');">
-            <input required placeholder="Your Name" />
-            <input required placeholder="Phone Number" />
-            <input placeholder="Address / City" />
-            <textarea placeholder="What do you need? (mowing, mulch, trimming, cleanup...)"></textarea>
-            <button class="btn btn-primary" type="submit">Send Request</button>
-          </form>
+          <form id="quoteForm">
+            <div class="two">
+              <input required name="name" placeholder="Full Name" />
+              <input required name="phone" placeholder="Phone Number" />
+            </div>
+            <div class="two">
+              <input name="email" placeholder="Email (optional)" />
+              <input name="city" placeholder="City / Zip" />
+            </div>
 
-          <div class="fine">
-            Or call/text: <b style="color:var(--text)">+1 (000) 000-0000</b> • Email: <b style="color:var(--text)">mrlandscaping@email.com</b>
-          </div>
+            <div class="two">
+              <select name="service">
+                <option value="Lawn Care">Lawn Care</option>
+                <option value="Mulch / Pine Straw">Mulch / Pine Straw</option>
+                <option value="Trimming">Trimming</option>
+                <option value="Seasonal Cleanup">Seasonal Cleanup</option>
+                <option value="Pressure Washing">Pressure Washing</option>
+                <option value="Full Makeover">Full Makeover</option>
+              </select>
+
+              <select name="frequency">
+                <option value="One-time">One-time</option>
+                <option value="Weekly">Weekly</option>
+                <option value="Bi-weekly">Bi-weekly</option>
+                <option value="Monthly">Monthly</option>
+              </select>
+            </div>
+
+            <div class="two">
+              <input name="date" type="date" />
+              <select name="time">
+                <option value="Morning">Morning</option>
+                <option value="Afternoon">Afternoon</option>
+                <option value="Evening">Evening</option>
+              </select>
+            </div>
+
+            <textarea name="details" placeholder="Describe what you need (mowing, mulch color, trimming, cleanup...)."></textarea>
+
+            <button class="btn btn-primary" type="submit">Send Request</button>
+
+            <div class="fine">
+              Or call/text: <b style="color:var(--text)">+1 (000) 000-0000</b> • Email: <b style="color:var(--text)">mrlandscaping@email.com</b>
+            </div>
+          </form>
         </div>
 
         <div class="panel">
@@ -682,24 +1340,352 @@
             <li><span class="check">✓</span> Email: mrlandscaping@email.com</li>
             <li><span class="check">✓</span> Hours: Mon–Sat • 8AM–6PM</li>
             <li><span class="check">✓</span> Service: Residential & Commercial</li>
+            <li><span class="check">✓</span> Free quote & quick scheduling</li>
           </ul>
 
-          <a class="btn" style="width:100%; margin-top:12px" href="tel:+10000000000">Call Now</a>
-          <a class="btn" style="width:100%; margin-top:10px" href="sms:+10000000000">Text Now</a>
+          <div style="display:grid; gap:10px; margin-top:12px;">
+            <a class="btn btn-primary" href="tel:+10000000000">Call Now</a>
+            <a class="btn" href="sms:+10000000000">Text Now</a>
+            <a class="btn" href="#pricing">View Packages</a>
+          </div>
+
+          <div class="divider"></div>
+
+          <h3 style="margin:0 0 8px;">Business Hours</h3>
+          <div class="grid-2">
+            <div class="card">
+              <b>Mon–Fri</b>
+              <p style="margin-top:6px">8:00 AM – 6:00 PM</p>
+            </div>
+            <div class="card">
+              <b>Saturday</b>
+              <p style="margin-top:6px">9:00 AM – 4:00 PM</p>
+            </div>
+          </div>
+          <p class="mini" style="margin-top:10px;">Emergency jobs sometimes available (storm cleanup).</p>
         </div>
       </div>
     </div>
   </section>
 
-  <footer>
+  <!-- SERVICE AREAS -->
+  <section id="areas">
     <div class="container">
-      © <span id="year"></span> Mr Landscaping. All rights reserved.
-      <span style="float:right;">Built for premium growth 🌿</span>
+      <div class="section-title">
+        <div>
+          <h2>Service Areas</h2>
+          <p>Edit this list for your real cities. You can also embed your Google Business map later.</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="panel">
+          <h3 style="margin:0 0 8px;">Cities We Serve</h3>
+          <div class="grid-2">
+            <div class="card">
+              <b>Atlanta</b>
+              <p style="margin-top:6px; color:var(--muted)">Residential & Commercial</p>
+            </div>
+            <div class="card">
+              <b>Decatur</b>
+              <p style="margin-top:6px; color:var(--muted)">Weekly / Bi-weekly</p>
+            </div>
+            <div class="card">
+              <b>Brookhaven</b>
+              <p style="margin-top:6px; color:var(--muted)">Premium detail finish</p>
+            </div>
+            <div class="card">
+              <b>Avondale Estates</b>
+              <p style="margin-top:6px; color:var(--muted)">Fast scheduling</p>
+            </div>
+          </div>
+
+          <div style="margin-top:12px" class="card">
+            <b>Not sure if you’re in range?</b>
+            <p style="margin-top:6px; color:var(--muted)">Text your zip code and we’ll confirm.</p>
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;">
+              <a class="btn btn-primary" href="sms:+10000000000">Text Zip Code</a>
+              <a class="btn" href="tel:+10000000000">Call</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="map" aria-label="Map embed">
+          <!-- Replace src with your own Google Maps embed link later -->
+          <iframe
+            title="Service Area Map"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26519.799431388204!2d-84.414!3d33.787!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f5068d4e4ad9d7%3A0x8b3b3f8d61a1b8b8!2sAtlanta%2C%20GA!5e0!3m2!1sen!2sus!4v0">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section id="blog">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Tips & Updates</h2>
+          <p>Small blog section to help SEO and trust. You can add your own posts later.</p>
+        </div>
+        <a class="btn" href="#booking">Ask a question</a>
+      </div>
+
+      <div class="grid-3 blog">
+        <div class="card">
+          <div class="icon">🌿</div>
+          <h3>How often should you mow?</h3>
+          <p>Weekly mowing keeps your lawn looking premium and healthy. Bi-weekly works in slower growth seasons.</p>
+          <div class="meta">
+            <span>2 min read</span><span>Lawn Care</span><span>Georgia</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="icon">🪵</div>
+          <h3>Mulch vs Pine Straw</h3>
+          <p>Mulch gives a bold luxury look; pine straw looks natural and can be cheaper. We help you pick the best option.</p>
+          <div class="meta">
+            <span>3 min read</span><span>Mulch</span><span>Design</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="icon">💦</div>
+          <h3>Pressure washing boost</h3>
+          <p>Clean driveways and walkways can instantly increase curb appeal. Great before selling or hosting guests.</p>
+          <div class="meta">
+            <span>2 min read</span><span>Wash</span><span>Curb Appeal</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="container">
+      <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:center;">
+        <div style="display:flex; gap:10px; align-items:center;">
+          <div class="logo">MR</div>
+          <div>
+            <b>Mr Landscaping</b>
+            <div style="color:var(--muted); font-size:12px;">Luxury Outdoor Services</div>
+          </div>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn" href="tel:+10000000000">Call</a>
+          <a class="btn" href="sms:+10000000000">Text</a>
+          <a class="btn btn-primary" href="#booking">Get Quote</a>
+        </div>
+      </div>
+
+      <div class="footer-grid">
+        <div class="panel">
+          <h3 style="margin:0 0 8px;">Contact</h3>
+          <div class="mini">Phone: <b style="color:var(--text)">+1 (000) 000-0000</b></div>
+          <div class="mini">Email: <b style="color:var(--text)">mrlandscaping@email.com</b></div>
+          <div class="mini">Hours: Mon–Sat • 8AM–6PM</div>
+          <div class="mini" style="margin-top:10px;">© <span id="year"></span> Mr Landscaping</div>
+        </div>
+
+        <div class="panel">
+          <h3 style="margin:0 0 8px;">Quick Links</h3>
+          <a href="#services">Services</a><br/>
+          <a href="#pricing">Packages</a><br/>
+          <a href="#reviews">Reviews</a><br/>
+          <a href="#booking">Booking</a>
+        </div>
+
+        <div class="panel">
+          <h3 style="margin:0 0 8px;">Service Types</h3>
+          <a href="#services">Lawn Care</a><br/>
+          <a href="#services">Mulch & Pine Straw</a><br/>
+          <a href="#services">Trimming</a><br/>
+          <a href="#services">Pressure Wash</a>
+        </div>
+
+        <div class="panel">
+          <h3 style="margin:0 0 8px;">Social</h3>
+          <a href="#" onclick="alert('Put your Instagram link here'); return false;">Instagram</a><br/>
+          <a href="#" onclick="alert('Put your Facebook link here'); return false;">Facebook</a><br/>
+          <a href="#" onclick="alert('Put your Google Business link here'); return false;">Google</a><br/>
+          <a href="#" onclick="alert('Put your TikTok link here'); return false;">TikTok</a>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+        <div>Built for premium growth 🌿</div>
+        <div>
+          <a href="#top">Back to top</a>
+        </div>
+      </div>
     </div>
   </footer>
 
+  <!-- STICKY CTA -->
+  <div class="sticky-cta" id="sticky">
+    <div class="bar">
+      <div class="left">
+        <span class="dot"></span>
+        <span><b>Free quote</b> • quick response • premium finish</span>
+      </div>
+      <div class="right">
+        <a class="btn btn-primary" href="#booking">Get Quote</a>
+        <a class="btn" href="tel:+10000000000">Call</a>
+        <a class="btn" href="sms:+10000000000">Text</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- BACK TO TOP -->
+  <div class="top" id="toTop" title="Back to top">↑</div>
+
+  <!-- LIGHTBOX MODAL -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-label="Image preview">
+      <div class="modal-close" id="modalClose" aria-label="Close">✕</div>
+      <img id="modalImg" alt="Preview" src="">
+      <div class="modal-footer">
+        <span id="modalText">Preview</span>
+        <span class="mini">Tip: Replace these with your own before/after photos.</span>
+      </div>
+    </div>
+  </div>
+
   <script>
+    // Year
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Mobile menu
+    const menuBtn = document.getElementById("menuBtn");
+    const drawer = document.getElementById("drawer");
+    if(menuBtn){
+      menuBtn.addEventListener("click", () => {
+        drawer.classList.toggle("show");
+      });
+      drawer.querySelectorAll("a").forEach(a=>{
+        a.addEventListener("click", ()=> drawer.classList.remove("show"));
+      });
+    }
+
+    // Theme toggle (saved)
+    const root = document.documentElement;
+    const themeBtn = document.getElementById("themeBtn");
+    const themeBtn2 = document.getElementById("themeBtn2");
+    const savedTheme = localStorage.getItem("mr_theme");
+    if(savedTheme){ root.setAttribute("data-theme", savedTheme); }
+
+    function toggleTheme(){
+      const cur = root.getAttribute("data-theme");
+      const next = (cur === "light") ? "" : "light";
+      if(next) root.setAttribute("data-theme", next);
+      else root.removeAttribute("data-theme");
+      localStorage.setItem("mr_theme", next);
+    }
+    if(themeBtn) themeBtn.addEventListener("click", toggleTheme);
+    if(themeBtn2) themeBtn2.addEventListener("click", toggleTheme);
+
+    // Sticky CTA + Back to top
+    const sticky = document.getElementById("sticky");
+    const toTop = document.getElementById("toTop");
+    function onScroll(){
+      const y = window.scrollY || document.documentElement.scrollTop;
+      if(y > 650){
+        sticky.style.display = "block";
+        toTop.classList.add("show");
+      } else {
+        sticky.style.display = "none";
+        toTop.classList.remove("show");
+      }
+    }
+    window.addEventListener("scroll", onScroll);
+    onScroll();
+    toTop.addEventListener("click", ()=> window.scrollTo({top:0, behavior:"smooth"}));
+
+    // Quote form demo
+    const quoteForm = document.getElementById("quoteForm");
+    quoteForm.addEventListener("submit", (e)=>{
+      e.preventDefault();
+      const data = new FormData(quoteForm);
+      const name = data.get("name") || "Customer";
+      const service = data.get("service") || "Service";
+      alert(`Thanks, ${name}! ✅\\nYour request for: ${service}\\n\\nNext step: Replace demo with email/WhatsApp connection.`);
+      quoteForm.reset();
+      location.hash = "#top";
+    });
+
+    // Before/After slider
+    const baRange = document.getElementById("baRange");
+    const afterImg = document.getElementById("afterImg");
+    const baHandle = document.getElementById("baHandle");
+    function setBA(val){
+      const v = Math.max(0, Math.min(100, val));
+      afterImg.style.clipPath = `inset(0 0 0 ${v}%)`;
+      baHandle.style.left = v + "%";
+    }
+    setBA(50);
+    baRange.addEventListener("input", ()=> setBA(baRange.value));
+
+    // Swap images in BA demo
+    const swapBtn = document.getElementById("swapBtn");
+    swapBtn.addEventListener("click", ()=>{
+      const before = document.querySelector(".ba img.before");
+      const temp = before.src;
+      before.src = afterImg.src;
+      afterImg.src = temp;
+    });
+
+    // Gallery filter
+    const filters = document.querySelectorAll(".filter");
+    const shots = document.querySelectorAll(".shot");
+    filters.forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        filters.forEach(b=> b.classList.remove("active"));
+        btn.classList.add("active");
+        const f = btn.dataset.filter;
+        shots.forEach(s=>{
+          const cat = s.dataset.cat;
+          const show = (f === "all" || f === cat);
+          s.style.display = show ? "" : "none";
+        });
+      });
+    });
+
+    // Lightbox modal
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modalImg");
+    const modalText = document.getElementById("modalText");
+    const modalClose = document.getElementById("modalClose");
+
+    function openModal(src, label){
+      modalImg.src = src;
+      modalText.textContent = label || "Preview";
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden","false");
+    }
+    function closeModal(){
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden","true");
+      modalImg.src = "";
+    }
+    modalClose.addEventListener("click", closeModal);
+    modal.addEventListener("click", (e)=>{
+      if(e.target === modal) closeModal();
+    });
+    document.addEventListener("keydown", (e)=>{
+      if(e.key === "Escape") closeModal();
+    });
+
+    document.querySelectorAll(".shot").forEach(s=>{
+      s.addEventListener("click", ()=>{
+        const img = s.querySelector("img");
+        const label = (s.querySelector("span")?.innerText || "Preview").replace("•","").trim();
+        openModal(img.src, label);
+      });
+    });
   </script>
 </body>
 </html>
