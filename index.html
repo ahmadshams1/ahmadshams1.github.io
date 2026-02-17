@@ -4,53 +4,58 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nisa Catering | Elegant Afghan Catering</title>
-  <meta name="description" content="Nisa Catering - Elegant Afghan catering for weddings, parties, and events. Menu, packages, reviews, and fast WhatsApp ordering." />
+  <meta name="description" content="Nisa Catering - Elegant Afghan catering for parties and events. Menu, packages, and WhatsApp ordering." />
 
   <style>
     :root{
       --paper:#f6f1e6;
       --paper2:#fbf7ee;
-      --ink:#1c1c1c;
-      --muted:#555;
+      --ink:#1b1b1b;
+      --muted:#5a5a5a;
       --line:rgba(0,0,0,.12);
-      --shadow: 0 22px 70px rgba(0,0,0,.14);
-      --shadow2: 0 14px 40px rgba(0,0,0,.10);
+      --shadow: 0 18px 60px rgba(0,0,0,.12);
       --radius: 16px;
-
       --gold:#b08a2e;
       --gold2:#e0c07a;
-      --char:#121212;
-      --accent:#111;
+      --dark:#111;
     }
 
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
       margin:0;
-      color:var(--ink);
       background: linear-gradient(180deg, var(--paper2), var(--paper));
+      color:var(--ink);
       font-family: Georgia, "Times New Roman", Times, serif;
       line-height:1.75;
     }
-    a{color:inherit}
-    .container{width:min(1160px, 92%); margin:0 auto}
-    .sr{position:absolute; left:-9999px}
+    a{color:inherit; text-decoration:none}
 
-    /* Topbar */
-    .topbar{
-      position:sticky; top:0; z-index:80;
-      background: rgba(251,247,238,.86);
+    /* Layout */
+    .app{
+      display:grid;
+      grid-template-columns: 280px 1fr;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    aside{
+      position:sticky;
+      top:0;
+      height:100vh;
+      padding:18px 16px;
+      border-right:1px solid var(--line);
+      background: rgba(251,247,238,.92);
       backdrop-filter: blur(10px);
-      border-bottom:1px solid var(--line);
     }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0;
-      gap:12px;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    }
+
     .brand{
-      display:flex; align-items:center; gap:12px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      padding:10px 10px 16px;
+      border-bottom:1px solid var(--line);
+      margin-bottom:14px;
     }
     .seal{
       width:44px; height:44px;
@@ -60,290 +65,246 @@
       color:#111;
       font-weight:1000;
       box-shadow: 0 14px 40px rgba(176,138,46,.18);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
     .brandTxt b{
       display:block;
-      letter-spacing:1px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       text-transform:uppercase;
+      letter-spacing:1px;
+      font-weight:1000;
       font-size:14px;
     }
     .brandTxt small{
       display:block;
+      margin-top:2px;
       color:var(--muted);
       font-weight:800;
-      margin-top:2px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
-    .links{
-      display:flex; gap:8px; flex-wrap:wrap;
+
+    .menu{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      margin-top:10px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       font-weight:900;
       font-size:13px;
       letter-spacing:.2px;
     }
-    .links a{
-      padding:9px 10px;
-      border-radius:999px;
-      text-decoration:none;
-    }
-    .links a:hover{background: rgba(0,0,0,.06)}
-    .btn{
-      border:1px solid rgba(0,0,0,.20);
-      background: rgba(0,0,0,.06);
+    .menu a{
       padding:10px 12px;
+      border-radius:12px;
+      border:1px solid transparent;
+    }
+    .menu a:hover{
+      background: rgba(0,0,0,.06);
+      border-color: rgba(0,0,0,.08);
+    }
+    .menu a.active{
+      background: rgba(0,0,0,.10);
+      border-color: rgba(0,0,0,.12);
+    }
+
+    .sideBox{
+      margin-top:14px;
+      padding:12px;
+      border-radius: var(--radius);
+      border:1px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.55);
+      box-shadow: var(--shadow);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    .sideBox b{
+      display:block;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      font-size:12px;
+      margin-bottom:6px;
+    }
+    .sideBox p{
+      margin:0;
+      color:var(--muted);
+      font-weight:800;
+      font-size:13px;
+      line-height:1.5;
+    }
+    .btn{
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      gap:8px;
+      margin-top:10px;
+      width:100%;
+      padding:12px 12px;
       border-radius:999px;
+      border:1px solid #111;
+      background:#111;
+      color:#fff;
       font-weight:950;
       cursor:pointer;
       text-decoration:none;
-      white-space:nowrap;
-      transition:.18s transform, .18s background;
     }
-    .btn:hover{transform: translateY(-1px); background: rgba(0,0,0,.10)}
-    .btn.dark{
-      background: #111;
-      color:#fff;
-      border-color:#111;
-    }
-    .btn.dark:hover{filter:brightness(1.06)}
-    .btn.gold{
-      background: linear-gradient(135deg, var(--gold), var(--gold2));
-      border:none;
+    .btn:hover{filter:brightness(1.06)}
+    .btn.ghost{
+      border:1px solid rgba(0,0,0,.18);
+      background: rgba(0,0,0,.06);
       color:#111;
     }
 
-    /* Hero */
-    header{padding:34px 0 10px}
-    .hero{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:18px;
-      align-items:stretch;
+    /* Main */
+    main{
+      padding:22px 24px 60px;
     }
-    .panel{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.55);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
+    .container{
+      width:min(980px, 100%);
+      margin:0 auto;
     }
-    .heroLeft{padding:22px}
+
+    /* Sections */
+    section{
+      padding:24px 0;
+      border-bottom:1px solid var(--line);
+    }
+    section:last-child{border-bottom:none}
     .kicker{
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       text-transform:uppercase;
-      letter-spacing:1.3px;
-      font-weight:950;
+      letter-spacing:1.2px;
+      font-weight:1000;
       font-size:12px;
-      color: rgba(0,0,0,.70);
-      display:inline-flex;
-      gap:8px;
-      align-items:center;
+      color: rgba(0,0,0,.65);
+      display:inline-block;
       padding:8px 10px;
       border-radius:999px;
       background: rgba(0,0,0,.05);
       border:1px solid rgba(0,0,0,.10);
     }
-    .h1{
-      margin:14px 0 10px;
-      font-size: clamp(30px, 3.4vw, 52px);
-      line-height:1.15;
-      letter-spacing:-.4px;
+    h1{
+      margin:12px 0 10px;
+      font-size: clamp(28px, 3.1vw, 46px);
+      letter-spacing:-.3px;
+      line-height:1.2;
     }
-    .h1 span{
-      background: linear-gradient(135deg, var(--gold), var(--char));
-      -webkit-background-clip:text;
-      background-clip:text;
+    h1 span{
+      background: linear-gradient(135deg, var(--gold), var(--dark));
+      -webkit-background-clip:text; background-clip:text;
       color:transparent;
     }
     .lead{
-      margin:0 0 14px;
-      color: var(--muted);
-      font-size: 18px;
-      max-width: 64ch;
+      margin:0;
+      color:var(--muted);
+      font-size:18px;
+      max-width: 70ch;
     }
-    .actions{
-      display:flex; gap:10px; flex-wrap:wrap;
-      margin-top: 10px;
+
+    h2{
+      margin:0 0 10px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      text-transform:uppercase;
+      letter-spacing:1.1px;
+      font-size:14px;
+      font-weight:1000;
+    }
+    .sub{
+      margin:0 0 16px;
+      color:var(--muted);
+      font-size:14px;
+      font-weight:800;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
-    .micro{
-      margin-top:14px;
+
+    /* Menu items (simple, not crowded) */
+    .menuGrid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:10px;
+    }
+    .item{
+      display:flex;
+      justify-content:space-between;
+      gap:14px;
+      padding:14px;
+      border-radius: var(--radius);
+      border:1px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.55);
+      box-shadow: var(--shadow);
+    }
+    .item b{
+      display:block;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      letter-spacing:.6px;
+      text-transform:uppercase;
+      font-size:13px;
+      font-weight:1000;
+    }
+    .item small{
+      display:block;
+      margin-top:4px;
+      color:var(--muted);
+      font-weight:800;
+      font-size:14px;
+    }
+    .pill{
+      height:fit-content;
+      padding:8px 10px;
+      border-radius:999px;
+      background: rgba(0,0,0,.06);
+      border:1px solid rgba(0,0,0,.12);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-weight:1000;
+      white-space:nowrap;
+    }
+
+    /* Packages */
+    .cards{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
       gap:10px;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
-    .micro .m{
+    .card{
       border:1px solid rgba(0,0,0,.10);
       background: rgba(255,255,255,.55);
-      border-radius: 14px;
-      padding:12px;
-      box-shadow: var(--shadow2);
-    }
-    .micro .m b{display:block; font-size:13px}
-    .micro .m small{color:var(--muted); font-weight:800}
-
-    .heroRight{
-      padding:18px;
-      display:grid;
-      gap:12px;
-      align-content:start;
-    }
-    .feature{
-      border:1px solid rgba(0,0,0,.10);
-      background: rgba(255,255,255,.48);
-      border-radius: 14px;
-      padding:14px;
-      box-shadow: var(--shadow2);
-    }
-    .feature b{
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      text-transform:uppercase;
-      letter-spacing:1.1px;
-      font-size:12.5px;
-    }
-    .feature p{margin:6px 0 0; color:var(--muted); font-size:15.5px}
-
-    /* Sections */
-    section{padding:30px 0}
-    .sectionHead{
-      display:flex; justify-content:space-between; align-items:flex-end;
-      gap:14px;
-      margin-bottom:14px;
-    }
-    .sectionHead h2{
-      margin:0;
-      font-size:22px;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      text-transform:uppercase;
-      letter-spacing:1.2px;
-      font-weight:1000;
-    }
-    .sectionHead p{margin:0; color:var(--muted); font-size:14px; font-weight:800; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;}
-    .divider{height:1px; background: var(--line); margin: 22px 0}
-
-    /* Menu grid like screenshot but upgraded */
-    .menuGrid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px 24px;
-    }
-    .menuCard{
-      text-align:center;
-      transform: translateY(6px);
-      opacity:.0;
-      transition: .6s ease;
-    }
-    .menuCard.show{transform: translateY(0); opacity:1}
-    .photo{
-      width:100%;
-      aspect-ratio: 16 / 9;
       border-radius: var(--radius);
-      overflow:hidden;
-      background: rgba(0,0,0,.05);
       box-shadow: var(--shadow);
-      border: 1px solid rgba(0,0,0,.08);
+      padding:14px;
     }
-    .photo img{width:100%; height:100%; object-fit:cover; display:block; transform: scale(1.02)}
-    .title{
-      margin:16px 0 10px;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      font-weight:1000;
-      letter-spacing:1.2px;
+    .card b{
       text-transform:uppercase;
-      font-size: 14px;
+      letter-spacing:1px;
+      font-size:12px;
     }
-    .desc{
-      margin:0 auto;
-      max-width: 44ch;
-      color:#2a2a2a;
-      font-size: 18px;
-    }
-    .tags{
-      margin-top:14px;
-      font-style: italic;
-      color:#3a3a3a;
-      font-size: 18px;
-    }
-    .pricePill{
-      margin:12px auto 0;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid rgba(0,0,0,.14);
-      background: rgba(255,255,255,.60);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      font-weight:1000;
-      font-size:13px;
-    }
-
-    /* Packages */
-    .pkgGrid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:12px;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    }
-    .pkg{
-      border:1px solid rgba(0,0,0,.10);
-      background: rgba(255,255,255,.55);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow2);
-      padding:16px;
-    }
-    .pkg b{display:block; text-transform:uppercase; letter-spacing:1.1px; font-size:12.5px}
-    .pkg h3{margin:8px 0 8px; font-size:18px}
-    .pkg p{margin:0; color:var(--muted); font-weight:800}
-    .pkg .money{
-      margin-top:12px;
-      font-weight:1100;
+    .card h3{margin:8px 0 8px; font-size:18px}
+    .card p{margin:0; color:var(--muted); font-weight:800}
+    .money{
+      margin-top:10px;
       display:inline-block;
-      padding:8px 12px;
+      padding:8px 10px;
       border-radius:999px;
-      background: rgba(0,0,0,.06);
       border:1px solid rgba(0,0,0,.12);
+      background: rgba(0,0,0,.06);
+      font-weight:1000;
     }
 
-    /* Reviews */
-    .revGrid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:12px;
+    /* Order form */
+    form{
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
-    .rev{
-      border:1px solid rgba(0,0,0,.10);
-      background: rgba(255,255,255,.55);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow2);
-      padding:16px;
-    }
-    .stars{letter-spacing:2px}
-    .rev p{margin:10px 0 0; color:#2a2a2a; font-weight:800}
-    .rev small{display:block; margin-top:10px; color:var(--muted); font-weight:900}
-
-    /* Order */
-    .orderGrid{
+    .row{
       display:grid;
       grid-template-columns: 1fr 1fr;
-      gap:12px;
-      align-items:start;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      gap:10px;
     }
-    .box{
-      border:1px solid rgba(0,0,0,.10);
-      background: rgba(255,255,255,.55);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow2);
-      padding:16px;
-    }
-    .box h3{
-      margin:0 0 10px;
-      text-transform:uppercase;
-      letter-spacing:1.1px;
-      font-size:13px;
+    label{
+      display:block;
       font-weight:1000;
+      font-size:12.5px;
+      margin:10px 0 6px;
+      text-transform:uppercase;
+      letter-spacing:1px;
     }
-    label{display:block; font-weight:1000; font-size:12.5px; margin:10px 0 6px}
     input, textarea{
       width:100%;
       padding:12px;
@@ -354,397 +315,239 @@
       font-weight:850;
     }
     textarea{min-height:120px; resize:vertical}
-    .row{display:grid; grid-template-columns: 1fr 1fr; gap:10px}
-    .note{margin-top:10px; color:var(--muted); font-weight:800; font-size:13px}
+
     .footer{
-      padding:20px 0 52px;
-      border-top:1px solid var(--line);
+      margin-top:20px;
       color:var(--muted);
-      text-align:center;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      font-weight:800;
       font-size:13px;
+      font-weight:800;
+      text-align:center;
     }
 
-    /* Floating WhatsApp */
-    .fab{
-      position:fixed;
-      right:16px;
-      bottom:16px;
-      z-index:90;
-      display:flex;
-      gap:10px;
-      align-items:center;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    }
-    .fab .hint{
-      padding:10px 12px;
-      border-radius:999px;
-      background: rgba(251,247,238,.92);
-      border:1px solid rgba(0,0,0,.14);
-      box-shadow: var(--shadow2);
-      font-weight:950;
-      display:none;
-    }
-    .fab a{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:12px 14px;
-      border-radius:999px;
-      background:#111;
-      color:#fff;
-      text-decoration:none;
-      border:1px solid #111;
-      box-shadow: var(--shadow);
-      font-weight:1000;
-    }
-    .fab a:hover{filter:brightness(1.06)}
-
+    /* Responsive */
     @media (max-width: 980px){
-      .hero{grid-template-columns:1fr}
-      .micro{grid-template-columns:1fr}
-      .menuGrid{grid-template-columns:1fr}
-      .pkgGrid{grid-template-columns:1fr}
-      .revGrid{grid-template-columns:1fr}
-      .orderGrid{grid-template-columns:1fr}
-      .fab .hint{display:block}
-    }
-    @media (max-width: 700px){
-      .links{display:none}
+      .app{grid-template-columns: 1fr}
+      aside{position:relative; height:auto; border-right:none; border-bottom:1px solid var(--line)}
+      main{padding:18px 16px 60px}
+      .container{width:min(900px, 100%)}
+      .cards{grid-template-columns:1fr}
+      .row{grid-template-columns:1fr}
     }
   </style>
 </head>
 
 <body>
-  <!-- ✅ EDIT THESE -->
+  <!-- ✅ EDIT HERE -->
   <script>
     const BRAND_NAME = "Nisa Catering";
     const CITY = "Atlanta, GA";
     const WHATSAPP_NUMBER = "+14704201001"; // change if needed
   </script>
 
-  <!-- Topbar -->
-  <div class="topbar">
-    <div class="container">
-      <div class="nav">
-        <div class="brand">
-          <div class="seal">N</div>
-          <div class="brandTxt">
-            <b id="brandOut">Nisa Catering</b>
-            <small id="cityOut">Atlanta, GA • Afghan Catering</small>
-          </div>
+  <div class="app">
+    <!-- SIDEBAR -->
+    <aside>
+      <div class="brand">
+        <div class="seal">N</div>
+        <div class="brandTxt">
+          <b id="brandSide">Nisa Catering</b>
+          <small id="citySide">Atlanta, GA • Afghan Catering</small>
         </div>
-
-        <div class="links">
-          <a href="#menu">Menu</a>
-          <a href="#packages">Packages</a>
-          <a href="#gallery">Gallery</a>
-          <a href="#reviews">Reviews</a>
-          <a href="#order">Order</a>
-        </div>
-
-        <a class="btn dark" id="waTop" href="#">WhatsApp Order</a>
       </div>
-    </div>
-  </div>
 
-  <!-- Hero -->
-  <header>
-    <div class="container">
-      <div class="hero">
-        <div class="panel heroLeft">
-          <span class="kicker">★ Elegant Afghan Catering</span>
-          <div class="h1">A modern menu with <span>classic Afghan taste</span>.</div>
+      <nav class="menu" aria-label="Sidebar navigation">
+        <a href="#home" class="active">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#packages">Packages</a>
+        <a href="#order">Order</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="sideBox">
+        <b>Fast Order</b>
+        <p>Tap WhatsApp, send date + guests + items.</p>
+        <a class="btn" id="waSide" href="#">WhatsApp</a>
+        <a class="btn ghost" id="callSide" href="#">Call</a>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main>
+      <div class="container">
+
+        <!-- HOME -->
+        <section id="home">
+          <span class="kicker">Elegant Afghan Catering</span>
+          <h1>Simple. Clean. <span>Premium</span>.</h1>
           <p class="lead">
-            Catering for weddings, parties, and events in <b id="cityHero">Atlanta, GA</b>.
-            Clean presentation, consistent flavor, and fast ordering via WhatsApp.
+            Catering for parties and events in <b id="cityMain">Atlanta, GA</b>.
+            Authentic Afghan dishes with clean packaging and easy ordering.
           </p>
 
-          <div class="actions">
-            <a class="btn gold" href="#order">Request a Quote</a>
-            <a class="btn" href="#menu">Explore Menu</a>
-            <a class="btn dark" id="waHero" href="#">Order on WhatsApp</a>
+          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;">
+            <a class="btn dark" id="waHome" href="#" style="width:auto;">Order on WhatsApp</a>
+            <a class="btn ghost" href="#menu" style="width:auto;">View Menu</a>
           </div>
+        </section>
 
-          <div class="micro">
-            <div class="m"><b>Events</b><small>10–200+ guests</small></div>
-            <div class="m"><b>Delivery</b><small>Pickup / Drop-off</small></div>
-            <div class="m"><b>Ordering</b><small>24h notice recommended</small></div>
-          </div>
-        </div>
-
-        <div class="panel heroRight">
-          <div class="feature">
-            <b>Signature</b>
-            <p>Qabuli, Borani, Mantu, Aushak—made with care.</p>
-          </div>
-          <div class="feature">
-            <b>Presentation</b>
-            <p>Clean packaging and event-ready trays by request.</p>
-          </div>
-          <div class="feature">
-            <b>Fast Quote</b>
-            <p>Send your date + guests + menu items on WhatsApp.</p>
-          </div>
-          <div class="feature">
-            <b>Location</b>
-            <p><span id="cityHero2">Atlanta, GA</span></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="divider"></div>
-    </div>
-  </header>
-
-  <!-- MENU -->
-  <section id="menu">
-    <div class="container">
-      <div class="sectionHead">
-        <div>
+        <!-- MENU -->
+        <section id="menu">
           <h2>Menu</h2>
-          <p>Photo-first menu like your example, with elegant descriptions.</p>
-        </div>
-        <a class="btn" href="#order">Order</a>
-      </div>
+          <p class="sub">Clean list (not crowded). You can add more items later.</p>
 
-      <div class="menuGrid" id="menuCards">
-        <article class="menuCard">
-          <div class="photo"><img src="images/borani.jpg" alt="Borani"></div>
-          <div class="title">BORANI</div>
-          <p class="desc">Roasted eggplant with sautéed tomatoes, onions, and fragrant spices—finished with dried mint.</p>
-          <div class="tags">Vegan, Gluten-Free, Dairy-Free</div>
-          <div class="pricePill">From $8</div>
-        </article>
+          <div class="menuGrid">
+            <div class="item">
+              <div>
+                <b>Qabuli Rice</b>
+                <small>Aromatic basmati rice with raisins and spices.</small>
+              </div>
+              <div class="pill">$14</div>
+            </div>
 
-        <article class="menuCard">
-          <div class="photo"><img src="images/qabuli.jpg" alt="Qabuli Rice"></div>
-          <div class="title">QABULI RICE</div>
-          <p class="desc">Aromatic basmati rice with caramelized onions, raisins, and a sweet-savory spice blend.</p>
-          <div class="tags">Gluten-Free, Dairy-Free</div>
-          <div class="pricePill">From $14</div>
-        </article>
+            <div class="item">
+              <div>
+                <b>Afghan Chicken</b>
+                <small>Marinated chicken with lemon, garlic, and spices.</small>
+              </div>
+              <div class="pill">$13</div>
+            </div>
 
-        <article class="menuCard">
-          <div class="photo"><img src="images/chicken.jpg" alt="Afghan Chicken"></div>
-          <div class="title">AFGHAN CHICKEN</div>
-          <p class="desc">Juicy marinated chicken with lemon, garlic, and traditional spices for a bold finish.</p>
-          <div class="tags">Gluten-Free, Dairy-Free</div>
-          <div class="pricePill">From $13</div>
-        </article>
+            <div class="item">
+              <div>
+                <b>Borani Banjan</b>
+                <small>Roasted eggplant with tomato and yogurt sauce.</small>
+              </div>
+              <div class="pill">$8</div>
+            </div>
 
-        <article class="menuCard">
-          <div class="photo"><img src="images/bolani.jpg" alt="Bolani"></div>
-          <div class="title">BOLANI</div>
-          <p class="desc">Stuffed flatbread with potato and herbs, pan-fried until golden—perfect for gatherings.</p>
-          <div class="tags">Vegetarian Option Available</div>
-          <div class="pricePill">From $3</div>
-        </article>
+            <div class="item">
+              <div>
+                <b>Bolani</b>
+                <small>Stuffed flatbread (potato/leek), pan-fried golden.</small>
+              </div>
+              <div class="pill">$3</div>
+            </div>
 
-        <article class="menuCard">
-          <div class="photo"><img src="images/mantu.jpg" alt="Mantu"></div>
-          <div class="title">MANTU</div>
-          <p class="desc">Steamed dumplings topped with yogurt and tomato sauce—ideal for special occasions.</p>
-          <div class="tags">Order Ahead Recommended</div>
-          <div class="pricePill">From $16</div>
-        </article>
+            <div class="item">
+              <div>
+                <b>Mantu</b>
+                <small>Steamed dumplings (order ahead recommended).</small>
+              </div>
+              <div class="pill">$16</div>
+            </div>
 
-        <article class="menuCard">
-          <div class="photo"><img src="images/shawarma.jpg" alt="Shawarma"></div>
-          <div class="title">SHAWARMA</div>
-          <p class="desc">Tender wrap with house sauce and fresh salad—great for quick group orders.</p>
-          <div class="tags">Popular Choice</div>
-          <div class="pricePill">From $10</div>
-        </article>
-      </div>
-    </div>
-  </section>
+            <div class="item">
+              <div>
+                <b>Shawarma</b>
+                <small>Wrap with house sauce and fresh salad.</small>
+              </div>
+              <div class="pill">$10</div>
+            </div>
+          </div>
+        </section>
 
-  <!-- PACKAGES -->
-  <section id="packages">
-    <div class="container">
-      <div class="sectionHead">
-        <div>
+        <!-- PACKAGES -->
+        <section id="packages">
           <h2>Packages</h2>
-          <p>Simple packages that sell fast for events.</p>
-        </div>
-      </div>
+          <p class="sub">Simple packages that customers understand fast.</p>
 
-      <div class="pkgGrid">
-        <div class="pkg">
-          <b>Package</b>
-          <h3>10 Guests</h3>
-          <p>Qabuli + Chicken + Borani + Salad + Bread</p>
-          <div class="money">Starting at $140</div>
-        </div>
-        <div class="pkg">
-          <b>Package</b>
-          <h3>20 Guests</h3>
-          <p>Qabuli + Chicken + Borani + Bolani + Salad + Bread</p>
-          <div class="money">Starting at $270</div>
-        </div>
-        <div class="pkg">
-          <b>Premium</b>
-          <h3>Weddings / Corporate</h3>
-          <p>Mantu/Aushak + multiple dishes + tray/setup options</p>
-          <div class="money">Quote</div>
-        </div>
-      </div>
-    </div>
-  </section>
+          <div class="cards">
+            <div class="card">
+              <b>Package</b>
+              <h3>10 Guests</h3>
+              <p>Qabuli + Chicken + Borani + Salad + Bread</p>
+              <div class="money">From $140</div>
+            </div>
 
-  <!-- GALLERY -->
-  <section id="gallery">
-    <div class="container">
-      <div class="sectionHead">
-        <div>
-          <h2>Gallery</h2>
-          <p>Add your real photos here (same “images/…” folder).</p>
-        </div>
-      </div>
+            <div class="card">
+              <b>Package</b>
+              <h3>20 Guests</h3>
+              <p>Qabuli + Chicken + Borani + Bolani + Salad + Bread</p>
+              <div class="money">From $270</div>
+            </div>
 
-      <div class="menuGrid">
-        <article class="menuCard show">
-          <div class="photo"><img src="images/qabuli.jpg" alt="Gallery Qabuli"></div>
-          <div class="title">QABULI</div>
-          <div class="tags">Signature</div>
-        </article>
-        <article class="menuCard show">
-          <div class="photo"><img src="images/bolani.jpg" alt="Gallery Bolani"></div>
-          <div class="title">BOLANI</div>
-          <div class="tags">Party Favorite</div>
-        </article>
-        <article class="menuCard show">
-          <div class="photo"><img src="images/mantu.jpg" alt="Gallery Mantu"></div>
-          <div class="title">MANTU</div>
-          <div class="tags">Classic</div>
-        </article>
-      </div>
-    </div>
-  </section>
+            <div class="card">
+              <b>Premium</b>
+              <h3>Large Events</h3>
+              <p>Mantu/Aushak + multiple dishes + setup options</p>
+              <div class="money">Quote</div>
+            </div>
+          </div>
+        </section>
 
-  <!-- REVIEWS -->
-  <section id="reviews">
-    <div class="container">
-      <div class="sectionHead">
-        <div>
-          <h2>Reviews</h2>
-          <p>Replace names with your customers later.</p>
-        </div>
-      </div>
+        <!-- ORDER -->
+        <section id="order">
+          <h2>Order</h2>
+          <p class="sub">Fill this form → it opens WhatsApp with your message ready.</p>
 
-      <div class="revGrid">
-        <div class="rev">
-          <div class="stars">★★★★★</div>
-          <p>“Beautiful presentation and the Qabuli was perfect. Everyone asked where we ordered from.”</p>
-          <small>— Sarah • Atlanta</small>
-        </div>
-        <div class="rev">
-          <div class="stars">★★★★★</div>
-          <p>“Very clean packaging and on-time delivery. The Bolani and Mantu were a hit.”</p>
-          <small>— Omar • Decatur</small>
-        </div>
-        <div class="rev">
-          <div class="stars">★★★★★</div>
-          <p>“Authentic taste! Great communication and easy ordering on WhatsApp.”</p>
-          <small>— Fatima • Clarkston</small>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ORDER -->
-  <section id="order">
-    <div class="container">
-      <div class="sectionHead">
-        <div>
-          <h2>Order / Quote</h2>
-          <p>Fill the form → WhatsApp opens with your message ready.</p>
-        </div>
-      </div>
-
-      <div class="orderGrid">
-        <div class="box">
-          <h3>Request Form</h3>
           <form id="orderForm">
             <div class="row">
               <div>
                 <label>Your Name</label>
-                <input id="name" type="text" placeholder="e.g., Ahmad" required>
+                <input id="name" type="text" placeholder="e.g., Ahmad" required />
               </div>
               <div>
                 <label>Your Phone</label>
-                <input id="userPhone" type="text" placeholder="e.g., 470-xxx-xxxx" required>
+                <input id="userPhone" type="text" placeholder="e.g., 470-xxx-xxxx" required />
               </div>
             </div>
 
             <div class="row">
               <div>
-                <label>Event Date (optional)</label>
-                <input id="date" type="text" placeholder="e.g., March 10">
+                <label>Date (optional)</label>
+                <input id="date" type="text" placeholder="e.g., Feb 25" />
               </div>
               <div>
                 <label>Guests</label>
-                <input id="guests" type="number" min="1" placeholder="e.g., 30" required>
+                <input id="guests" type="number" min="1" placeholder="e.g., 25" required />
               </div>
             </div>
 
-            <label>Menu Items</label>
-            <input id="items" type="text" placeholder="e.g., Qabuli, Chicken, Bolani" required>
+            <label>Items</label>
+            <input id="items" type="text" placeholder="e.g., Qabuli, Chicken, Bolani" required />
 
             <label>Address (optional)</label>
-            <input id="address" type="text" placeholder="Delivery address (optional)">
+            <input id="address" type="text" placeholder="Delivery address (optional)" />
 
             <label>Notes (optional)</label>
-            <textarea id="notes" placeholder="Setup, trays, warmers, timing, etc."></textarea>
+            <textarea id="notes" placeholder="Any special requests?"></textarea>
 
-            <button class="btn dark" type="submit">Send on WhatsApp</button>
-            <div class="note">Tip: Add your photos inside a folder named <b>images</b> in GitHub.</div>
+            <button class="btn dark" type="submit" style="width:auto;">Send on WhatsApp</button>
+            <p class="sub" style="margin-top:10px;">Tip: Keep it simple. Add only top 6–10 items first.</p>
           </form>
-        </div>
+        </section>
 
-        <div class="box">
-          <h3>Contact</h3>
-          <p style="margin:0; color:var(--muted); font-weight:900;">
-            <b id="brandC">Nisa Catering</b><br>
-            <span id="cityC">Atlanta, GA</span><br><br>
-            WhatsApp: <a id="waContact" href="#">Open Chat</a><br>
-            Phone: <a id="telContact" href="#">Call</a>
+        <!-- CONTACT -->
+        <section id="contact">
+          <h2>Contact</h2>
+          <p class="sub" style="margin-bottom:0;">
+            <b id="brandContact">Nisa Catering</b> • <span id="cityContact">Atlanta, GA</span><br>
+            WhatsApp: <a id="waContact" href="#" style="text-decoration:underline;">Open Chat</a><br>
+            Phone: <a id="telContact" href="#" style="text-decoration:underline;">Call</a>
           </p>
 
-          <div class="divider" style="margin:14px 0;"></div>
+          <div class="footer">
+            © <span id="year"></span> <span id="brandFooter">Nisa Catering</span>. All rights reserved.
+          </div>
+        </section>
 
-          <p style="margin:0; color:var(--muted); font-weight:900;">
-            <b>How to order:</b><br>
-            Send date + guests + menu items + address.
-          </p>
-        </div>
       </div>
-    </div>
-  </section>
-
-  <div class="fab">
-    <div class="hint">Order fast</div>
-    <a id="waFab" href="#">WhatsApp</a>
-  </div>
-
-  <div class="footer">
-    © <span id="year"></span> <span id="brandF">Nisa Catering</span>. All rights reserved.
+    </main>
   </div>
 
   <script>
-    // Brand text
-    const brandEls = ["brandOut","brandC","brandF"];
-    brandEls.forEach(id => document.getElementById(id).textContent = BRAND_NAME);
+    // Fill text
+    document.getElementById("brandSide").textContent = BRAND_NAME;
+    document.getElementById("brandContact").textContent = BRAND_NAME;
+    document.getElementById("brandFooter").textContent = BRAND_NAME;
 
-    document.getElementById("cityOut").textContent = `${CITY} • Afghan Catering`;
-    document.getElementById("cityHero").textContent = CITY;
-    document.getElementById("cityHero2").textContent = CITY;
-    document.getElementById("cityC").textContent = CITY;
+    document.getElementById("citySide").textContent = `${CITY} • Afghan Catering`;
+    document.getElementById("cityMain").textContent = CITY;
+    document.getElementById("cityContact").textContent = CITY;
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // WhatsApp links
+    // Links
     const waNumber = WHATSAPP_NUMBER.replace("+", "");
     const waBase = "https://wa.me/" + waNumber;
 
@@ -753,22 +556,34 @@
       `Name:\nPhone:\nDate:\nGuests:\nMenu items:\nAddress:\nNotes:`
     );
 
-    document.getElementById("waTop").href = `${waBase}?text=${preset}`;
-    document.getElementById("waHero").href = `${waBase}?text=${preset}`;
-    document.getElementById("waContact").href = `${waBase}?text=${preset}`;
-    document.getElementById("waFab").href = `${waBase}?text=${preset}`;
+    const setHref = (id, href) => {
+      const el = document.getElementById(id);
+      if(el) el.href = href;
+    };
 
-    // Phone
-    document.getElementById("telContact").href = "tel:" + WHATSAPP_NUMBER;
+    setHref("waSide", `${waBase}?text=${preset}`);
+    setHref("waHome", `${waBase}?text=${preset}`);
+    setHref("waContact", `${waBase}?text=${preset}`);
 
-    // Animate menu cards on scroll
-    const cards = document.querySelectorAll(".menuCard");
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting) e.target.classList.add("show");
+    setHref("callSide", "tel:" + WHATSAPP_NUMBER);
+    setHref("telContact", "tel:" + WHATSAPP_NUMBER);
+
+    // Highlight active menu item while scrolling
+    const navLinks = Array.from(document.querySelectorAll(".menu a"));
+    const sections = navLinks.map(a => document.querySelector(a.getAttribute("href")));
+
+    const spy = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          navLinks.forEach(a=>a.classList.remove("active"));
+          const id = "#" + entry.target.id;
+          const active = navLinks.find(a => a.getAttribute("href") === id);
+          if(active) active.classList.add("active");
+        }
       });
-    }, {threshold: 0.12});
-    cards.forEach(c=>io.observe(c));
+    }, {threshold: 0.5});
+
+    sections.forEach(s => s && spy.observe(s));
 
     // Form -> WhatsApp message
     document.getElementById("orderForm").addEventListener("submit", (e)=>{
