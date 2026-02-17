@@ -1,1141 +1,321 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>VIP Mobile Car Wash | کارواش سیار VIP</title>
-  <meta name="description" content="کارواش سیار VIP — شستشوی حرفه‌ای در محل، دیتیلینگ، واکس، صفرشویی. رزرو سریع با واتساپ." />
-  <style>
-    :root{
-      --bg:#070A10;
-      --panel:#0B1020;
-      --panel2:#0D1530;
-      --text:#EAF0FF;
-      --muted:#A9B5D6;
-      --line:rgba(255,255,255,.10);
-      --glow: 0 0 30px rgba(122,162,247,.25);
-      --accent:#7AA2F7;
-      --accent2:#22D3EE;
-      --good:#34D399;
-      --warn:#FBBF24;
-      --danger:#FB7185;
-      --shadow: 0 25px 60px rgba(0,0,0,.55);
-      --radius:22px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans Arabic", "Noto Naskh Arabic", sans-serif;
-      background:
-        radial-gradient(1200px 600px at 80% -10%, rgba(122,162,247,.25), transparent 55%),
-        radial-gradient(900px 500px at 10% 10%, rgba(34,211,238,.16), transparent 60%),
-        radial-gradient(900px 500px at 50% 120%, rgba(52,211,153,.12), transparent 60%),
-        var(--bg);
-      color:var(--text);
-      overflow-x:hidden;
-    }
+<title>Nisa Catering | Afghan Food Catering</title>
 
-    a{color:inherit; text-decoration:none}
-    .container{width:min(1200px, 92vw); margin:0 auto}
+<meta name="description" content="Nisa Catering - Afghan food catering in Atlanta. Qabuli, Chicken, Bolani, Mantu, Aushak, Shawarma, Samosa and more. Order online." />
 
-    /* NAV */
-    .nav{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(14px);
-      background: rgba(7,10,16,.55);
-      border-bottom:1px solid var(--line);
-    }
-    .nav-inner{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0;
-      gap:14px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:12px;
-      min-width: 240px;
-    }
-    .logo{
-      width:44px; height:44px; border-radius:14px;
-      background:
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,.35), transparent 45%),
-        linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: var(--glow);
-      position:relative;
-      overflow:hidden;
-    }
-    .logo:after{
-      content:"";
-      position:absolute; inset:-40%;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,.35), transparent);
-      transform: rotate(25deg);
-      animation: shine 4.5s infinite;
-    }
-    @keyframes shine{
-      0%{transform: translateX(-60%) rotate(25deg)}
-      35%{transform: translateX(60%) rotate(25deg)}
-      100%{transform: translateX(60%) rotate(25deg)}
-    }
-    .brand h1{
-      margin:0; font-size:14px; letter-spacing:.2px; line-height:1.1;
-    }
-    .brand small{display:block; color:var(--muted); font-weight:500; margin-top:4px}
-    .nav-links{display:flex; gap:16px; flex-wrap:wrap; justify-content:center}
-    .nav-links a{
-      padding:10px 12px;
-      border-radius:999px;
-      color:var(--muted);
-      border:1px solid transparent;
-      transition:.2s;
-      font-weight:600;
-      font-size:13px;
-    }
-    .nav-links a:hover{
-      color:var(--text);
-      border-color: var(--line);
-      background: rgba(255,255,255,.04);
-    }
-    .nav-cta{display:flex; gap:10px; min-width:240px; justify-content:flex-end}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      padding:11px 14px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      color:var(--text);
-      font-weight:800;
-      font-size:13px;
-      transition:.2s;
-      cursor:pointer;
-      box-shadow: 0 12px 30px rgba(0,0,0,.25);
-      user-select:none;
-    }
-    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.06)}
-    .btn.primary{
-      border-color: rgba(122,162,247,.35);
-      background: linear-gradient(135deg, rgba(122,162,247,.20), rgba(34,211,238,.12));
-      box-shadow: var(--glow), 0 18px 40px rgba(0,0,0,.35);
-    }
-    .btn.primary:hover{transform: translateY(-1px) scale(1.01)}
-    .icon{
-      width:16px; height:16px; display:inline-block;
-      vertical-align:middle;
-      fill:currentColor;
-      opacity:.95;
-    }
+<style>
 
-    /* HERO */
-    .hero{position:relative; padding: 72px 0 36px;}
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.25fr .75fr;
-      gap:24px;
-      align-items:stretch;
-    }
-    .hero-left{
-      padding:34px;
-      border-radius: var(--radius);
-      border:1px solid var(--line);
-      background:
-        radial-gradient(900px 420px at 10% 0%, rgba(122,162,247,.18), transparent 60%),
-        radial-gradient(700px 380px at 80% 20%, rgba(34,211,238,.12), transparent 60%),
-        rgba(255,255,255,.03);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-      min-height: 420px;
-    }
-    .hero-left:before{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(280px 180px at 15% 20%, rgba(34,211,238,.25), transparent 60%),
-        radial-gradient(280px 180px at 75% 10%, rgba(122,162,247,.25), transparent 60%),
-        radial-gradient(300px 200px at 40% 120%, rgba(52,211,153,.18), transparent 55%);
-      filter: blur(18px);
-      opacity:.7;
-      pointer-events:none;
-    }
-    .hero-content{position:relative; z-index:1}
-    .badge{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:8px 12px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      border-radius:999px;
-      color:var(--muted);
-      font-weight:800;
-      font-size:12px;
-      letter-spacing:.2px;
-    }
-    .badge .dot{
-      width:8px; height:8px; border-radius:999px;
-      background: var(--good);
-      box-shadow: 0 0 18px rgba(52,211,153,.55);
-    }
-    .hero h2{
-      margin:18px 0 10px;
-      font-size: clamp(30px, 4.2vw, 54px);
-      line-height:1.05;
-      letter-spacing:-.6px;
-    }
-    .hero h2 span{
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text;
-      background-clip:text;
-      color:transparent;
-    }
-    .hero p{
-      margin:0;
-      color:var(--muted);
-      font-size: clamp(14px, 1.35vw, 18px);
-      line-height:1.9;
-      max-width: 56ch;
-    }
-    .hero-actions{
-      display:flex; gap:12px; flex-wrap:wrap;
-      margin-top:18px;
-    }
-    .stats{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:12px;
-      margin-top:18px;
-    }
-    .stat{
-      padding:12px 14px;
-      border-radius:18px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-    }
-    .stat b{display:block; font-size:18px}
-    .stat small{color:var(--muted); font-weight:700}
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background:#0b0f14;
+  color:white;
+  line-height:1.6;
+}
 
-    .hero-right{display:grid; gap:14px;}
-    .card{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .card-top{
-      padding:18px 18px 12px;
-      display:flex; align-items:center; justify-content:space-between;
-      gap:10px;
-      border-bottom:1px solid var(--line);
-      background:
-        radial-gradient(520px 220px at 50% -20%, rgba(122,162,247,.16), transparent 60%),
-        rgba(255,255,255,.02);
-    }
-    .card-top h3{margin:0; font-size:14px; letter-spacing:.2px}
-    .pill{
-      font-size:12px; font-weight:900; color:rgba(255,255,255,.9);
-      padding:8px 10px; border-radius:999px;
-      border:1px solid rgba(34,211,238,.28);
-      background: rgba(34,211,238,.10);
-      white-space:nowrap;
-    }
-    .card-body{padding:16px 18px}
-    .quick{display:grid; gap:10px; margin-top:6px;}
-    .quick .row{
-      display:flex; gap:10px; align-items:flex-start;
-      padding:10px 12px;
-      border:1px solid var(--line);
-      border-radius:16px;
-      background: rgba(255,255,255,.02);
-    }
-    .quick .row b{display:block; font-size:13px}
-    .quick .row small{color:var(--muted); font-weight:700; line-height:1.6}
-    .mini-ico{
-      width:34px; height:34px; border-radius:14px;
-      background: linear-gradient(135deg, rgba(122,162,247,.28), rgba(34,211,238,.18));
-      border:1px solid rgba(255,255,255,.10);
-      display:grid; place-items:center;
-      box-shadow: var(--glow);
-      flex:0 0 auto;
-    }
+/* Header */
+header{
+  background:#111827;
+  padding:20px;
+}
 
-    section{padding: 44px 0}
-    .section-head{
-      display:flex; align-items:flex-end; justify-content:space-between;
-      gap:14px; flex-wrap:wrap;
-      margin-bottom:16px;
-    }
-    .section-head h3{
-      margin:0;
-      font-size: clamp(20px, 2.2vw, 30px);
-      letter-spacing:-.3px;
-    }
-    .section-head p{
-      margin:0;
-      color:var(--muted);
-      max-width: 70ch;
-      line-height:1.8;
-      font-weight:650;
-    }
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
 
-    .grid-3{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
-    .grid-2{display:grid; grid-template-columns: repeat(2, 1fr); gap:14px}
+.logo{
+  font-size:22px;
+  font-weight:bold;
+  color:#fbbf24;
+}
 
-    .tile{
-      padding:18px;
-      border-radius: var(--radius);
-      border:1px solid var(--line);
-      background:
-        radial-gradient(520px 220px at 20% 0%, rgba(34,211,238,.12), transparent 60%),
-        rgba(255,255,255,.03);
-      box-shadow: var(--shadow);
-      min-height: 160px;
-      position:relative;
-      overflow:hidden;
-    }
-    .tile:after{
-      content:"";
-      position:absolute; inset:-2px;
-      background: radial-gradient(240px 140px at 90% 10%, rgba(122,162,247,.16), transparent 60%);
-      filter: blur(18px);
-      opacity:.7;
-      pointer-events:none;
-    }
-    .tile .top{
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-      position:relative; z-index:1;
-    }
-    .tile h4{margin:0; font-size:15px}
-    .tile p{margin:10px 0 0; color:var(--muted); line-height:1.85; font-weight:650; position:relative; z-index:1}
+nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:15px;
+}
 
-    /* PRICING */
-    .pricing{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
-      align-items:stretch;
-    }
-    .plan{
-      padding:20px;
-      border-radius: var(--radius);
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      box-shadow: var(--shadow);
-      position:relative;
-      overflow:hidden;
-    }
-    .plan.featured{
-      border-color: rgba(122,162,247,.35);
-      background:
-        radial-gradient(720px 320px at 20% 0%, rgba(122,162,247,.18), transparent 60%),
-        radial-gradient(520px 260px at 90% 30%, rgba(34,211,238,.12), transparent 60%),
-        rgba(255,255,255,.03);
-      box-shadow: var(--glow), var(--shadow);
-      transform: translateY(-6px);
-    }
-    .plan h4{margin:0; font-size:16px}
-    .price{
-      margin:10px 0 8px;
-      font-size: 36px;
-      font-weight: 1000;
-      letter-spacing:-.8px;
-    }
-    .price span{font-size:12px; color:var(--muted); font-weight:800}
-    ul.features{margin:12px 0 0; padding:0 16px 0 0; color:var(--muted); line-height:2}
-    ul.features li{margin:6px 0; font-weight:650}
-    .plan .btn{width:100%; margin-top:14px; justify-content:center}
+nav a:hover{
+  color:#fbbf24;
+}
 
-    /* GALLERY */
-    .gallery{
-      display:grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap:10px;
-    }
-    .shot{
-      border-radius:18px;
-      border:1px solid var(--line);
-      background:
-        radial-gradient(220px 180px at 30% 30%, rgba(255,255,255,.10), transparent 55%),
-        linear-gradient(135deg, rgba(122,162,247,.16), rgba(34,211,238,.10));
-      aspect-ratio: 1 / 1;
-      position:relative;
-      overflow:hidden;
-      box-shadow: 0 18px 40px rgba(0,0,0,.45);
-    }
-    .shot:before{
-      content:"";
-      position:absolute; inset:-40%;
-      background: linear-gradient(115deg, transparent, rgba(255,255,255,.24), transparent);
-      transform: rotate(20deg) translateX(-60%);
-      animation: sweep 6s infinite;
-    }
-    @keyframes sweep{
-      0%{transform: rotate(20deg) translateX(-80%)}
-      35%{transform: rotate(20deg) translateX(80%)}
-      100%{transform: rotate(20deg) translateX(80%)}
-    }
-    .shot .tag{
-      position:absolute; bottom:10px; right:10px;
-      font-size:12px;
-      font-weight:950;
-      padding:7px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(0,0,0,.25);
-      backdrop-filter: blur(10px);
-    }
-    .shot.wide{grid-column: span 2; aspect-ratio: 2 / 1}
-    .shot.tall{grid-row: span 2; aspect-ratio: 1 / 2}
+.btn{
+  background:#fbbf24;
+  color:black;
+  padding:10px 15px;
+  border-radius:6px;
+  font-weight:bold;
+}
 
-    /* TESTIMONIALS */
-    .testimonials{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
-    .quote{
-      padding:18px;
-      border-radius: var(--radius);
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      box-shadow: var(--shadow);
-    }
-    .quote p{margin:0; color:var(--text); line-height:1.9; font-weight:700}
-    .quote .who{margin-top:12px; color:var(--muted); font-weight:850; display:flex; align-items:center; justify-content:space-between}
-    .stars{letter-spacing:2px; color: rgba(251,191,36,.95); font-weight:1000}
+/* Hero */
+.hero{
+  padding:60px 20px;
+  text-align:center;
+}
 
-    /* FAQ */
-    .faq{display:grid; grid-template-columns: 1.1fr .9fr; gap:14px; align-items:start;}
-    details{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      border-radius: 18px;
-      padding: 14px 14px;
-      box-shadow: 0 16px 36px rgba(0,0,0,.35);
-    }
-    details + details{margin-top:10px}
-    summary{
-      cursor:pointer;
-      font-weight:900;
-      color: var(--text);
-      list-style:none;
-      display:flex; align-items:center; justify-content:space-between;
-      gap:10px;
-    }
-    summary::-webkit-details-marker{display:none}
-    .faq p{margin:10px 0 0; color:var(--muted); line-height:1.9; font-weight:650}
-    .chev{
-      width:34px; height:34px; border-radius:12px;
-      display:grid; place-items:center;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      transition:.2s;
-      flex:0 0 auto;
-    }
-    details[open] .chev{transform: rotate(180deg)}
+.hero h1{
+  font-size:40px;
+}
 
-    /* CONTACT */
-    .contact{
-      display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap:14px;
-      align-items:stretch;
-    }
-    .form{
-      padding:18px;
-      border-radius: var(--radius);
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      box-shadow: var(--shadow);
-    }
-    label{display:block; font-weight:900; font-size:12px; color:var(--muted); margin:12px 0 8px}
-    input,select,textarea{
-      width:100%;
-      padding:12px 12px;
-      border-radius: 14px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(7,10,16,.45);
-      color:var(--text);
-      outline:none;
-      font-weight:750;
-    }
-    input:focus,select:focus,textarea:focus{
-      border-color: rgba(122,162,247,.45);
-      box-shadow: 0 0 0 4px rgba(122,162,247,.12);
-    }
-    textarea{min-height:110px; resize:vertical}
-    .form .actions{
-      display:flex; gap:10px; flex-wrap:wrap;
-      margin-top:14px;
-    }
-    .info{
-      padding:18px;
-      border-radius: var(--radius);
-      border:1px solid var(--line);
-      background:
-        radial-gradient(520px 220px at 20% 0%, rgba(52,211,153,.12), transparent 60%),
-        rgba(255,255,255,.03);
-      box-shadow: var(--shadow);
-      position:relative;
-      overflow:hidden;
-    }
-    .info h4{margin:0 0 10px; font-size:16px}
-    .info p{margin:0; color:var(--muted); line-height:1.9; font-weight:650}
-    .info .kpis{
-      display:grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap:10px;
-      margin-top:14px;
-    }
-    .kpi{
-      padding:12px;
-      border-radius:18px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.02);
-    }
-    .kpi b{display:block; font-size:13px}
-    .kpi small{color:var(--muted); font-weight:750}
+.hero p{
+  color:#cbd5e1;
+  max-width:600px;
+  margin:auto;
+}
 
-    footer{
-      padding: 24px 0 46px;
-      border-top:1px solid var(--line);
-      color:var(--muted);
-      text-align:center;
-      font-weight:750;
-    }
+/* Sections */
+section{
+  padding:50px 20px;
+  max-width:1000px;
+  margin:auto;
+}
 
-    /* FLOATING WHATSAPP */
-    .wa-float{
-      position:fixed;
-      left:18px; bottom:18px;
-      z-index:80;
-      display:flex; flex-direction:column; gap:10px;
-      align-items:flex-start;
-    }
-    .wa{
-      display:flex; align-items:center; gap:10px;
-      padding:12px 14px;
-      border-radius:999px;
-      border:1px solid rgba(52,211,153,.35);
-      background: rgba(52,211,153,.10);
-      box-shadow: 0 18px 40px rgba(0,0,0,.35);
-      font-weight:950;
-      color: var(--text);
-      backdrop-filter: blur(10px);
-    }
-    .wa small{display:block; font-weight:800; color: rgba(234,240,255,.85)}
-    .wa:hover{transform: translateY(-1px)}
-    .toTop{
-      display:none;
-      padding:11px 14px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.06);
-      font-weight:950;
-      cursor:pointer;
-    }
+h2{
+  text-align:center;
+  margin-bottom:30px;
+}
 
-    /* RESPONSIVE */
-    @media (max-width: 980px){
-      .hero-grid{grid-template-columns: 1fr}
-      .nav-cta{min-width:auto}
-      .brand{min-width:auto}
-      .grid-3{grid-template-columns: 1fr}
-      .grid-2{grid-template-columns: 1fr}
-      .pricing{grid-template-columns: 1fr}
-      .testimonials{grid-template-columns: 1fr}
-      .faq{grid-template-columns: 1fr}
-      .contact{grid-template-columns: 1fr}
-      .gallery{grid-template-columns: repeat(2, 1fr)}
-      .shot.wide{grid-column: span 2}
-      .shot.tall{grid-row: span 1; aspect-ratio: 1 / 1}
-      .plan.featured{transform:none}
-    }
+/* Menu */
+.menu{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
 
-    /* reveal animation */
-    .reveal{opacity:0; transform: translateY(12px); transition: .6s ease}
-    .reveal.show{opacity:1; transform:none}
-  </style>
+.item{
+  background:#111827;
+  padding:20px;
+  border-radius:10px;
+}
+
+.item span{
+  float:right;
+  color:#fbbf24;
+  font-weight:bold;
+}
+
+/* Order */
+.order-box{
+  background:#111827;
+  padding:30px;
+  border-radius:12px;
+}
+
+input,textarea{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border-radius:6px;
+  border:none;
+}
+
+/* Footer */
+footer{
+  background:#020617;
+  text-align:center;
+  padding:20px;
+  color:#94a3b8;
+}
+
+</style>
 </head>
 
 <body>
-  <!-- NAV -->
-  <div class="nav">
-    <div class="container nav-inner">
-      <a class="brand" href="#top">
-        <div class="logo" aria-hidden="true"></div>
-        <div>
-          <h1>VIP Mobile Car Wash</h1>
-          <small>کارواش سیار • دیتیلینگ • صفرشویی</small>
-        </div>
-      </a>
 
-      <div class="nav-links">
-        <a href="#services">خدمات</a>
-        <a href="#pricing">قیمت‌ها</a>
-        <a href="#gallery">گالری</a>
-        <a href="#reviews">نظرات</a>
-        <a href="#faq">سوالات</a>
-        <a href="#contact">رزرو</a>
-      </div>
+<!-- CHANGE PHONE NUMBER HERE -->
+<script>
+const phone = "+14704201001"; // Your number
+</script>
 
-      <div class="nav-cta">
-        <!-- ✅ شماره تماس اینجا ست -->
-        <a class="btn" href="tel:+14704201001" title="تماس">
-          <svg class="icon" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.07 21 3 13.93 3 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.59a1 1 0 01-.25 1.01l-2.2 2.19z"/></svg>
-          تماس
-        </a>
-        <a class="btn primary" href="#contact">
-          <svg class="icon" viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 11H7a1 1 0 010-2h5V7a1 1 0 012 0v5a1 1 0 01-1 1z"/></svg>
-          رزرو سریع
-        </a>
-      </div>
-    </div>
+<header>
+<nav>
+  <div class="logo">Nisa Catering</div>
+
+  <div>
+    <a href="#menu">Menu</a>
+    <a href="#order">Order</a>
+    <a href="#contact">Contact</a>
+    <a class="btn" id="waBtn">WhatsApp</a>
   </div>
+</nav>
+</header>
 
-  <!-- HERO -->
-  <header id="top" class="hero">
-    <div class="container hero-grid">
-      <div class="hero-left reveal">
-        <div class="hero-content">
-          <div class="badge"><span class="dot"></span> ۲۴/۷ رزرو آنلاین • سرویس در محل شما</div>
+<section class="hero">
 
-          <h2>
-            کارواش سیار <span>VIP</span><br/>
-            شستشوی لاکچری دربِ خانه
-          </h2>
+<h1>Authentic Afghan Catering</h1>
 
-          <p>
-            شستشوی بیرونی و داخلی، دیتیلینگ کامل، واکس و پولیش، صفرشویی و بوگیری —
-            همه‌اش با تجهیزات حرفه‌ای و نتیجه‌ای که موتر/ماشینت مثل روز اول می‌درخشد.
-          </p>
+<p>
+Fresh, homemade Afghan food for parties, weddings, and events in Atlanta.
+Order Qabuli, Chicken, Bolani, Mantu, Aushak, Shawarma, and more.
+</p>
 
-          <div class="hero-actions">
-            <button class="btn primary" onclick="scrollToId('pricing')">
-              دیدن قیمت‌ها
-              <svg class="icon" viewBox="0 0 24 24"><path d="M12 16l-6-6h12z"/></svg>
-            </button>
-            <button class="btn" onclick="scrollToId('contact')">
-              رزرو همین حالا
-              <svg class="icon" viewBox="0 0 24 24"><path d="M21 7l-9 6L3 7V5l9 6 9-6z"/></svg>
-            </button>
-          </div>
+<br>
 
-          <div class="stats">
-            <div class="stat">
-              <b>⚡ 60–120 دقیقه</b>
-              <small>زمان متوسط سرویس</small>
-            </div>
-            <div class="stat">
-              <b>🧼 مواد Premium</b>
-              <small>بدون آسیب به رنگ</small>
-            </div>
-            <div class="stat">
-              <b>✨ نتیجه Showroom</b>
-              <small>درخشندگی واقعی</small>
-            </div>
-          </div>
-        </div>
-      </div>
+<a class="btn" href="#order">Order Now</a>
 
-      <div class="hero-right">
-        <div class="card reveal">
-          <div class="card-top">
-            <h3>پکیج ویژه امروز</h3>
-            <span class="pill">⭐ محبوب مشتری‌ها</span>
-          </div>
-          <div class="card-body">
-            <div class="quick">
-              <div class="row">
-                <div class="mini-ico" aria-hidden="true">
-                  <svg class="icon" viewBox="0 0 24 24"><path d="M7 14l-2 2v3h3l2-2-3-3zm10.7-9.3a1 1 0 00-1.4 0L9 12l3 3 7.3-7.3a1 1 0 000-1.4l-1.6-1.6z"/></svg>
-                </div>
-                <div>
-                  <b>Exterior + Interior Quick Detail</b>
-                  <small>شستشوی بیرونی + جارو + داشبورد + شیشه‌ها</small>
-                </div>
-              </div>
+</section>
 
-              <div class="row">
-                <div class="mini-ico" aria-hidden="true">
-                  <svg class="icon" viewBox="0 0 24 24"><path d="M12 2l2.2 6.8H21l-5.5 4 2.1 6.7L12 15.8 6.4 19.5 8.5 12.8 3 8.8h6.8z"/></svg>
-                </div>
-                <div>
-                  <b>Wax Shine Finish</b>
-                  <small>واکس سبک برای درخشندگی و محافظت</small>
-                </div>
-              </div>
+<!-- Menu -->
 
-              <div class="row">
-                <div class="mini-ico" aria-hidden="true">
-                  <svg class="icon" viewBox="0 0 24 24"><path d="M12 3c4.4 0 8 3.6 8 8 0 6-8 10-8 10S4 17 4 11c0-4.4 3.6-8 8-8zm0 11a3 3 0 100-6 3 3 0 000 6z"/></svg>
-                </div>
-                <div>
-                  <b>Service Area</b>
-                  <small>سرویس در محدوده شهر شما (قابل تنظیم)</small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+<section id="menu">
 
-        <div class="card reveal">
-          <div class="card-top">
-            <h3>رزرو فوری با واتساپ</h3>
-            <span class="pill">⏱️ سریع</span>
-          </div>
-          <div class="card-body">
-            <p style="margin:0; color:var(--muted); line-height:1.85; font-weight:650">
-              فقط دکمه واتساپ را بزن. پیام آماده می‌شود، تو فقط وقت و آدرس را می‌فرستی.
-            </p>
-            <div style="margin-top:12px">
-              <a class="btn primary" id="waTop" href="#" target="_blank" rel="noopener">
-                <svg class="icon" viewBox="0 0 24 24"><path d="M20.5 3.5A11.8 11.8 0 003.6 20.3L2 22l1.8-.5A11.8 11.8 0 0020.5 3.5zM12 20a9.7 9.7 0 01-4.9-1.3l-.3-.2-2.9.8.8-2.8-.2-.3A9.7 9.7 0 1112 20zm5.6-7.2c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.8.9-1 .9-.2.1-.4.1-.7-.1-.3-.2-1.2-.4-2.3-1.4-.8-.7-1.4-1.6-1.6-1.9-.2-.3 0-.5.2-.7.2-.2.3-.4.4-.5.1-.2.1-.3.2-.5.1-.2 0-.4 0-.5 0-.1-.7-1.8-1-2.5-.3-.7-.6-.6-.7-.6h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.7 1.2 2.9.2.2 2 3 4.9 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4 0-.1-.3-.2-.6-.4z"/></svg>
-                واتساپ — پیام آماده
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
+<h2>Our Menu</h2>
 
-  <!-- SERVICES -->
-  <section id="services">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <h3>خدمات ما</h3>
-          <p>هر چیزی که برای تمیزی واقعی و حرفه‌ای لازم است — از شستشوی سریع تا دیتیلینگ کامل.</p>
-        </div>
-      </div>
+<div class="menu">
 
-      <div class="grid-3">
-        <div class="tile reveal">
-          <div class="top">
-            <h4>🧽 شستشوی بیرونی Premium</h4>
-            <span class="pill">بدون خط و خش</span>
-          </div>
-          <p>فوم، شستشوی دقیق، رینگ و تایر، خشک‌کردن میکروفایبر و براق‌کننده تایر.</p>
-        </div>
+<div class="item">
+Qabuli Palaw
+<span>$14</span>
+</div>
 
-        <div class="tile reveal">
-          <div class="top">
-            <h4>🧼 دیتیلینگ داخلی</h4>
-            <span class="pill">بوی تازه</span>
-          </div>
-          <p>جارو کامل، داشبورد و کنسول، شیشه‌ها، لکه‌گیری صندلی‌ها و کف‌پوش‌ها.</p>
-        </div>
+<div class="item">
+Chicken Curry
+<span>$13</span>
+</div>
 
-        <div class="tile reveal">
-          <div class="top">
-            <h4>✨ واکس / پولیش</h4>
-            <span class="pill">درخشش VIP</span>
-          </div>
-          <p>واکس محافظتی و پولیش سبک برای جلوه شو‌روم و محافظت از رنگ بدنه.</p>
-        </div>
+<div class="item">
+Borani Banjan
+<span>$8</span>
+</div>
 
-        <div class="tile reveal">
-          <div class="top">
-            <h4>🧊 صفرشویی & Steam</h4>
-            <span class="pill">Deep Clean</span>
-          </div>
-          <p>تمیزی عمیق قسمت‌های سخت، گوشه‌ها، دریچه‌ها و لکه‌های سرسخت.</p>
-        </div>
+<div class="item">
+Bolani
+<span>$3</span>
+</div>
 
-        <div class="tile reveal">
-          <div class="top">
-            <h4>🛡️ پوشش محافظ</h4>
-            <span class="pill">Protection</span>
-          </div>
-          <p>محافظ داشبورد/چرم، آب‌گریز شیشه، و محافظت در برابر گرد و خاک.</p>
-        </div>
+<div class="item">
+Palak (Spinach)
+<span>$7</span>
+</div>
 
-        <div class="tile reveal">
-          <div class="top">
-            <h4>🚙 ناوگان و شرکت‌ها</h4>
-            <span class="pill">Fleet</span>
-          </div>
-          <p>قرارداد ماهانه/هفتگی برای شرکت‌ها، دلیوری، تاکسی و ناوگان.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<div class="item">
+Shawarma
+<span>$10</span>
+</div>
 
-  <!-- PRICING -->
-  <section id="pricing">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <h3>قیمت‌ها (قابل تنظیم)</h3>
-          <p>این قیمت‌ها نمونه است. هر وقت خواستی قیمت واقعی‌ات را بده، همینجا دقیق می‌زنم.</p>
-        </div>
-      </div>
+<div class="item">
+Samosa (6 pcs)
+<span>$10</span>
+</div>
 
-      <div class="pricing">
-        <div class="plan reveal">
-          <h4>Basic Wash</h4>
-          <div class="price">$35 <span>/ سدان</span></div>
-          <div class="badge" style="margin-top:6px"><span class="dot" style="background:var(--warn)"></span> سریع و اقتصادی</div>
-          <ul class="features">
-            <li>شستشوی بیرونی + خشک‌کردن</li>
-            <li>رینگ و تایر</li>
-            <li>شیشه‌ها (بیرون)</li>
-            <li>۱۵–۳۰ دقیقه</li>
-          </ul>
-          <button class="btn" onclick="pickPlan('Basic Wash')">انتخاب این پکیج</button>
-        </div>
+<div class="item">
+Aushak
+<span>$15</span>
+</div>
 
-        <div class="plan featured reveal">
-          <h4>VIP Detail</h4>
-          <div class="price">$79 <span>/ محبوب</span></div>
-          <div class="badge" style="margin-top:6px"><span class="dot"></span> بهترین ارزش</div>
-          <ul class="features">
-            <li>بیرون + داخل کامل</li>
-            <li>جارو + داشبورد + شیشه‌ها</li>
-            <li>براق‌کننده تایر</li>
-            <li>۶۰–۹۰ دقیقه</li>
-          </ul>
-          <button class="btn primary" onclick="pickPlan('VIP Detail')">رزرو VIP</button>
-        </div>
+<div class="item">
+Mantu
+<span>$16</span>
+</div>
 
-        <div class="plan reveal">
-          <h4>Ultimate Showroom</h4>
-          <div class="price">$129 <span>/ دیتیلینگ عمیق</span></div>
-          <div class="badge" style="margin-top:6px"><span class="dot" style="background:var(--accent2)"></span> نتیجه شو‌روم</div>
-          <ul class="features">
-            <li>دیتیلینگ عمیق + لکه‌گیری</li>
-            <li>واکس/پولیش سبک</li>
-            <li>بوگیری و تمیزکاری جزئیات</li>
-            <li>۹۰–۱۲۰ دقیقه</li>
-          </ul>
-          <button class="btn" onclick="pickPlan('Ultimate Showroom')">انتخاب این پکیج</button>
-        </div>
-      </div>
-    </div>
-  </section>
+<div class="item">
+German Roll
+<span>$9</span>
+</div>
 
-  <!-- GALLERY -->
-  <section id="gallery">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <h3>گالری (نمونه)</h3>
-          <p>اینجا را با عکس‌های واقعی کارت پر می‌کنیم تا اعتماد مشتری‌ها چند برابر شود.</p>
-        </div>
-      </div>
+<div class="item">
+Chapli Kebab
+<span>$12</span>
+</div>
 
-      <div class="gallery">
-        <div class="shot wide reveal"><span class="tag">Before → After</span></div>
-        <div class="shot reveal"><span class="tag">Wheel</span></div>
-        <div class="shot reveal"><span class="tag">Foam</span></div>
-        <div class="shot tall reveal"><span class="tag">Interior</span></div>
-        <div class="shot reveal"><span class="tag">Wax</span></div>
-        <div class="shot wide reveal"><span class="tag">Shine</span></div>
-      </div>
-    </div>
-  </section>
+<div class="item">
+Salad
+<span>$3</span>
+</div>
 
-  <!-- REVIEWS -->
-  <section id="reviews">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <h3>نظرات مشتری‌ها</h3>
-          <p>چند نمونه متن آماده — وقتی مشتری واقعی داشتی، همینجا اسم و نظرشان را می‌گذاریم.</p>
-        </div>
-      </div>
+</div>
 
-      <div class="testimonials">
-        <div class="quote reveal">
-          <p>ماشینم واقعاً مثل روز اول شد. داخلش را خیلی تمیز کرد و بوی خوب هم داد. حتماً دوباره رزرو می‌کنم.</p>
-          <div class="who"><span>— Sarah M.</span><span class="stars">★★★★★</span></div>
-        </div>
-        <div class="quote reveal">
-          <p>وقت‌دار و دقیق. رینگ‌ها را عالی پاک کرد. قیمتش نسبت به کیفیتش واقعاً می‌ارزد.</p>
-          <div class="who"><span>— Daniel K.</span><span class="stars">★★★★★</span></div>
-        </div>
-        <div class="quote reveal">
-          <p>خیلی راحت بود که در محل آمد. من سرکار بودم و وقتی برگشتم ماشین برق می‌زد.</p>
-          <div class="who"><span>— Mary J.</span><span class="stars">★★★★★</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
+</section>
 
-  <!-- FAQ -->
-  <section id="faq">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <h3>سوالات زیاد تکرار شده</h3>
-          <p>این بخش باعث می‌شود مشتری سریع تصمیم بگیرد و کمتر سوال تکراری بپرسد.</p>
-        </div>
-      </div>
+<!-- Order -->
 
-      <div class="faq">
-        <div class="reveal">
-          <details open>
-            <summary>آیا آب و برق از مشتری می‌گیرید؟ <span class="chev">⌄</span></summary>
-            <p>می‌تونی دو حالت بسازی: (۱) با آب و برق مشتری (ارزان‌تر) یا (۲) با تجهیزات خودت (پرمیوم‌تر).</p>
-          </details>
-          <details>
-            <summary>چقدر وقت می‌گیرد؟ <span class="chev">⌄</span></summary>
-            <p>بسته به پکیج: Basic حدود ۱۵–۳۰ دقیقه، VIP حدود ۶۰–۹۰ دقیقه، Ultimate حدود ۹۰–۱۲۰ دقیقه.</p>
-          </details>
-          <details>
-            <summary>برای رزرو چی لازم است؟ <span class="chev">⌄</span></summary>
-            <p>فقط نوع موتر، آدرس، وقت دلخواه و این‌که داخل هم می‌خواهی یا نه.</p>
-          </details>
-          <details>
-            <summary>برای ناوگان و شرکت‌ها تخفیف دارید؟ <span class="chev">⌄</span></summary>
-            <p>بله، قرارداد ماهانه/هفتگی با قیمت بهتر.</p>
-          </details>
-        </div>
+<section id="order">
 
-        <div class="info reveal">
-          <h4>چرا VIP Mobile Car Wash؟</h4>
-          <p>
-            ما به جز “شستن”، روی “نتیجه” کار می‌کنیم: تمیزی دقیق، مواد درست، احترام به وقت مشتری،
-            و کیفیتی که وقتی ماشین را ببینی بگویی: «همین بود!»
-          </p>
+<h2>Place Your Order</h2>
 
-          <div class="kpis">
-            <div class="kpi">
-              <b>✅ ضمانت رضایت</b>
-              <small>اگر راضی نبودی اصلاح می‌کنیم</small>
-            </div>
-            <div class="kpi">
-              <b>📍 سرویس در محل</b>
-              <small>خانه، پارکینگ، دفتر</small>
-            </div>
-            <div class="kpi">
-              <b>🧴 مواد باکیفیت</b>
-              <small>دوست‌دار رنگ و چرم</small>
-            </div>
-            <div class="kpi">
-              <b>🕒 وقت دقیق</b>
-              <small>رزرو سریع و منظم</small>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+<div class="order-box">
 
-  <!-- CONTACT / BOOKING -->
-  <section id="contact">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <h3>رزرو آنلاین</h3>
-          <p>فرم را پر کن — با یک کلیک پیام آماده به واتساپ می‌رود.</p>
-        </div>
-      </div>
+<form id="orderForm">
 
-      <div class="contact">
-        <div class="form reveal">
-          <form id="bookingForm">
-            <label>نام</label>
-            <input id="name" placeholder="مثلاً Ahmad" required />
+<input type="text" id="name" placeholder="Your Name" required>
 
-            <div class="grid-2">
-              <div>
-                <label>شماره تماس</label>
-                <input id="phone" placeholder="470-420-1001" />
-              </div>
-              <div>
-                <label>نوع موتر</label>
-                <select id="carType">
-                  <option>سدان (Sedan)</option>
-                  <option>SUV</option>
-                  <option>Truck</option>
-                  <option>Van</option>
-                </select>
-              </div>
-            </div>
+<input type="text" id="phone" placeholder="Your Phone" required>
 
-            <div class="grid-2">
-              <div>
-                <label>پکیج</label>
-                <select id="package">
-                  <option>Basic Wash</option>
-                  <option selected>VIP Detail</option>
-                  <option>Ultimate Showroom</option>
-                </select>
-              </div>
-              <div>
-                <label>زمان دلخواه</label>
-                <input id="time" placeholder="مثلاً امروز 5 عصر / فردا صبح" />
-              </div>
-            </div>
+<input type="text" id="food" placeholder="Food Items" required>
 
-            <label>آدرس</label>
-            <input id="address" placeholder="Street, City" required />
+<input type="text" id="people" placeholder="How many people?" required>
 
-            <label>یادداشت (اختیاری)</label>
-            <textarea id="notes" placeholder="مثلاً داخل هم خیلی خاک است، یا صندلی لکه دارد..."></textarea>
+<textarea id="message" placeholder="Extra notes"></textarea>
 
-            <div class="actions">
-              <button type="submit" class="btn primary">ارسال به واتساپ</button>
-              <button type="button" class="btn" onclick="copySummary()">کاپی کردن خلاصه</button>
-            </div>
+<button type="submit" class="btn">Send on WhatsApp</button>
 
-            <p id="copied" style="display:none; margin:12px 0 0; color:rgba(234,240,255,.9); font-weight:850">
-              ✅ خلاصه کاپی شد!
-            </p>
-          </form>
-        </div>
+</form>
 
-        <div class="info reveal">
-          <h4>تماس و شبکه‌ها</h4>
-          <p>
-            شماره و لینک‌ها آماده است. هر وقت خواستی اسم برند یا شهر را بگو تا دقیق تنظیم کنم.
-          </p>
-          <div class="kpis">
-            <div class="kpi">
-              <b>📞 تلفن</b>
-              <!-- ✅ شماره نمایش -->
-              <small>470-420-1001</small>
-            </div>
-            <div class="kpi">
-              <b>💬 واتساپ</b>
-              <small>پیام آماده + رزرو سریع</small>
-            </div>
-            <div class="kpi">
-              <b>📷 Instagram</b>
-              <small>@yourpage</small>
-            </div>
-            <div class="kpi">
-              <b>📍 محدوده سرویس</b>
-              <small>Atlanta / (یا شهر شما)</small>
-            </div>
-          </div>
+</div>
 
-          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap">
-            <a class="btn" href="#pricing">قیمت‌ها</a>
-            <a class="btn primary" href="#" id="waBottom" target="_blank" rel="noopener">واتساپ</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+</section>
 
-  <footer>
-    © <span id="year"></span> VIP Mobile Car Wash — ساخته شده برای برنده شدن در بازار 😄
-  </footer>
+<!-- Contact -->
 
-  <!-- Floating WhatsApp + Top -->
-  <div class="wa-float">
-    <a class="wa" id="waFloat" href="#" target="_blank" rel="noopener">
-      <svg class="icon" viewBox="0 0 24 24"><path d="M20.5 3.5A11.8 11.8 0 003.6 20.3L2 22l1.8-.5A11.8 11.8 0 0020.5 3.5zM12 20a9.7 9.7 0 01-4.9-1.3l-.3-.2-2.9.8.8-2.8-.2-.3A9.7 9.7 0 1112 20zm5.6-7.2c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.8.9-1 .9-.2.1-.4.1-.7-.1-.3-.2-1.2-.4-2.3-1.4-.8-.7-1.4-1.6-1.6-1.9-.2-.3 0-.5.2-.7.2-.2.3-.4.4-.5.1-.2.1-.3.2-.5.1-.2 0-.4 0-.5 0-.1-.7-1.8-1-2.5-.3-.7-.6-.6-.7-.6h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.7 1.2 2.9.2.2 2 3 4.9 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4 0-.1-.3-.2-.6-.4z"/></svg>
-      <div>
-        واتساپ
-        <small>رزرو فوری</small>
-      </div>
-    </a>
-    <button class="toTop" id="toTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑ بالا</button>
-  </div>
+<section id="contact">
 
-  <script>
-    // ✅ شماره واتساپ (بدون - و بدون +)
-    const WHATSAPP_NUMBER = "14704201001";
-    const BUSINESS_NAME = "VIP Mobile Car Wash";
+<h2>Contact Us</h2>
 
-    const $ = (id) => document.getElementById(id);
-    const enc = encodeURIComponent;
+<p style="text-align:center;">
+📍 Atlanta, GA <br><br>
+📞 <span id="phoneText"></span>
+</p>
 
-    function scrollToId(id){
-      document.querySelector("#"+id).scrollIntoView({behavior:"smooth", block:"start"});
-    }
+</section>
 
-    function buildMessage(data){
-      return `سلام! من می‌خواهم رزرو کنم ✅
-بیزنس: ${BUSINESS_NAME}
-نام: ${data.name}
-شماره: ${data.phone || "-"}
-نوع موتر: ${data.carType}
-پکیج: ${data.package}
-وقت دلخواه: ${data.time || "-"}
-آدرس: ${data.address}
-یادداشت: ${data.notes || "-"}`;
-    }
+<footer>
 
-    function waLink(message){
-      return `https://wa.me/${WHATSAPP_NUMBER}?text=${enc(message)}`;
-    }
+<p>
+© 2026 Nisa Catering | All Rights Reserved
+</p>
 
-    function setAllWaLinks(){
-      const base = buildMessage({
-        name: "—",
-        phone: "—",
-        carType: "Sedan",
-        package: "VIP Detail",
-        time: "—",
-        address: "—",
-        notes: "—"
-      });
-      const link = waLink(base);
-      ["waFloat","waTop","waBottom"].forEach(id => {
-        const el = $(id);
-        if(el) el.href = link;
-      });
-    }
+</footer>
 
-    function pickPlan(plan){
-      $("package").value = plan;
-      scrollToId("contact");
-    }
+<script>
 
-    async function copySummary(){
-      const data = {
-        name: $("name").value || "—",
-        phone: $("phone").value || "—",
-        carType: $("carType").value,
-        package: $("package").value,
-        time: $("time").value || "—",
-        address: $("address").value || "—",
-        notes: $("notes").value || "—"
-      };
-      const msg = buildMessage(data);
-      try{
-        await navigator.clipboard.writeText(msg);
-        $("copied").style.display = "block";
-        setTimeout(()=> $("copied").style.display="none", 1700);
-      }catch(e){
-        alert("کاپی نشد. لطفاً دستی انتخاب و کاپی کن.");
-      }
-    }
+document.getElementById("phoneText").innerText = phone;
 
-    $("bookingForm").addEventListener("submit", (e)=>{
-      e.preventDefault();
-      const data = {
-        name: $("name").value.trim(),
-        phone: $("phone").value.trim(),
-        carType: $("carType").value,
-        package: $("package").value,
-        time: $("time").value.trim(),
-        address: $("address").value.trim(),
-        notes: $("notes").value.trim(),
-      };
-      const msg = buildMessage(data);
-      window.open(waLink(msg), "_blank");
-    });
+document.getElementById("waBtn").href =
+"https://wa.me/" + phone.replace("+","");
 
-    const revealEls = document.querySelectorAll(".reveal");
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(en=>{
-        if(en.isIntersecting) en.target.classList.add("show");
-      });
-    }, {threshold:.12});
-    revealEls.forEach(el=>io.observe(el));
+document.getElementById("orderForm").addEventListener("submit", function(e){
 
-    const toTop = $("toTop");
-    window.addEventListener("scroll", ()=>{
-      if(window.scrollY > 600){
-        toTop.style.display = "inline-flex";
-      } else {
-        toTop.style.display = "none";
-      }
-    });
+e.preventDefault();
 
-    $("year").textContent = new Date().getFullYear();
-    setAllWaLinks();
-  </script>
+let name = document.getElementById("name").value;
+let userPhone = document.getElementById("phone").value;
+let food = document.getElementById("food").value;
+let people = document.getElementById("people").value;
+let note = document.getElementById("message").value;
+
+let text =
+"New Order%0A" +
+"Name: " + name + "%0A" +
+"Phone: " + userPhone + "%0A" +
+"Food: " + food + "%0A" +
+"People: " + people + "%0A" +
+"Note: " + note;
+
+window.open(
+"https://wa.me/" + phone.replace("+","") + "?text=" + text,
+"_blank"
+);
+
+});
+
+</script>
+
 </body>
 </html>
