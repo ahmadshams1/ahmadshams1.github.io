@@ -1,136 +1,271 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>❤️ L</title>
-<style>
-  body{
-    margin:0; height:100vh; overflow:hidden;
-    display:flex; align-items:center; justify-content:center;
-    background: radial-gradient(circle at top, #0a0014, #000);
-    font-family: system-ui, -apple-system, "Segoe UI", Arial;
-  }
-
-  .glow{
-    position:absolute; width:360px; height:360px;
-    background: radial-gradient(circle, rgba(255,0,90,0.55), transparent 70%);
-    filter: blur(45px);
-    animation: pulseGlow 2s infinite alternate;
-  }
-
-  .heart-box{
-    position:relative;
-    font-size:190px;
-    animation: beat 1.2s infinite ease-in-out;
-    text-shadow: 0 0 18px #ff004f, 0 0 45px #ff0055, 0 0 90px #ff0077;
-    z-index:2;
-  }
-
-  .text{
-    position:absolute; top:50%; left:50%;
-    transform:translate(-50%,-50%);
-    font-size:58px; font-weight:900; color:white;
-    text-shadow: 0 0 10px #fff, 0 0 30px #ff66aa;
-    letter-spacing:2px;
-  }
-
-  /* دکمه لوکس */
-  .btn{
-    position:absolute; bottom:32px; left:50%;
-    transform:translateX(-50%);
-    padding:12px 18px;
-    border-radius:999px;
-    border:1px solid rgba(255,255,255,0.22);
-    background: rgba(255,255,255,0.06);
-    color:#fff;
-    font-weight:700;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 10px 35px rgba(255,0,90,0.25);
-    z-index:3;
-    cursor:pointer;
-    user-select:none;
-  }
-  .btn:hover{ transform:translateX(-50%) scale(1.03); }
-
-  /* باران قلب */
-  .particle{
-    position:absolute;
-    top:-30px;
-    font-size:18px;
-    color:#ff2a6d;
-    opacity:0.95;
-    pointer-events:none;
-    animation: fall linear forwards;
-    filter: drop-shadow(0 6px 14px rgba(255,0,90,0.25));
-  }
-  @keyframes fall{
-    from{ transform: translateY(0) scale(1); opacity:1; }
-    to{ transform: translateY(120vh) scale(1.8); opacity:0; }
-  }
-
-  @keyframes beat{
-    0%,100%{ transform:scale(1); }
-    30%{ transform:scale(1.27); }
-    60%{ transform:scale(1.06); }
-  }
-  @keyframes pulseGlow{
-    from{ opacity:0.6; transform:scale(1); }
-    to{ opacity:1; transform:scale(1.35); }
-  }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Catering by Ahmad</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<div class="glow"></div>
+  <!-- Top announcement bar -->
+  <div class="announce">
+    <p>🎉 تخفیف ویژه برای سفارش‌های این هفته — برای رزرو پیام بده!</p>
+    <button class="announce-close" aria-label="close">×</button>
+  </div>
 
-<div class="heart-box">
-  ❤️
-  <div class="text">L</div>
-</div>
+  <!-- Navbar -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#">
+        <span class="brand-mark">A</span>
+        <span class="brand-text">Ahmad Catering</span>
+      </a>
 
-<div class="btn" id="soundBtn">🔊 Sound On</div>
+      <nav class="links" aria-label="main">
+        <a href="#menu">منو</a>
+        <a href="#packages">پکیج‌ها</a>
+        <a href="#gallery">گالری</a>
+        <a href="#about">داستان ما</a>
+        <a href="#contact">تماس</a>
+      </nav>
 
-<audio id="bgMusic" autoplay loop muted>
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
+      <div class="nav-cta">
+        <a class="btn ghost" href="#contact">رزرو</a>
+        <a class="btn primary" href="tel:+14704201001">زنگ بزن</a>
+        <button class="hamburger" aria-label="menu" aria-expanded="false">☰</button>
+      </div>
+    </div>
 
-<script>
-  const music = document.getElementById("bgMusic");
-  const btn = document.getElementById("soundBtn");
+    <!-- Mobile drawer -->
+    <div class="drawer" hidden>
+      <a href="#menu">منو</a>
+      <a href="#packages">پکیج‌ها</a>
+      <a href="#gallery">گالری</a>
+      <a href="#about">داستان ما</a>
+      <a href="#contact">تماس</a>
+      <a class="btn primary" href="tel:+14704201001">زنگ بزن</a>
+    </div>
+  </header>
 
-  // شروع خودکار (mute) - معمولاً کار می‌کند
-  music.play().catch(()=>{});
+  <!-- Hero -->
+  <section class="hero" aria-label="hero">
+    <div class="hero-bg" role="img" aria-label="restaurant"></div>
+    <div class="hero-overlay"></div>
 
-  // وقتی دکمه را زد، صدا روشن + fade in
-  btn.addEventListener("click", async () => {
-    music.muted = false;
-    try { await music.play(); } catch(e) {}
-    btn.style.display = "none";
+    <div class="hero-content">
+      <p class="kicker">CATERING • EVENTS • WEDDINGS</p>
+      <h1>کترینگ لوکس برای مهمانی‌ها و ایونت‌های شما</h1>
+      <p class="sub">
+        غذای تازه، سرویس حرفه‌ای، و پکیج‌های کامل برای تولد، نامزدی، عروسی و شرکت‌ها.
+      </p>
 
-    let v = 0;
-    music.volume = 0;
-    const fade = setInterval(() => {
-      v += 0.04;
-      music.volume = Math.min(v, 1);
-      if (v >= 1) clearInterval(fade);
-    }, 180);
-  });
+      <div class="hero-actions">
+        <a class="btn primary" href="#packages">دیدن پکیج‌ها</a>
+        <a class="btn ghost" href="#menu">دیدن منو</a>
+      </div>
 
-  // باران قلب
-  function dropHeart(){
-    const p = document.createElement("div");
-    p.className = "particle";
-    p.textContent = "❤️";
-    p.style.left = (Math.random()*100) + "vw";
-    const dur = 2.2 + Math.random()*2.5;
-    p.style.animationDuration = dur + "s";
-    p.style.fontSize = (14 + Math.random()*16) + "px";
-    document.body.appendChild(p);
-    setTimeout(()=>p.remove(), (dur*1000));
-  }
-  setInterval(dropHeart, 140);
-</script>
+      <div class="hero-badges">
+        <div class="badge">✅ تحویل به موقع</div>
+        <div class="badge">🔥 غذای گرم و تازه</div>
+        <div class="badge">⭐ مناسب ایونت‌های بزرگ</div>
+      </div>
+    </div>
 
+    <a class="scroll-down" href="#menu" aria-label="scroll">⌄</a>
+  </section>
+
+  <!-- Menu -->
+  <section id="menu" class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>منوی محبوب</h2>
+        <p>چند آیتم پرطرفدار (بعداً هرچی خواستی اضافه می‌کنیم).</p>
+      </div>
+
+      <div class="grid cards">
+        <article class="card">
+          <h3>شاورما پلتر</h3>
+          <p>مرغ/گوشت + سالاد + سس + نان</p>
+          <span class="price">از $—</span>
+        </article>
+
+        <article class="card">
+          <h3>کباب پلتر</h3>
+          <p>کباب + برنج/نان + سالاد</p>
+          <span class="price">از $—</span>
+        </article>
+
+        <article class="card">
+          <h3>چلو مرغ زعفرانی</h3>
+          <p>مرغ زعفرانی + برنج + سالاد</p>
+          <span class="price">از $—</span>
+        </article>
+
+        <article class="card">
+          <h3>پکیج گیاهی</h3>
+          <p>فلافل/سبزیجات + حمص + سالاد</p>
+          <span class="price">از $—</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Packages -->
+  <section id="packages" class="section alt">
+    <div class="container">
+      <div class="section-head">
+        <h2>پکیج‌های کترینگ</h2>
+        <p>برای 10 نفر تا 300 نفر — میشه دقیق‌تر هم تنظیمش کنیم.</p>
+      </div>
+
+      <div class="grid packages">
+        <div class="pack">
+          <div class="pack-top">
+            <h3>پکیج اقتصادی</h3>
+            <p class="small">مناسب تولد و جمع‌های دوستانه</p>
+          </div>
+          <ul>
+            <li>یک غذای اصلی</li>
+            <li>سالاد + سس</li>
+            <li>نان/برنج</li>
+            <li>تحویل</li>
+          </ul>
+          <a class="btn primary" href="#contact">سفارش این پکیج</a>
+        </div>
+
+        <div class="pack featured">
+          <div class="pack-top">
+            <h3>پکیج VIP</h3>
+            <p class="small">مناسب ایونت‌های رسمی و شرکت‌ها</p>
+          </div>
+          <ul>
+            <li>دو غذای اصلی</li>
+            <li>پیش‌غذا (حمص/سمبوسه)</li>
+            <li>دسر ساده</li>
+            <li>چیدمان و سرویس</li>
+          </ul>
+          <a class="btn primary" href="#contact">رزرو VIP</a>
+        </div>
+
+        <div class="pack">
+          <div class="pack-top">
+            <h3>پکیج عروسی/بزرگ</h3>
+            <p class="small">مناسب 100 نفر به بالا</p>
+          </div>
+          <ul>
+            <li>چند غذای اصلی</li>
+            <li>ایستگاه نوشیدنی</li>
+            <li>پرسنل سرو</li>
+            <li>برنامه‌ریزی کامل</li>
+          </ul>
+          <a class="btn primary" href="#contact">مشاوره رایگان</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>گالری</h2>
+        <p>اینجا عکس‌های غذاها و ایونت‌ها را می‌گذاری.</p>
+      </div>
+
+      <div class="grid gallery">
+        <div class="ph">عکس 1</div>
+        <div class="ph">عکس 2</div>
+        <div class="ph">عکس 3</div>
+        <div class="ph">عکس 4</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section alt">
+    <div class="container split">
+      <div>
+        <h2>داستان ما</h2>
+        <p>
+          ما با هدف آوردن طعم واقعی غذاهای افغانستانی/خاورمیانه‌ای به مهمانی‌های شما شروع کردیم.
+          کیفیت، نظافت، و سرویس حرفه‌ای اولویت ماست.
+        </p>
+        <div class="mini">
+          <div class="mini-card"><b>⏱</b> پاسخ سریع</div>
+          <div class="mini-card"><b>🍽</b> کیفیت بالا</div>
+          <div class="mini-card"><b>🚚</b> تحویل مطمئن</div>
+        </div>
+      </div>
+      <div class="about-img" aria-label="about"></div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>تماس و سفارش</h2>
+        <p>همین‌جا درخواست بده یا مستقیم زنگ بزن.</p>
+      </div>
+
+      <div class="grid contact">
+        <form class="form" onsubmit="return false;">
+          <label>نام شما
+            <input type="text" placeholder="نام" required>
+          </label>
+
+          <label>شماره تماس
+            <input type="tel" placeholder="470-420-1001" required>
+          </label>
+
+          <label>تعداد نفرات
+            <input type="number" min="5" placeholder="مثلاً 30" required>
+          </label>
+
+          <label>پیام / نوع ایونت
+            <textarea rows="4" placeholder="تولد، نامزدی، شرکت..."></textarea>
+          </label>
+
+          <button class="btn primary" id="sendBtn">ارسال درخواست</button>
+          <p class="hint">فعلاً این فرم پیام را آماده می‌کند؛ بعداً واتساپ/ایمیل هم وصل می‌کنیم.</p>
+        </form>
+
+        <div class="info">
+          <div class="info-card">
+            <h3>شماره</h3>
+            <p><a href="tel:+14704201001">470-420-1001</a></p>
+          </div>
+          <div class="info-card">
+            <h3>شهر</h3>
+            <p>Atlanta, GA</p>
+          </div>
+          <div class="info-card">
+            <h3>شبکه‌های اجتماعی</h3>
+            <p>
+              <a href="#" aria-label="instagram">Instagram</a> •
+              <a href="#" aria-label="tiktok">TikTok</a>
+            </p>
+          </div>
+          <div class="info-note">
+            برای قیمت دقیق، تاریخ و تعداد نفرات را بگو تا فوری حساب کنم.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© <span id="y"></span> Ahmad Catering — All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#menu">منو</a>
+        <a href="#packages">پکیج‌ها</a>
+        <a href="#contact">تماس</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
