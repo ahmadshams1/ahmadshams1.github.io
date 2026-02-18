@@ -1,115 +1,89 @@
-/* ================== FULL COLOR SYSTEM ================== */
-
-/* رنگ‌های اصلی برند */
+/* ====== LUXE THEME (DARK OLIVE + GOLD) ====== */
 :root{
-  --bg-main:#F7F3EE;        /* کرم روشن */
-  --bg-soft:#EFE7DD;        /* کرم تیره */
-  --text-main:#3E2F1C;      /* قهوه‌ای */
-  --text-soft:#6B5A44;      /* قهوه‌ای روشن */
-  --gold-main:#B08D57;      /* طلایی */
-  --green-main:#5F6F52;     /* سبز زیتونی */
-  --card-bg:#FFFFFF;       /* سفید */
-  --border-main:#E5D9C5;    /* خط کرم */
+  --bg-main:#0F1412;      /* سبز خیلی تیره */
+  --bg-soft:#151D18;      /* سبز تیره نرم */
+  --card:#111814;         /* کارت تیره */
+  --text:#F3F0EA;         /* سفید گرم */
+  --muted:#B9B2A6;        /* متن کم‌رنگ */
+  --gold:#C9A46A;         /* طلایی لوکس */
+  --line:rgba(201,164,106,.22);
 }
 
-/* پس‌زمینه کل سایت */
+/* صفحه */
 body{
   background: var(--bg-main) !important;
-  color: var(--text-main) !important;
+  color: var(--text) !important;
 }
 
-/* نوار اعلان بالا */
+/* نوار بالا و منو */
 .announce{
   background: var(--bg-soft) !important;
-  color: var(--text-main) !important;
-  border-bottom: 1px solid var(--border-main) !important;
+  border-bottom: 1px solid var(--line) !important;
+  color: var(--text) !important;
 }
-
-/* منوی بالا */
 .nav{
-  background: rgba(247,243,238,.95) !important;
-  border-bottom: 1px solid var(--border-main) !important;
+  background: rgba(15,20,18,.72) !important;
+  border-bottom: 1px solid var(--line) !important;
 }
 
-/* لینک‌های منو */
+/* لینک‌ها */
 .links a{
-  color: var(--text-main) !important;
+  color: var(--muted) !important;
 }
-
 .links a:hover{
-  color: var(--gold-main) !important;
+  color: var(--gold) !important;
 }
 
 /* دکمه‌ها */
 .btn{
-  border-color: var(--gold-main) !important;
+  border-color: rgba(201,164,106,.35) !important;
 }
-
 .btn.primary{
-  background: var(--gold-main) !important;
-  color: #111 !important;
+  background: linear-gradient(135deg, rgba(201,164,106,.95), rgba(201,164,106,.55)) !important;
+  color:#0b0d0c !important;
 }
-
 .btn.ghost{
-  background: transparent !important;
-  color: var(--text-main) !important;
+  background: rgba(255,255,255,.06) !important;
+  color: var(--text) !important;
 }
 
 /* کارت‌ها */
-.card,
-.pack,
-.info-card,
-.form{
-  background: var(--card-bg) !important;
-  color: var(--text-main) !important;
-  border: 1px solid var(--border-main) !important;
+.card, .pack, .info-card, .form{
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)) !important;
+  border: 1px solid rgba(255,255,255,.10) !important;
+  color: var(--text) !important;
 }
 
-/* متن داخل کارت */
-.card p,
-.pack p,
-.info-card p{
-  color: var(--text-soft) !important;
+/* متن‌های داخل کارت */
+.card p, .pack p, .info-card p, .section-head p{
+  color: rgba(243,240,234,.78) !important;
 }
 
 /* قیمت */
 .price{
-  color: var(--gold-main) !important;
-  font-weight: bold !important;
+  color: var(--gold) !important;
 }
 
-/* پکیج ویژه */
-.pack.featured{
-  border: 2px solid var(--gold-main) !important;
-  background: #FFF8EE !important;
-}
-
-/* متن روی Hero */
-.hero h1,
-.hero .sub{
-  color: #fff !important;
-  text-shadow: 0 6px 25px rgba(0,0,0,.4) !important;
-}
-
-/* بخش‌های روشن */
+/* بخش‌های alt */
 .section.alt{
-  background: var(--bg-soft) !important;
+  background: rgba(255,255,255,.03) !important;
+  border-top: 1px solid rgba(255,255,255,.08) !important;
+  border-bottom: 1px solid rgba(255,255,255,.08) !important;
 }
 
-/* فرم‌ها */
-input,
-textarea{
-  border-color: var(--border-main) !important;
+/* ورودی‌ها */
+input, textarea{
+  background: rgba(10,12,11,.55) !important;
+  border: 1px solid rgba(255,255,255,.12) !important;
+  color: var(--text) !important;
 }
-
-input:focus,
-textarea:focus{
-  border-color: var(--gold-main) !important;
+input:focus, textarea:focus{
+  border-color: rgba(201,164,106,.45) !important;
 }
 
 /* فوتر */
 .footer{
   background: var(--bg-soft) !important;
-  color: var(--text-main) !important;
-  border-top: 1px solid var(--border-main) !important;
+  border-top: 1px solid var(--line) !important;
+  color: var(--muted) !important;
 }
