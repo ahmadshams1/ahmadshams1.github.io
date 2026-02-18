@@ -3,55 +3,320 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>منو | Nisa Catering</title>
+  <title>کترینگ لوکس | سفارش آنلاین</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="bg-glow"></div>
 
-<header class="topbar">
-  <div class="container topbar-inner">
-    <a class="brand" href="index.html"><span class="logo">N</span><span>Nisa Catering<small>Menu</small></span></a>
-    <div class="actions">
-      <a class="btn primary" href="contact.html">سفارش</a>
-      <button class="dots" id="openMenu">⋮</button>
-    </div>
-  </div>
-</header>
-
-<div class="overlay hidden" id="overlay"></div>
-<aside class="drawer hidden" id="drawer">
-  <div class="drawer-head"><div class="drawer-title">منو</div><button class="close" id="closeMenu">×</button></div>
-  <nav class="navlinks">
-    <a href="index.html">صفحه اصلی</a>
-    <a href="menu.html">منو غذا</a>
-    <a href="packages.html">پکیج‌ها</a>
-    <a href="gallery.html">گالری</a>
-    <a href="contact.html">تماس و سفارش</a>
-  </nav>
-  <div class="drawer-foot">Nisa Catering</div>
-</aside>
-
-<section class="section">
-  <div class="container">
-    <div class="head">
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">🍽️</div>
       <div>
-        <h2>منو غذا</h2>
-        <p>اینجا آیتم‌ها را اضافه/کم می‌کنی. قیمت‌ها را هم می‌توانی بعداً بگذاری.</p>
+        <div class="brand-name">کترینگ لوکس</div>
+        <div class="brand-sub">Catering • Events • Fresh</div>
       </div>
     </div>
 
-    <div class="grid cards">
-      <div class="card"><h3>قابلی پلو</h3><p>برنج، زردک، کشمش، بادام</p><span class="price">$ —</span></div>
-      <div class="card"><h3>منتو</h3><p>با ماست/سس مخصوص</p><span class="price">$ —</span></div>
-      <div class="card"><h3>آشک</h3><p>سبزی، ماست، سس</p><span class="price">$ —</span></div>
-      <div class="card"><h3>کباب</h3><p>چپلی/کباب افغانی</p><span class="price">$ —</span></div>
-      <div class="card"><h3>بولانی</h3><p>کچالو/تره</p><span class="price">$ —</span></div>
-      <div class="card"><h3>پکیج گیاهی</h3><p>حمص، سالاد، فلافل</p><span class="price">$ —</span></div>
-    </div>
-  </div>
-</section>
+    <nav class="nav">
+      <a href="#menu">منو</a>
+      <a href="#gallery">گالری</a>
+      <a href="#packages">پکیج‌ها</a>
+      <a href="#order">سفارش</a>
+    </nav>
 
-<footer class="footer"><div class="container">Nisa Catering</div></footer>
-<script src="script.js"></script>
+    <a class="btn btn-primary" href="#order">سفارش سریع</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-left">
+        <div class="pill">
+          <span class="dot"></span>
+          آماده برای عروسی • تولد • ایونت‌های بزرگ
+        </div>
+
+        <h1>
+          کترینگ <span class="grad">خفن و لوکس</span>  
+          برای مهمانی‌های شما
+        </h1>
+
+        <p class="lead">
+          غذاهای تازه، دیزاین شیک، تحویل سریع. از مهمانی‌های کوچک تا ایونت‌های بزرگ.
+          همین‌جا سفارش بده و ما بقیه‌اش را انجام می‌دیم.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#menu">دیدن منو</a>
+          <a class="btn btn-ghost" href="#gallery">دیدن گالری</a>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-num" data-count="150">0</div>
+            <div class="stat-label">ایونت موفق</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num" data-count="24">0</div>
+            <div class="stat-label">ساعت پاسخگویی</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num" data-count="98">0</div>
+            <div class="stat-label">رضایت مشتری (%)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="card glass">
+          <div class="card-top">
+            <div class="badge">پیشنهاد ویژه</div>
+            <div class="price">
+              <span>شروع از</span>
+              <strong>$199</strong>
+            </div>
+          </div>
+
+          <div class="showcase">
+            <div class="plate"></div>
+            <div class="spark s1"></div>
+            <div class="spark s2"></div>
+            <div class="spark s3"></div>
+          </div>
+
+          <div class="card-bottom">
+            <div class="mini">
+              <div class="mini-ic">🔥</div>
+              <div>
+                <div class="mini-title">گرم و تازه</div>
+                <div class="mini-sub">آماده‌سازی روزانه</div>
+              </div>
+            </div>
+            <div class="mini">
+              <div class="mini-ic">🚚</div>
+              <div>
+                <div class="mini-title">تحویل سریع</div>
+                <div class="mini-sub">Atlanta & اطراف</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="floating glass">
+          <div class="floating-title">امروز چی می‌خوای؟</div>
+          <div class="chips">
+            <button class="chip" data-filter="all">همه</button>
+            <button class="chip" data-filter="afghan">افغانی</button>
+            <button class="chip" data-filter="bbq">کباب</button>
+            <button class="chip" data-filter="dessert">دسر</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu" class="section">
+      <div class="section-head">
+        <h2>منوی محبوب</h2>
+        <p>چند آیتم ترند که همیشه زود تمام می‌شود.</p>
+      </div>
+
+      <div class="grid">
+        <article class="item glass" data-cat="afghan">
+          <div class="item-top">
+            <div class="item-emoji">🍛</div>
+            <div class="item-title">قابلی پلو</div>
+          </div>
+          <p class="item-desc">با گوشت نرم، کشمش و زعفران. مناسب ایونت‌های رسمی.</p>
+          <div class="item-bottom">
+            <span class="tag">Afghan</span>
+            <button class="add" data-name="قابلی پلو">اضافه</button>
+          </div>
+        </article>
+
+        <article class="item glass" data-cat="bbq">
+          <div class="item-top">
+            <div class="item-emoji">🥩</div>
+            <div class="item-title">کباب مخلوط</div>
+          </div>
+          <p class="item-desc">طعم دودی، سس مخصوص، نان داغ.</p>
+          <div class="item-bottom">
+            <span class="tag">BBQ</span>
+            <button class="add" data-name="کباب مخلوط">اضافه</button>
+          </div>
+        </article>
+
+        <article class="item glass" data-cat="afghan">
+          <div class="item-top">
+            <div class="item-emoji">🥟</div>
+            <div class="item-title">منتو</div>
+          </div>
+          <p class="item-desc">خمیر نازک، گوشت مزه‌دار، ماست و نعناع.</p>
+          <div class="item-bottom">
+            <span class="tag">Afghan</span>
+            <button class="add" data-name="منتو">اضافه</button>
+          </div>
+        </article>
+
+        <article class="item glass" data-cat="dessert">
+          <div class="item-top">
+            <div class="item-emoji">🍮</div>
+            <div class="item-title">دسر خانگی</div>
+          </div>
+          <p class="item-desc">شیرینی نرم، مناسب پایان مهمانی.</p>
+          <div class="item-bottom">
+            <span class="tag">Dessert</span>
+            <button class="add" data-name="دسر خانگی">اضافه</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="gallery" class="section">
+      <div class="section-head">
+        <h2>گالری دیزاین</h2>
+        <p>یک ویترین شیک برای عکس‌های غذا و میز.</p>
+      </div>
+
+      <div class="masonry">
+        <div class="shot glass"></div>
+        <div class="shot glass tall"></div>
+        <div class="shot glass"></div>
+        <div class="shot glass wide"></div>
+        <div class="shot glass"></div>
+        <div class="shot glass tall"></div>
+      </div>
+
+      <div class="hint">
+        *فعلاً عکس‌ها به‌صورت استایل‌دار هستند. هر وقت عکس‌های خودت را فرستادی/گذاشتی، همینجا جایگزین می‌کنیم.
+      </div>
+    </section>
+
+    <section id="packages" class="section">
+      <div class="section-head">
+        <h2>پکیج‌ها</h2>
+        <p>شفاف، لوکس، قابل تنظیم برای تعداد مهمان.</p>
+      </div>
+
+      <div class="pricing">
+        <div class="plan glass">
+          <div class="plan-name">اقتصادی</div>
+          <div class="plan-price">$199</div>
+          <ul>
+            <li>تا 10 نفر</li>
+            <li>۲ غذای اصلی</li>
+            <li>۱ نوشیدنی</li>
+            <li>تحویل</li>
+          </ul>
+          <button class="btn btn-ghost pick" data-pack="اقتصادی">انتخاب</button>
+        </div>
+
+        <div class="plan glass featured">
+          <div class="ribbon">پرفروش</div>
+          <div class="plan-name">لوکس</div>
+          <div class="plan-price">$499</div>
+          <ul>
+            <li>تا 25 نفر</li>
+            <li>۳ غذای اصلی + ساید</li>
+            <li>دسر</li>
+            <li>چیدمان ساده</li>
+          </ul>
+          <button class="btn btn-primary pick" data-pack="لوکس">انتخاب</button>
+        </div>
+
+        <div class="plan glass">
+          <div class="plan-name">VIP</div>
+          <div class="plan-price">$999</div>
+          <ul>
+            <li>تا 60 نفر</li>
+            <li>منوی کامل + دسر</li>
+            <li>چیدمان حرفه‌ای</li>
+            <li>پشتیبانی در محل</li>
+          </ul>
+          <button class="btn btn-ghost pick" data-pack="VIP">انتخاب</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="order" class="section">
+      <div class="section-head">
+        <h2>سفارش / تماس</h2>
+        <p>در چند ثانیه سفارش‌ات را آماده کن.</p>
+      </div>
+
+      <div class="order">
+        <form class="glass form" id="orderForm">
+          <div class="row">
+            <label>نام شما</label>
+            <input required placeholder="مثلاً احمد" id="name" />
+          </div>
+
+          <div class="row">
+            <label>شماره تماس</label>
+            <input required placeholder="مثلاً 470-420-1001" id="phone" />
+          </div>
+
+          <div class="row">
+            <label>تعداد مهمان</label>
+            <input required type="number" min="1" placeholder="مثلاً 25" id="guests" />
+          </div>
+
+          <div class="row">
+            <label>نوع ایونت</label>
+            <select id="eventType">
+              <option>تولد</option>
+              <option>عروسی</option>
+              <option>مهمانی خانوادگی</option>
+              <option>شرکتی</option>
+              <option>دیگر</option>
+            </select>
+          </div>
+
+          <div class="row">
+            <label>پکیج انتخابی</label>
+            <input placeholder="خودکار انتخاب می‌شود" id="package" readonly />
+          </div>
+
+          <div class="row">
+            <label>لیست آیتم‌ها</label>
+            <textarea id="items" placeholder="آیتم‌ها اینجا می‌آیند..." rows="4"></textarea>
+          </div>
+
+          <button class="btn btn-primary" type="submit">ساخت پیام سفارش</button>
+
+          <div class="output" id="output" aria-live="polite"></div>
+        </form>
+
+        <div class="glass basket">
+          <div class="basket-head">
+            <h3>سبد انتخاب</h3>
+            <span class="count" id="count">0</span>
+          </div>
+
+          <div class="basket-list" id="basket"></div>
+
+          <div class="basket-actions">
+            <button class="btn btn-ghost" id="clear">پاک کردن</button>
+            <a class="btn btn-primary" id="whatsApp" target="_blank" rel="noreferrer">واتساپ</a>
+          </div>
+
+          <div class="note">
+            *لینک واتساپ خودکار با پیام سفارش ساخته می‌شود.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="foot-left">
+      <div class="brand-mini">کترینگ لوکس</div>
+      <div class="muted">© 2026 • همه حقوق محفوظ</div>
+    </div>
+    <div class="foot-right muted">
+      Instagram: @yourcatering • Phone: 470-420-1001
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
