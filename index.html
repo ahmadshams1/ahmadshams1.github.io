@@ -1,263 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nisa Catering | Elegant Afghan Catering</title>
-  <meta name="description" content="Elegant Afghan catering menu with WhatsApp ordering." />
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>خوش آمدید</title>
   <style>
-    :root{
-      --bg:#fbf7ee;      /* cream */
-      --bg2:#f6f1e6;
-      --ink:#171717;
-      --muted:#5b5b5b;
-      --line:rgba(0,0,0,.12);
-      --card:rgba(255,255,255,.55);
-      --shadow:0 18px 60px rgba(0,0,0,.10);
-      --radius:16px;
-    }
-
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
     body{
-      margin:0;
-      background: linear-gradient(180deg, var(--bg), var(--bg2));
-      color:var(--ink);
-      font-family: Georgia, "Times New Roman", Times, serif;
-      line-height:1.75;
-    }
-    a{color:inherit; text-decoration:none}
-    .container{width:min(1120px, 92%); margin:0 auto}
-
-    /* Top nav (simple + luxury) */
-    .top{
-      position:sticky; top:0; z-index:50;
-      background: rgba(251,247,238,.86);
-      backdrop-filter: blur(10px);
-      border-bottom:1px solid var(--line);
-    }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:12px; padding:14px 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    }
-    .brand b{
-      text-transform:uppercase;
-      letter-spacing:1.1px;
-      font-weight:1000;
-      font-size:14px;
-      display:block;
-    }
-    .brand small{
-      display:block;
-      margin-top:2px;
-      color:var(--muted);
-      font-weight:800;
-      font-size:12.5px;
-    }
-    .links{display:flex; gap:6px; flex-wrap:wrap; font-weight:900; font-size:13px}
-    .links a{padding:9px 10px; border-radius:999px}
-    .links a:hover{background:rgba(0,0,0,.06)}
-    .btn{
-      border:1px solid rgba(0,0,0,.20);
-      background: rgba(0,0,0,.06);
-      padding:10px 12px;
-      border-radius:999px;
-      font-weight:950;
-      white-space:nowrap;
-    }
-    .btn.dark{
-      background:#111;
-      color:#fff;
-      border-color:#111;
-    }
-
-    header{padding:26px 0 8px; text-align:center}
-    h1{
-      margin:0 0 8px;
-      font-size: clamp(28px, 3.2vw, 44px);
-      letter-spacing:.6px;
-    }
-    .lead{
-      margin:0 auto;
-      max-width:70ch;
-      color:var(--muted);
-      font-size:16.5px;
-    }
-    .divider{height:1px; background:var(--line); margin:22px 0}
-
-    /* Menu grid like your screenshot */
-    .menuGrid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px 24px;
-      padding: 10px 0 30px;
-    }
-    .card{text-align:center}
-    .photo{
-      width:100%;
-      aspect-ratio: 16/9;
-      border-radius: var(--radius);
+      margin:0; height:100vh; display:flex; align-items:center; justify-content:center;
+      background:#0b0f19; color:#fff; font-family: system-ui, -apple-system, "Segoe UI", Arial;
       overflow:hidden;
-      background: rgba(0,0,0,.05);
-      box-shadow: var(--shadow);
-      border:1px solid rgba(0,0,0,.08);
     }
-    .photo img{width:100%; height:100%; object-fit:cover; display:block}
-    .title{
-      margin:16px 0 10px;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      font-weight:1000;
-      letter-spacing:1.2px;
-      text-transform:uppercase;
-      font-size:14px;
+    .box{ text-align:center; padding:30px; }
+    .name{ font-size:34px; font-weight:700; margin-top:12px; letter-spacing:0.5px; }
+    .heart{
+      font-size:90px;
+      display:inline-block;
+      animation: beat 0.9s infinite;
+      filter: drop-shadow(0 8px 18px rgba(255,0,80,0.35));
     }
-    .desc{
-      margin:0 auto;
-      max-width:42ch;
+    @keyframes beat{
+      0%,100%{ transform: scale(1); }
+      25%{ transform: scale(1.15); }
+      50%{ transform: scale(0.98); }
+      75%{ transform: scale(1.2); }
+    }
+    /* ذرات قلب کوچک */
+    .mini{
+      position:absolute;
       font-size:18px;
-      color:#222;
+      animation: floatUp 1.4s ease-out forwards;
+      opacity:0.9;
     }
-    .tags{
-      margin-top:14px;
-      font-style:italic;
-      font-size:18px;
-      color:#333;
-    }
-
-    /* Simple order block */
-    .order{
-      border-top:1px solid var(--line);
-      padding:24px 0 46px;
-      text-align:center;
-    }
-    .order h2{
-      margin:0 0 10px;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      text-transform:uppercase;
-      letter-spacing:1.2px;
-      font-size:14px;
-      font-weight:1000;
-    }
-    .order p{margin:0 auto 14px; max-width:70ch; color:var(--muted); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; font-weight:800}
-    .order .row{display:flex; gap:10px; justify-content:center; flex-wrap:wrap}
-
-    footer{
-      border-top:1px solid var(--line);
-      padding:18px 0 30px;
-      text-align:center;
-      color:var(--muted);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      font-weight:800;
-      font-size:13px;
-    }
-
-    @media (max-width: 980px){
-      .menuGrid{grid-template-columns:1fr; gap:26px}
-      .links{display:none}
-      .desc,.tags{font-size:17px}
+    @keyframes floatUp{
+      0%{ transform: translateY(0) scale(1); opacity:1; }
+      100%{ transform: translateY(-140px) scale(1.6); opacity:0; }
     }
   </style>
 </head>
-
 <body>
-  <!-- EDIT -->
-  <script>
-    const BRAND_NAME = "Nisa Catering";
-    const CITY = "Atlanta, GA";
-    const WHATSAPP_NUMBER = "+14704201001";
-  </script>
-
-  <div class="top">
-    <div class="container">
-      <div class="nav">
-        <div class="brand">
-          <b id="brandOut">Nisa Catering</b>
-          <small id="cityOut">Atlanta, GA • Afghan Catering</small>
-        </div>
-
-        <div class="links">
-          <a href="#menu">Menu</a>
-          <a href="#order">Order</a>
-          <a href="#contact">Contact</a>
-        </div>
-
-        <a class="btn dark" id="waTop" href="#">WhatsApp Order</a>
-      </div>
-    </div>
+  <div class="box">
+    <div class="heart">❤️</div>
+    <div class="name">Ahmad Walid Shams</div>
   </div>
 
-  <header class="container">
-    <h1>Menu</h1>
-    <p class="lead">Elegant Afghan catering menu for events. Clean presentation and easy ordering.</p>
-    <div class="divider"></div>
-  </header>
-
-  <main class="container" id="menu">
-    <section class="menuGrid">
-      <article class="card">
-        <div class="photo"><img src="images/borani.jpg" alt="Borani"></div>
-        <div class="title">BORANI</div>
-        <p class="desc">Roasted eggplant with sautéed tomatoes, onions, fragrant spices, finished with dried mint.</p>
-        <div class="tags">Vegan, Gluten-Free, Dairy-Free</div>
-      </article>
-
-      <article class="card">
-        <div class="photo"><img src="images/qabuli.jpg" alt="Qabuli Rice"></div>
-        <div class="title">QABULI RICE</div>
-        <p class="desc">Aromatic basmati rice gently cooked with raisins, caramelized onions, and a sweet-savory spice blend.</p>
-        <div class="tags">Gluten-Free, Dairy-Free</div>
-      </article>
-
-      <article class="card">
-        <div class="photo"><img src="images/chicken.jpg" alt="Afghan Chicken"></div>
-        <div class="title">AFGHAN CHICKEN</div>
-        <p class="desc">Juicy marinated chicken with lemon, garlic, and traditional spices for a flavorful finish.</p>
-        <div class="tags">Gluten-Free, Dairy-Free</div>
-      </article>
-    </section>
-
-    <section class="order" id="order">
-      <h2>Order</h2>
-      <p>Tap WhatsApp and send: Name, Date, Guests, Menu Items, Address.</p>
-      <div class="row">
-        <a class="btn dark" id="waCta" href="#">Order on WhatsApp</a>
-        <a class="btn" href="#contact">Contact</a>
-      </div>
-    </section>
-
-    <section class="order" id="contact" style="border-top:none; padding-top:0;">
-      <h2>Contact</h2>
-      <p><b id="brand2">Nisa Catering</b> • <span id="city2">Atlanta, GA</span><br>
-        WhatsApp/Phone: <a id="tel" href="#" style="text-decoration:underline;">Call</a>
-      </p>
-    </section>
-  </main>
-
-  <footer>
-    © <span id="year"></span> <span id="brand3">Nisa Catering</span>. All rights reserved.
-  </footer>
-
   <script>
-    document.getElementById("brandOut").textContent = BRAND_NAME;
-    document.getElementById("brand2").textContent = BRAND_NAME;
-    document.getElementById("brand3").textContent = BRAND_NAME;
-    document.getElementById("cityOut").textContent = `${CITY} • Afghan Catering`;
-    document.getElementById("city2").textContent = CITY;
-    document.getElementById("year").textContent = new Date().getFullYear();
+    // وقتی صفحه باز شد چند قلب کوچک هم بیاید
+    function popMiniHearts(count=14){
+      for(let i=0;i<count;i++){
+        const h = document.createElement('div');
+        h.className = 'mini';
+        h.textContent = '❤️';
+        const x = Math.random() * window.innerWidth;
+        const y = window.innerHeight - (Math.random()*80 + 40);
+        h.style.left = x + 'px';
+        h.style.top = y + 'px';
+        h.style.transform = `translateY(0) scale(${0.8 + Math.random()*0.8})`;
+        document.body.appendChild(h);
+        setTimeout(()=>h.remove(), 1500);
+      }
+    }
 
-    const waNumber = WHATSAPP_NUMBER.replace("+", "");
-    const waBase = "https://wa.me/" + waNumber;
-
-    const preset = encodeURIComponent(
-      `Hi ${BRAND_NAME}! I’d like to place an order.\n`+
-      `Name:\nPhone:\nDate:\nGuests:\nMenu items:\nAddress:\nNotes:`
-    );
-
-    document.getElementById("waTop").href = `${waBase}?text=${preset}`;
-    document.getElementById("waCta").href = `${waBase}?text=${preset}`;
-    document.getElementById("tel").href = "tel:" + WHATSAPP_NUMBER;
+    window.addEventListener('load', ()=> popMiniHearts(18));
+    // هر کلیک هم دوباره قلب‌ها بیاید
+    window.addEventListener('click', ()=> popMiniHearts(12));
   </script>
 </body>
 </html>
