@@ -4,31 +4,497 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nisa Catering</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    :root {
+      --cream: #F7F1E8;
+      --olive: #55624C;
+      --brown: #8A5A3B;
+      --gold: #C8A96B;
+      --charcoal: #1F1F1F;
+      --white: #fffdf9;
+      --muted: #6f6a61;
+      --shadow: 0 14px 40px rgba(31, 31, 31, 0.10);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", Arial, sans-serif;
+      color: var(--charcoal);
+      background: linear-gradient(180deg, #f7f1e8 0%, #f3ecdf 100%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      background: rgba(247, 241, 232, 0.88);
+      border-bottom: 1px solid rgba(85, 98, 76, 0.10);
+    }
+
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 78px;
+    }
+
+    .brand {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(1.6rem, 2.2vw, 2.2rem);
+      font-weight: 700;
+      color: var(--olive);
+      letter-spacing: 0.5px;
+    }
+
+    .brand small {
+      display: block;
+      font-family: "Inter", Arial, sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 2px;
+    }
+
+    .dots-btn {
+      width: 54px;
+      height: 54px;
+      border: 1px solid rgba(85, 98, 76, 0.14);
+      border-radius: 50%;
+      background: var(--white);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+    }
+
+    .dots {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .dots span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--olive);
+      display: block;
+    }
+
+    .menu-panel {
+      position: fixed;
+      top: 88px;
+      right: 16px;
+      width: min(290px, calc(100% - 32px));
+      background: rgba(255, 253, 249, 0.97);
+      border: 1px solid rgba(85, 98, 76, 0.12);
+      border-radius: 20px;
+      box-shadow: 0 24px 60px rgba(31, 31, 31, 0.16);
+      padding: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-8px);
+      transition: 0.25s ease;
+      z-index: 200;
+    }
+
+    .menu-panel.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .menu-panel a {
+      display: flex;
+      justify-content: space-between;
+      padding: 14px;
+      border-radius: 14px;
+      color: var(--charcoal);
+      font-weight: 600;
+    }
+
+    .menu-panel a:hover {
+      background: #f0e5d4;
+      color: var(--olive);
+    }
+
+    .hero {
+      padding: 72px 0 48px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.58);
+      border: 1px solid rgba(85, 98, 76, 0.10);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      padding: clamp(28px, 4vw, 54px);
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .eyebrow {
+      color: var(--brown);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    h1, h2, h3 {
+      font-family: "Playfair Display", Georgia, serif;
+      line-height: 1.06;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(2.7rem, 6vw, 4.7rem);
+      color: var(--olive);
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--olive);
+    }
+
+    h3 {
+      font-size: 1.45rem;
+      color: var(--olive);
+    }
+
+    p {
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .lead {
+      font-size: 1.08rem;
+      max-width: 60ch;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .btn.primary {
+      background: var(--olive);
+      color: white;
+    }
+
+    .btn.secondary {
+      background: #efe3d2;
+      color: var(--brown);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .stat {
+      padding: 18px;
+      border-radius: 18px;
+      background: #f3e7d8;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.3rem;
+      font-family: "Playfair Display", Georgia, serif;
+      color: var(--olive);
+      margin-bottom: 8px;
+    }
+
+    .hero-visual {
+      min-height: 520px;
+      padding: 18px;
+      display: grid;
+      grid-template-rows: 1fr 120px;
+      gap: 16px;
+    }
+
+    .visual-main,
+    .visual-small {
+      border-radius: calc(var(--radius) - 6px);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .visual-main {
+      background:
+        linear-gradient(180deg, rgba(31,31,31,0.05) 0%, rgba(31,31,31,0.34) 100%),
+        radial-gradient(circle at top right, rgba(200,169,107,0.35), transparent 30%),
+        linear-gradient(140deg, #8a5a3b 0%, #55624c 50%, #3f4638 100%);
+    }
+
+    .photo-content {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      color: white;
+    }
+
+    .photo-content p,
+    .photo-content h3 {
+      color: white;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .pill {
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.22);
+      padding: 10px 14px;
+      border-radius: 999px;
+      backdrop-filter: blur(10px);
+      font-size: 0.9rem;
+      color: white;
+    }
+
+    .visual-small {
+      background: linear-gradient(135deg, #efe3d2, #d8c7ae);
+      padding: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .tag {
+      display: inline-flex;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: #fff7ef;
+      color: var(--brown);
+      font-weight: 700;
+      font-size: 0.88rem;
+    }
+
+    section {
+      padding: 60px 0;
+    }
+
+    .section-head {
+      margin-bottom: 24px;
+    }
+
+    .grid-3,
+    .grid-2 {
+      display: grid;
+      gap: 20px;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .info-card,
+    .menu-item,
+    .gallery-item,
+    .contact-card,
+    .feature-panel {
+      padding: 24px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.62);
+      border: 1px solid rgba(85,98,76,0.10);
+      box-shadow: var(--shadow);
+    }
+
+    .menu-grid,
+    .gallery-grid,
+    .contact-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .menu-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .contact-grid {
+      grid-template-columns: 1fr 0.9fr;
+    }
+
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      margin-top: 14px;
+      color: var(--olive);
+      font-weight: 700;
+    }
+
+    .price {
+      color: var(--brown);
+      font-weight: 800;
+    }
+
+    .gallery-item {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .gallery-photo {
+      min-height: 250px;
+      background:
+        linear-gradient(180deg, rgba(31,31,31,0.08), rgba(31,31,31,0.38)),
+        linear-gradient(135deg, #cab08e 0%, #8a5a3b 35%, #55624c 100%);
+    }
+
+    .gallery-caption {
+      padding: 18px 20px 22px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .contact-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(85,98,76,0.10);
+    }
+
+    .footer {
+      padding: 28px 0 40px;
+      color: var(--muted);
+    }
+
+    .footer-bar {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(85,98,76,0.12);
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .grid-3,
+      .grid-2,
+      .menu-grid,
+      .gallery-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bar,
+      .visual-small {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
 <body>
+
   <header class="topbar">
     <div class="container nav-wrap">
-      <a class="brand" href="index.html">Nisa Catering<small>Authentic Afghan Hospitality</small></a>
+      <a class="brand" href="#home">Nisa Catering<small>Authentic Afghan Hospitality</small></a>
+
       <button class="dots-btn" aria-label="Open menu">
-        <span class="dots"><span></span><span></span><span></span></span>
+        <span class="dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
       </button>
     </div>
+
     <nav class="menu-panel">
-      <a class="active" href="index.html">Home <span>01</span></a>
-      <a href="about.html">About <span>02</span></a>
-      <a href="menu.html">Menu <span>03</span></a>
-      <a href="catering.html">Catering <span>04</span></a>
-      <a href="gallery.html">Gallery <span>05</span></a>
-      <a href="contact.html">Contact <span>06</span></a>
+      <a href="#home">Home <span>01</span></a>
+      <a href="#about">About <span>02</span></a>
+      <a href="#menu">Menu <span>03</span></a>
+      <a href="#catering">Catering <span>04</span></a>
+      <a href="#gallery">Gallery <span>05</span></a>
+      <a href="#contact">Contact <span>06</span></a>
     </nav>
   </header>
 
   <main>
-    <section class="hero">
+    <section class="hero" id="home">
       <div class="container hero-grid">
         <div class="hero-copy card">
           <div class="eyebrow">Elegant catering for unforgettable gatherings</div>
@@ -40,8 +506,8 @@
           </p>
 
           <div class="actions">
-            <a class="btn primary" href="menu.html">View Menu</a>
-            <a class="btn secondary" href="contact.html">Book Catering</a>
+            <a class="btn primary" href="#menu">View Menu</a>
+            <a class="btn secondary" href="#contact">Book Catering</a>
           </div>
 
           <div class="stats">
@@ -62,10 +528,9 @@
 
         <div class="hero-visual card">
           <div class="visual-main">
-            <div class="photo-overlay"></div>
             <div class="photo-content">
-              <h3 style="color: white; margin-bottom: 8px;">Signature Catering Experience</h3>
-              <p style="margin:0; line-height:1.7; color: rgba(255,255,255,0.92);">
+              <h3>Signature Catering Experience</h3>
+              <p>
                 From Qabili Palaw to Mantu and Bolani, our dishes are designed to impress guests
                 and make every event feel special.
               </p>
@@ -77,53 +542,192 @@
             </div>
           </div>
 
-          <div class="visual-small" style="background: linear-gradient(135deg, #efe3d2, #d8c7ae); padding: 18px; display:flex; align-items:center; justify-content:space-between; gap:16px;">
+          <div class="visual-small">
             <div>
               <div class="tag">Now Booking</div>
-              <p style="margin:12px 0 0; color: var(--muted); line-height:1.7;">
-                Multi-page modern website layout with a refined, non-flashy color palette.
+              <p style="margin-top:12px;">
+                Elegant website style with soft premium colors and a modern three-dot menu.
               </p>
             </div>
-            <a class="btn primary" href="about.html">Explore</a>
+            <a class="btn primary" href="#about">Explore</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section id="about">
       <div class="container">
         <div class="section-head">
-          <div>
-            <div class="eyebrow">Why clients choose Nisa</div>
-            <h2>Designed to feel premium, welcoming, and memorable.</h2>
+          <div class="eyebrow">About Nisa Catering</div>
+          <h2>A catering brand built on hospitality, flavor, and elegance.</h2>
+          <p class="lead">
+            Nisa Catering is inspired by the beauty of Afghan food and the warmth of gathering
+            around a table with family, friends, and community.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="feature-panel">
+            <h3>Our Story</h3>
+            <p>
+              We created Nisa Catering to offer authentic Afghan dishes in a way that feels refined and modern.
+              The goal is simple: bring real flavor, beautiful service, and a calm premium experience to every event.
+            </p>
           </div>
-          <p class="lead" style="max-width: 34ch;">
-            A polished presentation, balanced flavors, and a calm luxurious brand style
-            that feels strong without being too bright.
+
+          <div class="feature-panel" style="background: linear-gradient(140deg, rgba(239,227,210,0.92), rgba(216,199,174,0.92));">
+            <h3>Our Promise</h3>
+            <p>
+              We focus on quality ingredients, rich traditional flavors, and dependable service.
+              Every order is prepared with detail, balance, and respect for the event it is part of.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Menu Highlights</div>
+          <h2>A curated menu of Afghan favorites.</h2>
+          <p class="lead">This section can later be changed with your real prices and exact items.</p>
+        </div>
+
+        <div class="menu-grid">
+          <div class="menu-item">
+            <h3>Qabili Palaw</h3>
+            <p>Seasoned rice with tender meat, carrots, raisins, and rich Afghan flavor.</p>
+            <div class="meta"><span>Signature Dish</span><span class="price">Market Price</span></div>
+          </div>
+
+          <div class="menu-item">
+            <h3>Mantu</h3>
+            <p>Delicate dumplings filled and topped with seasoned sauce for a classic favorite.</p>
+            <div class="meta"><span>Popular Choice</span><span class="price">Market Price</span></div>
+          </div>
+
+          <div class="menu-item">
+            <h3>Ashak</h3>
+            <p>Soft dumplings with herbs and flavorful toppings, perfect for events and platters.</p>
+            <div class="meta"><span>Traditional</span><span class="price">Market Price</span></div>
+          </div>
+
+          <div class="menu-item">
+            <h3>Bolani</h3>
+            <p>Thin Afghan flatbread filled with savory ingredients and served warm.</p>
+            <div class="meta"><span>Best for Sharing</span><span class="price">Market Price</span></div>
+          </div>
+
+          <div class="menu-item">
+            <h3>Chapli Kabab</h3>
+            <p>Juicy spiced Afghan-style kabab with bold seasoning and rich aroma.</p>
+            <div class="meta"><span>Guest Favorite</span><span class="price">Market Price</span></div>
+          </div>
+
+          <div class="menu-item">
+            <h3>Borani Banjan</h3>
+            <p>Eggplant dish layered with flavor and served beautifully as a side or platter item.</p>
+            <div class="meta"><span>Vegetarian Option</span><span class="price">Market Price</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="catering">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Catering Services</div>
+          <h2>Flexible catering for intimate and large events.</h2>
+          <p class="lead">
+            Nisa Catering can be styled for drop-off orders, family gatherings, weddings, and larger celebrations.
           </p>
         </div>
 
         <div class="grid-3">
           <div class="info-card">
-            <h3>Authentic Taste</h3>
-            <p>
-              Traditional Afghan dishes prepared with depth of flavor, fresh ingredients,
-              and a homemade touch that feels both rich and comforting.
-            </p>
+            <h3>Private Gatherings</h3>
+            <p>Perfect for birthdays, home dinners, and family celebrations with a polished and warm presentation.</p>
           </div>
+
           <div class="info-card">
-            <h3>Beautiful Presentation</h3>
-            <p>
-              Our service is styled to look refined and elegant, making each table setting
-              and food display feel elevated for your guests.
-            </p>
+            <h3>Large Events</h3>
+            <p>Designed for community gatherings, weddings, and special occasions with menu planning and quantity support.</p>
           </div>
+
           <div class="info-card">
-            <h3>Flexible Catering</h3>
-            <p>
-              Ideal for intimate family dinners, birthday parties, larger celebrations,
-              and special event drop-off or full catering service.
-            </p>
+            <h3>Custom Packages</h3>
+            <p>We can create package options based on guest count, menu selection, and service style.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Gallery</div>
+          <h2>A visual style that feels warm and premium.</h2>
+          <p class="lead">These blocks are ready for your real food photos and event setup pictures.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <div class="gallery-photo"></div>
+            <div class="gallery-caption">
+              <h3>Signature Table Setup</h3>
+              <p>Elegant presentation for modern events.</p>
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <div class="gallery-photo" style="background: linear-gradient(180deg, rgba(31,31,31,0.08), rgba(31,31,31,0.38)), linear-gradient(135deg, #d8c7ae 0%, #c8a96b 35%, #55624c 100%);"></div>
+            <div class="gallery-caption">
+              <h3>Traditional Favorites</h3>
+              <p>Beautifully plated Afghan dishes for guests to enjoy.</p>
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <div class="gallery-photo" style="background: linear-gradient(180deg, rgba(31,31,31,0.08), rgba(31,31,31,0.38)), linear-gradient(135deg, #b48d65 0%, #8a5a3b 35%, #3e4537 100%);"></div>
+            <div class="gallery-caption">
+              <h3>Warm Brand Look</h3>
+              <p>Clean visuals that fit a high-end catering identity.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Contact</div>
+          <h2>Let’s plan your next event.</h2>
+          <p class="lead">Update this part later with your real phone number, Instagram, and booking details.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>Booking Details</h3>
+            <p>Reach out for pricing, guest count, custom menu requests, and catering availability.</p>
+
+            <div class="contact-list">
+              <div class="contact-row"><strong>Phone</strong><span>(000) 000-0000</span></div>
+              <div class="contact-row"><strong>Email</strong><span>hello@nisacatering.com</span></div>
+              <div class="contact-row"><strong>Instagram</strong><span>@nisacatering</span></div>
+              <div class="contact-row"><strong>Location</strong><span>Atlanta, Georgia</span></div>
+            </div>
+          </div>
+
+          <div class="contact-card" style="background: linear-gradient(140deg, rgba(239,227,210,0.95), rgba(216,199,174,0.95));">
+            <h3>Event Inquiry</h3>
+            <p>Guest count, date, location, and menu style can all be added here as a real booking form later.</p>
+
+            <div class="actions">
+              <a class="btn primary" href="#menu">See Menu</a>
+              <a class="btn secondary" href="#catering">Service Options</a>
+            </div>
           </div>
         </div>
       </div>
@@ -137,889 +741,30 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About | Nisa Catering</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <header class="topbar">
-    <div class="container nav-wrap">
-      <a class="brand" href="index.html">Nisa Catering<small>Authentic Afghan Hospitality</small></a>
-      <button class="dots-btn" aria-label="Open menu">
-        <span class="dots"><span></span><span></span><span></span></span>
-      </button>
-    </div>
-    <nav class="menu-panel">
-      <a href="index.html">Home <span>01</span></a>
-      <a class="active" href="about.html">About <span>02</span></a>
-      <a href="menu.html">Menu <span>03</span></a>
-      <a href="catering.html">Catering <span>04</span></a>
-      <a href="gallery.html">Gallery <span>05</span></a>
-      <a href="contact.html">Contact <span>06</span></a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="page-hero">
-      <div class="container">
-        <div class="card">
-          <div class="eyebrow">About Nisa Catering</div>
-          <h1 style="font-size: clamp(2.4rem, 5vw, 4rem);">
-            A catering brand built on hospitality, flavor, and elegance.
-          </h1>
-          <p class="lead">
-            Nisa Catering is inspired by the beauty of Afghan food and the warmth of gathering
-            around a table with family, friends, and community. We believe food should feel welcoming,
-            memorable, and beautifully presented.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container grid-2">
-        <div class="feature-panel">
-          <h2>Our Story</h2>
-          <p>
-            We created Nisa Catering to offer authentic Afghan dishes in a way that feels refined and modern.
-            The goal is simple: bring real flavor, beautiful service, and a calm premium experience to every event.
-          </p>
-          <p>
-            Whether it is a small family dinner or a larger special occasion, we want every guest to feel the quality,
-            warmth, and care behind each dish.
-          </p>
-        </div>
-
-        <div class="feature-panel" style="background: linear-gradient(140deg, rgba(239,227,210,0.92), rgba(216,199,174,0.92));">
-          <h2>Our Promise</h2>
-          <p>
-            We focus on quality ingredients, rich traditional flavors, and dependable service.
-            Every order is prepared with detail, balance, and respect for the event it is part of.
-          </p>
-
-          <div class="pill-row">
-            <span class="pill" style="background:#fff7ef;color:#8A5A3B;border-color:rgba(138,90,59,0.12);">Authentic Afghan Food</span>
-            <span class="pill" style="background:#fff7ef;color:#8A5A3B;border-color:rgba(138,90,59,0.12);">Elegant Setup</span>
-            <span class="pill" style="background:#fff7ef;color:#8A5A3B;border-color:rgba(138,90,59,0.12);">Warm Service</span>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footer-bar">
-      <div>© 2026 Nisa Catering.</div>
-      <div>Crafted with warmth and detail.</div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Menu | Nisa Catering</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <header class="topbar">
-    <div class="container nav-wrap">
-      <a class="brand" href="index.html">Nisa Catering<small>Authentic Afghan Hospitality</small></a>
-      <button class="dots-btn" aria-label="Open menu">
-        <span class="dots"><span></span><span></span><span></span></span>
-      </button>
-    </div>
-    <nav class="menu-panel">
-      <a href="index.html">Home <span>01</span></a>
-      <a href="about.html">About <span>02</span></a>
-      <a class="active" href="menu.html">Menu <span>03</span></a>
-      <a href="catering.html">Catering <span>04</span></a>
-      <a href="gallery.html">Gallery <span>05</span></a>
-      <a href="contact.html">Contact <span>06</span></a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="page-hero">
-      <div class="container">
-        <div class="card">
-          <div class="eyebrow">Menu Highlights</div>
-          <h1 style="font-size: clamp(2.4rem, 5vw, 4rem);">A curated menu of Afghan favorites.</h1>
-          <p class="lead">
-            This sample menu can easily be updated with your exact items, prices, combos, and catering packages.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container menu-grid">
-        <div class="menu-item">
-          <h3>Qabili Palaw</h3>
-          <p>Seasoned rice with tender meat, carrots, raisins, and rich Afghan flavor.</p>
-          <div class="meta"><span>Signature Dish</span><span class="price">Market Price</span></div>
-        </div>
-
-        <div class="menu-item">
-          <h3>Mantu</h3>
-          <p>Delicate dumplings filled and topped with seasoned sauce for a classic favorite.</p>
-          <div class="meta"><span>Popular Choice</span><span class="price">Market Price</span></div>
-        </div>
-
-        <div class="menu-item">
-          <h3>Ashak</h3>
-          <p>Soft dumplings with herbs and flavorful toppings, perfect for events and platters.</p>
-          <div class="meta"><span>Traditional</span><span class="price">Market Price</span></div>
-        </div>
-
-        <div class="menu-item">
-          <h3>Bolani</h3>
-          <p>Thin Afghan flatbread filled with savory ingredients and served warm.</p>
-          <div class="meta"><span>Best for Sharing</span><span class="price">Market Price</span></div>
-        </div>
-
-        <div class="menu-item">
-          <h3>Chapli Kabab</h3>
-          <p>Juicy spiced Afghan-style kabab with bold seasoning and rich aroma.</p>
-          <div class="meta"><span>Guest Favorite</span><span class="price">Market Price</span></div>
-        </div>
-
-        <div class="menu-item">
-          <h3>Borani Banjan</h3>
-          <p>Eggplant dish layered with flavor and served beautifully as a side or platter item.</p>
-          <div class="meta"><span>Vegetarian Option</span><span class="price">Market Price</span></div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footer-bar">
-      <div>© 2026 Nisa Catering.</div>
-      <div>Menu can be customized for your event.</div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Catering | Nisa Catering</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <header class="topbar">
-    <div class="container nav-wrap">
-      <a class="brand" href="index.html">Nisa Catering<small>Authentic Afghan Hospitality</small></a>
-      <button class="dots-btn" aria-label="Open menu">
-        <span class="dots"><span></span><span></span><span></span></span>
-      </button>
-    </div>
-    <nav class="menu-panel">
-      <a href="index.html">Home <span>01</span></a>
-      <a href="about.html">About <span>02</span></a>
-      <a href="menu.html">Menu <span>03</span></a>
-      <a class="active" href="catering.html">Catering <span>04</span></a>
-      <a href="gallery.html">Gallery <span>05</span></a>
-      <a href="contact.html">Contact <span>06</span></a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="page-hero">
-      <div class="container">
-        <div class="card">
-          <div class="eyebrow">Catering Services</div>
-          <h1 style="font-size: clamp(2.4rem, 5vw, 4rem);">Flexible catering for intimate and large events.</h1>
-          <p class="lead">
-            Nisa Catering can be styled for drop-off orders, family gatherings,
-            corporate lunches, weddings, and larger celebrations.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container grid-3">
-        <div class="info-card">
-          <h3>Private Gatherings</h3>
-          <p>Perfect for birthdays, home dinners, and family celebrations with a polished and warm presentation.</p>
-        </div>
-        <div class="info-card">
-          <h3>Large Events</h3>
-          <p>Designed for community gatherings, weddings, and special occasions with menu planning and quantity support.</p>
-        </div>
-        <div class="info-card">
-          <h3>Custom Packages</h3>
-          <p>We can create package options based on guest count, menu selection, and service style.</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footer-bar">
-      <div>© 2026 Nisa Catering.</div>
-      <div>Tailored service for every event.</div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gallery | Nisa Catering</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <header class="topbar">
-    <div class="container nav-wrap">
-      <a class="brand" href="index.html">Nisa Catering<small>Authentic Afghan Hospitality</small></a>
-      <button class="dots-btn" aria-label="Open menu">
-        <span class="dots"><span></span><span></span><span></span></span>
-      </button>
-    </div>
-    <nav class="menu-panel">
-      <a href="index.html">Home <span>01</span></a>
-      <a href="about.html">About <span>02</span></a>
-      <a href="menu.html">Menu <span>03</span></a>
-      <a href="catering.html">Catering <span>04</span></a>
-      <a class="active" href="gallery.html">Gallery <span>05</span></a>
-      <a href="contact.html">Contact <span>06</span></a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="page-hero">
-      <div class="container">
-        <div class="card">
-          <div class="eyebrow">Gallery</div>
-          <h1 style="font-size: clamp(2.4rem, 5vw, 4rem);">A visual style that feels warm and premium.</h1>
-          <p class="lead">
-            These gallery blocks are ready for your real food photos, event setup pictures, and catering displays.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container gallery-grid">
-        <div class="gallery-item">
-          <div class="gallery-photo"></div>
-          <div class="gallery-caption">
-            <h3>Signature Table Setup</h3>
-            <p>Elegant presentation for modern events.</p>
-          </div>
-        </div>
-
-        <div class="gallery-item">
-          <div class="gallery-photo" style="background: linear-gradient(180deg, rgba(31,31,31,0.08), rgba(31,31,31,0.38)), linear-gradient(135deg, #d8c7ae 0%, #c8a96b 35%, #55624c 100%);"></div>
-          <div class="gallery-caption">
-            <h3>Traditional Favorites</h3>
-            <p>Beautifully plated Afghan dishes for guests to enjoy.</p>
-          </div>
-        </div>
-
-        <div class="gallery-item">
-          <div class="gallery-photo" style="background: linear-gradient(180deg, rgba(31,31,31,0.08), rgba(31,31,31,0.38)), linear-gradient(135deg, #b48d65 0%, #8a5a3b 35%, #3e4537 100%);"></div>
-          <div class="gallery-caption">
-            <h3>Warm Brand Look</h3>
-            <p>Clean visuals that fit a high-end catering identity.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footer-bar">
-      <div>© 2026 Nisa Catering.</div>
-      <div>Add your food photos here anytime.</div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact | Nisa Catering</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <header class="topbar">
-    <div class="container nav-wrap">
-      <a class="brand" href="index.html">Nisa Catering<small>Authentic Afghan Hospitality</small></a>
-      <button class="dots-btn" aria-label="Open menu">
-        <span class="dots"><span></span><span></span><span></span></span>
-      </button>
-    </div>
-    <nav class="menu-panel">
-      <a href="index.html">Home <span>01</span></a>
-      <a href="about.html">About <span>02</span></a>
-      <a href="menu.html">Menu <span>03</span></a>
-      <a href="catering.html">Catering <span>04</span></a>
-      <a href="gallery.html">Gallery <span>05</span></a>
-      <a class="active" href="contact.html">Contact <span>06</span></a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="page-hero">
-      <div class="container">
-        <div class="card">
-          <div class="eyebrow">Contact</div>
-          <h1 style="font-size: clamp(2.4rem, 5vw, 4rem);">Let’s plan your next event.</h1>
-          <p class="lead">
-            Update this page with your phone number, Instagram, email address, and booking details.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container contact-grid">
-        <div class="contact-card">
-          <h2>Booking Details</h2>
-          <p>Reach out for pricing, guest count, custom menu requests, and catering availability.</p>
-
-          <div class="contact-list">
-            <div class="contact-row"><strong>Phone</strong><span>(000) 000-0000</span></div>
-            <div class="contact-row"><strong>Email</strong><span>hello@nisacatering.com</span></div>
-            <div class="contact-row"><strong>Instagram</strong><span>@nisacatering</span></div>
-            <div class="contact-row"><strong>Location</strong><span>Atlanta, Georgia</span></div>
-          </div>
-        </div>
-
-        <div class="contact-card" style="background: linear-gradient(140deg, rgba(239,227,210,0.95), rgba(216,199,174,0.95));">
-          <h2>Event Inquiry</h2>
-          <p>Guest count, date, location, and menu style can all be added here as a real booking form later.</p>
-
-          <div class="actions">
-            <a class="btn primary" href="menu.html">See Menu</a>
-            <a class="btn secondary" href="catering.html">Service Options</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footer-bar">
-      <div>© 2026 Nisa Catering.</div>
-      <div>Now ready for your real contact info.</div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>:root {
-  --cream: #F7F1E8;
-  --olive: #55624C;
-  --brown: #8A5A3B;
-  --gold: #C8A96B;
-  --charcoal: #1F1F1F;
-  --white: #fffdf9;
-  --muted: #6f6a61;
-  --shadow: 0 14px 40px rgba(31, 31, 31, 0.10);
-  --radius: 22px;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  font-family: "Inter", Arial, sans-serif;
-  color: var(--charcoal);
-  background: linear-gradient(180deg, #f7f1e8 0%, #f3ecdf 100%);
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-.container {
-  width: min(1120px, calc(100% - 32px));
-  margin: 0 auto;
-}
-
-.topbar {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  backdrop-filter: blur(16px);
-  background: rgba(247, 241, 232, 0.84);
-  border-bottom: 1px solid rgba(85, 98, 76, 0.10);
-}
-
-.nav-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 78px;
-}
-
-.brand {
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(1.6rem, 2.2vw, 2.2rem);
-  font-weight: 700;
-  color: var(--olive);
-  letter-spacing: 0.5px;
-}
-
-.brand small {
-  display: block;
-  font-family: "Inter", Arial, sans-serif;
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-top: 2px;
-}
-
-.dots-btn {
-  width: 54px;
-  height: 54px;
-  border: 1px solid rgba(85, 98, 76, 0.14);
-  border-radius: 50%;
-  background: var(--white);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: var(--shadow);
-}
-
-.dots {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.dots span {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--olive);
-  display: block;
-}
-
-.menu-panel {
-  position: fixed;
-  top: 88px;
-  right: 16px;
-  width: min(290px, calc(100% - 32px));
-  background: rgba(255, 253, 249, 0.97);
-  border: 1px solid rgba(85, 98, 76, 0.12);
-  border-radius: 20px;
-  box-shadow: 0 24px 60px rgba(31, 31, 31, 0.16);
-  padding: 14px;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(-8px);
-  transition: 0.25s ease;
-  z-index: 30;
-}
-
-.menu-panel.open {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
-}
-
-.menu-panel a {
-  display: flex;
-  justify-content: space-between;
-  padding: 14px 14px;
-  border-radius: 14px;
-  color: var(--charcoal);
-  font-weight: 600;
-}
-
-.menu-panel a:hover,
-.menu-panel a.active {
-  background: #f0e5d4;
-  color: var(--olive);
-}
-
-.hero {
-  padding: 72px 0 48px;
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 28px;
-  align-items: stretch;
-}
-
-.card {
-  background: rgba(255, 255, 255, 0.58);
-  border: 1px solid rgba(85, 98, 76, 0.10);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-}
-
-.hero-copy {
-  padding: clamp(28px, 4vw, 54px);
-  min-height: 520px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.eyebrow {
-  color: var(--brown);
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: 0.78rem;
-  font-weight: 700;
-  margin-bottom: 16px;
-}
-
-h1,
-h2,
-h3 {
-  font-family: "Playfair Display", Georgia, serif;
-  line-height: 1.06;
-  margin: 0 0 16px;
-}
-
-h1 {
-  font-size: clamp(2.7rem, 6vw, 4.7rem);
-  color: var(--olive);
-}
-
-h2 {
-  font-size: clamp(2rem, 4vw, 3.1rem);
-  color: var(--olive);
-}
-
-h3 {
-  font-size: 1.45rem;
-  color: var(--olive);
-}
-
-.lead {
-  font-size: 1.08rem;
-  line-height: 1.8;
-  color: var(--muted);
-  max-width: 60ch;
-}
-
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 24px;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 22px;
-  border-radius: 999px;
-  font-weight: 700;
-  transition: 0.2s ease;
-}
-
-.btn.primary {
-  background: var(--olive);
-  color: white;
-}
-
-.btn.primary:hover {
-  transform: translateY(-1px);
-}
-
-.btn.secondary {
-  background: #efe3d2;
-  color: var(--brown);
-}
-
-.hero-visual {
-  min-height: 520px;
-  padding: 18px;
-  display: grid;
-  grid-template-rows: 1fr 120px;
-  gap: 16px;
-}
-
-.visual-main,
-.visual-small {
-  border-radius: calc(var(--radius) - 6px);
-  overflow: hidden;
-  position: relative;
-}
-
-.photo-overlay {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(180deg, rgba(31,31,31,0.05) 0%, rgba(31,31,31,0.34) 100%),
-    radial-gradient(circle at top right, rgba(200,169,107,0.35), transparent 30%),
-    linear-gradient(140deg, #8a5a3b 0%, #55624c 50%, #3f4638 100%);
-}
-
-.photo-content {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  right: 20px;
-  color: white;
-}
-
-.pill-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 14px;
-}
-
-.pill {
-  background: rgba(255,255,255,0.18);
-  border: 1px solid rgba(255,255,255,0.22);
-  padding: 10px 14px;
-  border-radius: 999px;
-  backdrop-filter: blur(10px);
-  font-size: 0.9rem;
-}
-
-.section {
-  padding: 28px 0 60px;
-}
-
-.section-head {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  align-items: end;
-  margin-bottom: 24px;
-}
-
-.grid-3,
-.grid-2,
-.menu-grid,
-.gallery-grid,
-.contact-grid {
-  display: grid;
-  gap: 20px;
-}
-
-.grid-3 {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.grid-2 {
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.menu-grid {
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.gallery-grid {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.contact-grid {
-  grid-template-columns: 1fr 0.9fr;
-}
-
-.info-card,
-.menu-item,
-.gallery-item,
-.contact-card,
-.feature-panel {
-  padding: 24px;
-  border-radius: var(--radius);
-  background: rgba(255,255,255,0.62);
-  border: 1px solid rgba(85,98,76,0.10);
-  box-shadow: var(--shadow);
-}
-
-.info-card p,
-.menu-item p,
-.contact-card p,
-.feature-panel p,
-.stat p {
-  color: var(--muted);
-  line-height: 1.8;
-}
-
-.price {
-  color: var(--brown);
-  font-weight: 800;
-  font-size: 1.05rem;
-}
-
-.meta {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  align-items: center;
-  margin-top: 14px;
-  color: var(--olive);
-  font-weight: 700;
-}
-
-.gallery-item {
-  padding: 0;
-  overflow: hidden;
-}
-
-.gallery-photo {
-  min-height: 250px;
-  background:
-    linear-gradient(180deg, rgba(31,31,31,0.08), rgba(31,31,31,0.38)),
-    linear-gradient(135deg, #cab08e 0%, #8a5a3b 35%, #55624c 100%);
-}
-
-.gallery-caption {
-  padding: 18px 20px 22px;
-}
-
-.stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-top: 22px;
-}
-
-.stat {
-  padding: 18px;
-  border-radius: 18px;
-  background: #f3e7d8;
-}
-
-.stat strong {
-  display: block;
-  font-size: 2rem;
-  font-family: "Playfair Display", Georgia, serif;
-  color: var(--olive);
-}
-
-.contact-list {
-  display: grid;
-  gap: 14px;
-  margin-top: 16px;
-}
-
-.contact-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid rgba(85,98,76,0.10);
-}
-
-.footer {
-  padding: 28px 0 40px;
-  color: var(--muted);
-}
-
-.footer-bar {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding-top: 18px;
-  border-top: 1px solid rgba(85,98,76,0.12);
-}
-
-.page-hero {
-  padding: 50px 0 14px;
-}
-
-.page-hero .card {
-  padding: clamp(28px, 4vw, 46px);
-}
-
-.tag {
-  display: inline-flex;
-  padding: 10px 14px;
-  border-radius: 999px;
-  background: #efe3d2;
-  color: var(--brown);
-  font-weight: 700;
-  font-size: 0.88rem;
-}
-
-@media (max-width: 920px) {
-  .hero-grid,
-  .grid-3,
-  .grid-2,
-  .menu-grid,
-  .gallery-grid,
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .section-head,
-  .footer-bar {
-    flex-direction: column;
-    align-items: start;
-  }
-
-  .stats {
-    grid-template-columns: 1fr;
-  }
-}const menuBtn = document.querySelector('.dots-btn');
-const menuPanel = document.querySelector('.menu-panel');
-
-if (menuBtn && menuPanel) {
-  menuBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    menuPanel.classList.toggle('open');
-  });
-
-  document.addEventListener('click', (e) => {
-    if (!menuPanel.contains(e.target) && !menuBtn.contains(e.target)) {
-      menuPanel.classList.remove('open');
+  <script>
+    const menuBtn = document.querySelector('.dots-btn');
+    const menuPanel = document.querySelector('.menu-panel');
+
+    if (menuBtn && menuPanel) {
+      menuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menuPanel.classList.toggle('open');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!menuPanel.contains(e.target) && !menuBtn.contains(e.target)) {
+          menuPanel.classList.remove('open');
+        }
+      });
+
+      const menuLinks = document.querySelectorAll('.menu-panel a');
+      menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          menuPanel.classList.remove('open');
+        });
+      });
     }
-  });
-}
+  </script>
+
+</body>
+</html>
